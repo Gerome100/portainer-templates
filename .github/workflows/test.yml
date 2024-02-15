@@ -26,13 +26,20 @@ jobs:
           curl -sL https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json > templates1.json
           curl -sL https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json > templates2.json
 
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Merge and deduplicate JSON files with jq
-        run: jq -s '{ "version": "2", "templates": [.[].templates | add | unique] }' templates1.json templates2.json > merged.json
+        run: |
+          jq -s '{ "version": "2", "templates": [.[].templates | add | unique] }' templates1.json templates2.json > merged.json
 
       - name: Commit and push
         run: |
           git add merged.json
           git commit -m "Merge and deduplicate JSON files"
+          git remote add origin_ssh git@github.com:Gerome100/portainer-templates.git
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
