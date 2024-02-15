@@ -1,4 +1,4 @@
-name: Merge and deduplicate JSON Files
+name: Merge JSON Files
 
 on:
   schedule:
@@ -29,20 +29,20 @@ jobs:
       - name: Create .gitignore file
         run: echo -e "templates1.json\ntemplates2.json" > .gitignore
 
+      - name: Add and commit .gitignore
+        run: |
+          git add .gitignore
+          git commit -m "Add .gitignore"
+          git push
+
       - name: Merge and deduplicate JSON files with jq
         run: |
           jq -s '{   "version": "2",   "templates": (     [.[].templates | .[] | {       "categories": (.categories // [] | select(. != null)),       "type": (.type // null),       "title": .title,       "name": .name,       "description": .description,       "logo": .logo,       "note": .note,       "env": .env,       "platform": .platform,       "repository": .repository,       "image": (.image // null),       "ports": (.ports // null),       "restart_policy": (.restart_policy // null),       "volumes": (.volumes // null)     } | select(. != {})] | unique_by(.name)   ) }' templates1.json templates2.json > merged.json
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Commit and push
+      - name: Add, commit, and push merged.json
         run: |
           git add merged.json
           git commit -m "Merge and deduplicate JSON files"
-          git remote add origin_ssh git@github.com:Gerome100/portainer-templates.git
-          git push origin_ssh main
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
