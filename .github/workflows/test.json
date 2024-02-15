@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  merge_json:
+  merge_and_deduplicate_json:
     runs-on: ubuntu-latest
 
     steps:
