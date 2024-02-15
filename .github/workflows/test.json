@@ -1,0 +1,38 @@
+name: Merge JSON Files
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  merge_json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "gerome.langer@gmail.com"
+          git config --global user.name "Gerome100"
+
+      - name: Download JSON files from the internet
+        run: |
+          curl -sL https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json > templates1.json
+          curl -sL https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json > templates2.json
+
+      - name: Merge JSON files with jq
+        run: jq -s '{ "version": "2", "templates": [.[].templates | add] }' templates1.json templates2.json > merged.json
+
+      - name: Commit and push
+        run: |
+          git add merged.json
+          git commit -m "Merge JSON files"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
