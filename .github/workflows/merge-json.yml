@@ -15,12 +15,12 @@ jobs:
 
       - name: Download JSON files from the internet
         run: |
-          curl -sL https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json > merged.json
-          curl -sL https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json >> merged.json
+          curl -sL https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json > templates.json
+          curl -sL https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json >> templates.json
 
       - name: Commit and push
         run: |
-          git add merged.json
+          git add templates.json
           git commit -m "Merge JSON files"
           git push
         env:
