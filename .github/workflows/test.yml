@@ -33,7 +33,7 @@ jobs:
 
       - name: Merge and deduplicate JSON files with jq
         run: |
-          jq -s '{ "version": "2", "templates": [.[].templates | add | unique] }' templates1.json templates2.json > merged.json
+          jq -s '{   "version": "2",   "templates": (     if all(.[]; .templates | type == "array") then       [.[].templates | add | unique]     else       unique_by(.templates) | [.[].templates]     end   ) }' templates1.json templates2.json > merged.json
 
       - name: Commit and push
         run: |
