@@ -26,14 +26,14 @@ jobs:
           curl -sL https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json > templates1.json
           curl -sL https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json > templates2.json
 
+      - name: Merge and deduplicate JSON files with jq
+        run: |
+          jq -s '{   "version": "2",   "templates": (     [.[].templates | .[] | {       "categories": (.categories // [] | select(. != null)),       "type": (.type // null),       "title": .title,       "name": .name,       "description": .description,       "logo": .logo,       "note": .note,       "env": .env,       "platform": .platform,       "repository": .repository,       "image": (.image // null),       "ports": (.ports // null),       "restart_policy": (.restart_policy // null),       "volumes": (.volumes // null)     } | select(. != {})] | unique_by(.name)   ) }' templates1.json templates2.json > merged.json
+
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Merge and deduplicate JSON files with jq
-        run: |
-          jq -s '{   "version": "2",   "templates": (     [.[].templates | .[] | {       "categories": (.categories // [] | select(. != null)),       "type": (.type // null),       "title": .title,       "name": .name,       "description": .description,       "logo": .logo,       "note": .note,       "env": .env,       "platform": .platform,       "repository": .repository,       "image": (.image // null),       "ports": (.ports // null),       "restart_policy": (.restart_policy // null),       "volumes": (.volumes // null)     } | select(. != {})] | unique_by(.name)   ) }' templates1.json templates2.json > merged.json
 
       - name: Commit and push
         run: |
