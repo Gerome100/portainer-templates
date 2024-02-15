@@ -1,0 +1,27 @@
+name: Merge JSON Files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  merge_json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download JSON files from the internet
+        run: |
+          curl -sL https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json > merged.json
+          curl -sL https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json >> merged.json
+
+      - name: Commit and push
+        run: |
+          git add merged.json
+          git commit -m "Merge JSON files"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
