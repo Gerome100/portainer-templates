@@ -26,11 +26,11 @@ jobs:
           curl -sL https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json > templates.json
           curl -sL https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/template.json >> templates.json
 
-	  - name: Commit and push
-	    run: |
-		  git add templates.json
-		  git commit -m "Merge JSON files"
-		  git remote add origin_ssh git@github.com:Gerome100/portainer-templates.git
-		  git push origin_ssh main
-	    env:
-		  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Commit and push
+        run: |
+          git add templates.json
+          git commit -m "Merge JSON files"
+          git remote add origin_ssh git@github.com:Gerome100/portainer-templates.git
+          git push origin_ssh main
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
