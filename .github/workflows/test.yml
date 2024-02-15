@@ -1,4 +1,4 @@
-name: Merge JSON Files
+name: Merge and deduplicate JSON files
 
 on:
   schedule:
