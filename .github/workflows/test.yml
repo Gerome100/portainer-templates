@@ -40,6 +40,6 @@ jobs:
           git add merged.json
           git commit -m "Merge and deduplicate JSON files"
           git remote add origin_ssh git@github.com:Gerome100/portainer-templates.git
-          git push origin main
+          git push origin_ssh main
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
