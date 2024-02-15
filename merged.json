@@ -214,6 +214,50 @@
     },
     {
       "categories": [
+        "Notifications"
+      ],
+      "type": 1,
+      "title": "Apprise-api",
+      "name": "Apprise-api",
+      "description": "[Apprise-api](https://github.com/caronc/apprise-api) Takes advantage of [Apprise](https://github.com/caronc/apprise) through your network with a user-friendly API. * Send notifications to more then 65+ services. * An incredibly lightweight gateway to Apprise. * A production ready micro-service at your disposal. Apprise API was designed to easily fit into existing (and new) eco-systems that are looking for a simple notification solution.",
+      "logo": "https://raw.githubusercontent.com/caronc/apprise-api/master/apprise_api/static/logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/apprise-api/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/apprise-api:latest",
+      "ports": [
+        "8000:8000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/apprise-api/config"
+        }
+      ]
+    },
+    {
+      "categories": [
         "Other",
         "Tools"
       ],
@@ -584,6 +628,58 @@
       ]
     },
     {
+      "categories": [
+        "Media"
+      ],
+      "type": 1,
+      "title": "Beets",
+      "name": "Beets",
+      "description": "[Beets](http://beets.io/) is a music library manager and not, for the most part, a music player. It does include a simple player plugin and an experimental Web-based player, but it generally leaves actual sound-reproduction to specialized tools.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/beets-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/beets/config<br>mkdir -p /volume1/docker/beets/music<br>mkdir -p /volume1/docker/beets/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/beets:latest",
+      "ports": [
+        "8337:8337/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/beets/config"
+        },
+        {
+          "container": "/music",
+          "bind": "/volume1/docker/beets/music"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/beets/downloads"
+        }
+      ]
+    },
+    {
       "categories": [],
       "type": 1,
       "title": "Blender",
@@ -746,6 +842,92 @@
       ]
     },
     {
+      "categories": [
+        "Media"
+      ],
+      "type": 1,
+      "title": "Bookstack",
+      "name": "Bookstack",
+      "description": "[Bookstack](https://github.com/BookStackApp/BookStack) is a free and open source Wiki designed for creating beautiful documentation. Featuring a simple, but powerful WYSIWYG editor it allows for teams to create detailed and useful documentation with ease. Powered by SQL and including a Markdown editor for those who prefer it, BookStack is geared towards making documentation more of a pleasure than a chore. For more information on BookStack visit their website and check it out: https://www.bookstackapp.com",
+      "logo": "https://s3-us-west-2.amazonaws.com/linuxserver-docs/images/bookstack-logo500x500.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/bookstack/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "APP_URL",
+          "label": "APP_URL",
+          "default": "yourbaseurl",
+          "description": "for specifying the IP:port or URL your application will be accessed on (ie. `http://192.168.1.1:6875` or `https://bookstack.mydomain.com`"
+        },
+        {
+          "name": "DB_HOST",
+          "label": "DB_HOST",
+          "default": "yourdbhost",
+          "description": "for specifying the database host"
+        },
+        {
+          "name": "DB_PORT",
+          "label": "DB_PORT",
+          "default": "yourdbport",
+          "description": "for specifying the database port if not default 3306"
+        },
+        {
+          "name": "DB_USER",
+          "label": "DB_USER",
+          "default": "yourdbuser",
+          "description": "for specifying the database user"
+        },
+        {
+          "name": "DB_PASS",
+          "label": "DB_PASS",
+          "default": "yourdbpass",
+          "description": "for specifying the database password (minimum 4 characters & non-alphanumeric passwords must be properly escaped.)"
+        },
+        {
+          "name": "DB_DATABASE",
+          "label": "DB_DATABASE",
+          "default": "bookstackapp",
+          "description": "for specifying the database to be used"
+        },
+        {
+          "name": "QUEUE_CONNECTION",
+          "label": "QUEUE_CONNECTION",
+          "default": "",
+          "description": "Set to `database` to enable async actions like sending email or triggering webhooks. See [documentation](https://www.bookstackapp.com/docs/admin/email-webhooks/#async-action-handling)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/bookstack:latest",
+      "ports": [
+        "6875:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/bookstack/config"
+        }
+      ]
+    },
+    {
       "categories": [],
       "type": 1,
       "title": "Budge",
@@ -884,6 +1066,66 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/calibre/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Books"
+      ],
+      "type": 1,
+      "title": "Calibre-web",
+      "name": "Calibre-web",
+      "description": "[Calibre-web](https://github.com/janeczku/calibre-web) is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database. It is also possible to integrate google drive and edit metadata and your calibre library through the app itself. This software is a fork of library and licensed under the GPL v3 License.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/calibre-web-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/calibre-web/config<br>mkdir -p /volume1/docker/calibre-web/books</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "DOCKER_MODS",
+          "label": "DOCKER_MODS",
+          "default": "linuxserver/mods:universal-calibre",
+          "description": "#optional & **x86-64 only** Adds the ability to perform ebook conversion"
+        },
+        {
+          "name": "OAUTHLIB_RELAX_TOKEN_SCOPE",
+          "label": "OAUTHLIB_RELAX_TOKEN_SCOPE",
+          "default": "1",
+          "description": "Optionally set this to allow Google OAUTH to work"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/calibre-web:latest",
+      "ports": [
+        "8083:8083/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/calibre-web/config"
+        },
+        {
+          "container": "/books",
+          "bind": "/volume1/docker/calibre-web/books"
         }
       ]
     },
@@ -1226,6 +1468,134 @@
       ]
     },
     {
+      "categories": [
+        "Development"
+      ],
+      "type": 1,
+      "title": "Code-server",
+      "name": "Code-server",
+      "description": "[Code-server](https://coder.com) is VS Code running on a remote server, accessible through the browser. - Code on your Chromebook, tablet, and laptop with a consistent dev environment. - If you have a Windows or Mac workstation, more easily develop for Linux. - Take advantage of large cloud servers to speed up tests, compilations, downloads, and more. - Preserve battery life when you're on the go. - All intensive computation runs on your server. - You're no longer running excess instances of Chrome.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/code-server-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/code-server/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "PASSWORD",
+          "label": "PASSWORD",
+          "default": "password",
+          "description": "Optional web gui password, if `PASSWORD` or `HASHED_PASSWORD` is not provided, there will be no auth."
+        },
+        {
+          "name": "HASHED_PASSWORD",
+          "label": "HASHED_PASSWORD",
+          "default": "",
+          "description": "Optional web gui password, overrides `PASSWORD`, instructions on how to create it is below."
+        },
+        {
+          "name": "SUDO_PASSWORD",
+          "label": "SUDO_PASSWORD",
+          "default": "password",
+          "description": "If this optional variable is set, user will have sudo access in the code-server terminal with the specified password."
+        },
+        {
+          "name": "SUDO_PASSWORD_HASH",
+          "label": "SUDO_PASSWORD_HASH",
+          "default": "",
+          "description": "Optionally set sudo password via hash (takes priority over `SUDO_PASSWORD` var). Format is `$type$salt$hashed`."
+        },
+        {
+          "name": "PROXY_DOMAIN",
+          "label": "PROXY_DOMAIN",
+          "default": "code-server.my.domain",
+          "description": "If this optional variable is set, this domain will be proxied for subdomain proxying. See [Documentation](https://github.com/cdr/code-server/blob/master/docs/FAQ.md#sub-domains)"
+        },
+        {
+          "name": "DEFAULT_WORKSPACE",
+          "label": "DEFAULT_WORKSPACE",
+          "default": "/config/workspace",
+          "description": "If this optional variable is set, code-server will open this directory by default"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/code-server:latest",
+      "ports": [
+        "8443:8443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/code-server/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Books"
+      ],
+      "type": 1,
+      "title": "Cops",
+      "name": "Cops",
+      "description": "[Cops](http://blog.slucas.fr/en/oss/calibre-opds-php-server) by Sébastien Lucas, now maintained by MikesPub, stands for Calibre OPDS (and HTML) Php Server. COPS links to your Calibre library database and allows downloading and emailing of books directly from a web browser and provides a OPDS feed to connect to your devices. Changes in your Calibre library are reflected immediately in your COPS pages. See : [COPS's home](http://blog.slucas.fr/en/oss/calibre-opds-php-server) for more details. Don't forget to check the [Wiki](https://github.com/seblucas/cops/wiki). ## Why? (taken from the author's site) In my opinion Calibre is a marvelous tool but is too big and has too much dependencies to be used for its content server. That's the main reason why I coded this OPDS server. I needed a simple tool to be installed on a small server (Seagate Dockstar in my case). I initially thought of Calibre2OPDS but as it generate static file no search was possible. Later I added an simple HTML catalog that should be usable on my Kobo. So COPS's main advantages are : * No need for many dependencies. * No need for a lot of CPU or RAM. * Not much code. * Search is available. * With Dropbox / owncloud it's very easy to have an up to date OPDS server. * It was fun to code. If you want to use the OPDS feed don't forget to specify feed.php at the end of your URL.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/cops-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/cops/config<br>mkdir -p /volume1/docker/cops/books</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/cops:latest",
+      "ports": [
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/cops/config"
+        },
+        {
+          "container": "/books",
+          "bind": "/volume1/docker/cops/books"
+        }
+      ]
+    },
+    {
       "categories": [],
       "type": 1,
       "title": "Cura",
@@ -1326,6 +1696,52 @@
     },
     {
       "categories": [
+        "Media"
+      ],
+      "type": 1,
+      "title": "Daapd",
+      "name": "Daapd",
+      "description": "[Daapd](https://owntone.github.io/owntone-server/) (iTunes) media server with support for AirPlay devices, Apple Remote (and compatibles), Chromecast, MPD and internet radio.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/daapd-git.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/daapd/config<br>mkdir -p /volume1/docker/daapd/music</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/daapd:latest",
+      "ports": null,
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/daapd/config"
+        },
+        {
+          "container": "/music",
+          "bind": "/volume1/docker/daapd/music"
+        }
+      ]
+    },
+    {
+      "categories": [
         "Productivity"
       ],
       "type": 1,
@@ -1408,6 +1824,54 @@
     },
     {
       "categories": [
+        "Productivity"
+      ],
+      "type": 1,
+      "title": "Davos",
+      "name": "Davos",
+      "description": "[Davos](https://github.com/linuxserver/davos) is an FTP automation tool that periodically scans given host locations for new files. It can be configured for various purposes, including listening for specific files to appear in the host location, ready for it to download and then move, if required. It also supports completion notifications as well as downstream API calls, to further the workflow.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/davos/master/docs/list.PNG",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/davos/config<br>mkdir -p /volume1/docker/davos/download</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/davos:latest",
+      "ports": [
+        "8080:8080/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/davos/config"
+        },
+        {
+          "container": "/download",
+          "bind": "/volume1/docker/davos/download"
+        }
+      ]
+    },
+    {
+      "categories": [
         "Networking"
       ],
       "type": 1,
@@ -1445,6 +1909,63 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/ddclient/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "File Management"
+      ],
+      "type": 1,
+      "title": "Deluge",
+      "name": "Deluge",
+      "description": "[Deluge](http://deluge-torrent.org/) is a lightweight, Free Software, cross-platform BitTorrent client. * Full Encryption * WebUI * Plugin System * Much more...",
+      "logo": "https://avatars2.githubusercontent.com/u/6733935?v=3&s=200",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/deluge/config<br>mkdir -p /volume1/docker/deluge/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "DELUGE_LOGLEVEL",
+          "label": "DELUGE_LOGLEVEL",
+          "default": "error",
+          "description": "set the loglevel output when running Deluge, default is info for deluged and warning for delgued-web"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/deluge:latest",
+      "ports": [
+        "8112:8112/tcp",
+        "6881:6881/tcp",
+        "6881:6881/udp",
+        "58846:58846/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/deluge/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/deluge/downloads"
         }
       ]
     },
@@ -1682,6 +2203,64 @@
       ]
     },
     {
+      "categories": [
+        "Automation"
+      ],
+      "type": 1,
+      "title": "Domoticz",
+      "name": "Domoticz",
+      "description": "[Domoticz](https://www.domoticz.com) is a Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device.",
+      "logo": "https://github.com/domoticz/domoticz/raw/master/www/images/logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/domoticz/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "WEBROOT",
+          "label": "WEBROOT",
+          "default": "domoticz",
+          "description": "Sets webroot to domoticz for usage with subfolder reverse proxy. Not needed unless reverse proxying."
+        },
+        {
+          "name": "DBASE",
+          "label": "DBASE",
+          "default": "<path to database>",
+          "description": "Sets path to database. Do not set unless you know what this does."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/domoticz:latest",
+      "ports": [
+        "8080:8080/tcp",
+        "6144:6144/tcp",
+        "1443:1443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/domoticz/config"
+        }
+      ]
+    },
+    {
       "categories": [],
       "type": 1,
       "title": "Doplarr",
@@ -1879,6 +2458,126 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Duckdns",
+      "name": "Duckdns",
+      "description": "[Duckdns](https://duckdns.org/) is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/duckdns.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/duckdns/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "SUBDOMAINS",
+          "label": "SUBDOMAINS",
+          "default": "subdomain1,subdomain2",
+          "description": "multiple subdomains allowed, comma separated, no spaces, if your domain is user.duckdns.org you put user, not a sub-subdomain"
+        },
+        {
+          "name": "TOKEN",
+          "label": "TOKEN",
+          "default": "token",
+          "description": "DuckDNS token"
+        },
+        {
+          "name": "UPDATE_IP",
+          "label": "UPDATE_IP",
+          "default": "ipv4",
+          "description": "Set to `ipv6` or `ipv4` to update  **only** your public IPv4/6 address. Set to `both` to update IPv6 and IPv4 address. This variable makes use of a [third-party service](#notice-regarding-automatic-detection). Omitting this variable uses DuckDNS for detection and only supports IPv4. `both` and `ipv6` modes needs [host networking](#networking-net)."
+        },
+        {
+          "name": "LOG_FILE",
+          "label": "LOG_FILE",
+          "default": "false",
+          "description": "Set to `true` to log to file (also need to map /config)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/duckdns:latest",
+      "ports": null,
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/duckdns/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Duplicati",
+      "name": "Duplicati",
+      "description": "[Duplicati](https://www.duplicati.com/) works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.",
+      "logo": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/duplicati-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/duplicati/config<br>mkdir -p /volume1/docker/duplicati/backups<br>mkdir -p /volume1/docker/duplicati/source</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "CLI_ARGS",
+          "label": "CLI_ARGS",
+          "default": "",
+          "description": "Optionally specify any [CLI variables](https://duplicati.readthedocs.io/en/latest/07-other-command-line-utilities/) you want to launch the app with"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/duplicati:latest",
+      "ports": [
+        "8200:8200/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/duplicati/config"
+        },
+        {
+          "container": "/backups",
+          "bind": "/volume1/docker/duplicati/backups"
+        },
+        {
+          "container": "/source",
+          "bind": "/volume1/docker/duplicati/source"
+        }
+      ]
+    },
+    {
       "categories": [
         "Video",
         "Music",
@@ -1951,6 +2650,48 @@
         {
           "bind": "/portainer/Files/AppData/Config/EmbyStat",
           "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Embystat",
+      "name": "Embystat",
+      "description": "[Embystat](https://github.com/mregni/EmbyStat) is a personal web server that can calculate all kinds of statistics from your (local) Emby server. Just install this on your server and let him calculate all kinds of fun stuff.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/embystat-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/embystat/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/embystat:latest",
+      "ports": [
+        "6555:6555/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/embystat/config"
         }
       ]
     },
@@ -2348,6 +3089,49 @@
       "volumes": null
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Ferdium",
+      "name": "Ferdium",
+      "description": "[Ferdium](https://ferdium.org/) is a desktop app that helps you organize how you use your favourite apps by combining them into one application.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ferdium-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/ferdium/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/ferdium:latest",
+      "ports": [
+        "3000:3000/tcp",
+        "3001:3001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/ferdium/config"
+        }
+      ]
+    },
+    {
       "categories": [
         "Media Server"
       ],
@@ -2432,6 +3216,55 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/filezilla/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Firefox",
+      "name": "Firefox",
+      "description": "[Firefox](https://www.mozilla.org/en-US/firefox/) Browser, also known as Mozilla Firefox or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, the Mozilla Corporation. Firefox uses the Gecko layout engine to render web pages, which implements current and anticipated web standards.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/firefox-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/firefox/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "FIREFOX_CLI",
+          "label": "FIREFOX_CLI",
+          "default": "https://www.linuxserver.io/",
+          "description": "Specify one or multiple Firefox CLI flags, this string will be passed to the application in full."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/firefox:latest",
+      "ports": [
+        "3000:3000/tcp",
+        "3001:3001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/firefox/config"
         }
       ]
     },
@@ -2791,6 +3624,48 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Freshrss",
+      "name": "Freshrss",
+      "description": "[Freshrss](https://freshrss.org/) is a free, self-hostable aggregator for rss feeds.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/freshrss-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/freshrss/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/freshrss:latest",
+      "ports": [
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/freshrss/config"
+        }
+      ]
+    },
+    {
       "categories": [
         "Finance"
       ],
@@ -2983,6 +3858,48 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/grav/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Grocy",
+      "name": "Grocy",
+      "description": "[Grocy](https://github.com/grocy/grocy) is an ERP system for your kitchen! Cut down on food waste, and manage your chores with this brilliant utility. Keep track of your purchases, how much food you are wasting, what chores need doing and what batteries need charging with this proudly Open Source tool For more information on grocy visit their website and check it out: https://grocy.info",
+      "logo": "https://grocy.info/img/grocy_logo.svg",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/grocy/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/grocy:latest",
+      "ports": [
+        "9283:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/grocy/config"
         }
       ]
     },
@@ -3272,6 +4189,49 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Heimdall",
+      "name": "Heimdall",
+      "description": "[Heimdall](https://heimdall.site) is a way to organise all those links to your most used web sites and web applications in a simple way. Simplicity is the key to Heimdall. Why not use it as your browser start page? It even has the ability to include a search bar using either Google, Bing or DuckDuckGo.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/heimdall-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/heimdall/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/heimdall:latest",
+      "ports": [
+        "80:80/tcp",
+        "443:443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/heimdall/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Hishtory-server",
       "name": "Hishtory-server",
       "description": "[hiSHtory](https://github.com/ddworken/hishtory) is a better shell history. It stores your shell history in context (what directory you ran the command in, whether it succeeded or failed, how long it took, etc). This is all stored locally and end-to-end encrypted for syncing to to all your other computers.",
@@ -3365,6 +4325,48 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Htpcmanager",
+      "name": "Htpcmanager",
+      "description": "[Htpcmanager](https://github.com/HTPC-Manager/HTPC-Manager) is a front end for many htpc related applications.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/htpcmanager-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/htpcmanager/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/htpcmanager:latest",
+      "ports": [
+        "8085:8085/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/htpcmanager/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Inkscape",
       "name": "Inkscape",
       "description": "[Inkscape](https://inkscape.org/) is professional quality vector graphics software which runs on Linux, Mac OS X and Windows desktop computers.",
@@ -3448,6 +4450,123 @@
         {
           "bind": "/portainer/Downloads",
           "container": "/opt/JDownloader/Downloads"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Jackett",
+      "name": "Jackett",
+      "description": "[Jackett](https://github.com/Jackett/Jackett) works as a proxy server: it translates queries from apps (Sonarr, SickRage, CouchPotato, Mylar, etc) into tracker-site-specific http queries, parses the html response, then sends results back to the requesting software. This allows for getting recent uploads (like RSS) and performing searches. Jackett is a single repository of maintained indexer scraping & translation logic - removing the burden from other apps.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jackett-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/jackett/config<br>mkdir -p /volume1/docker/jackett/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "AUTO_UPDATE",
+          "label": "AUTO_UPDATE",
+          "default": "true",
+          "description": "Allow Jackett to update inside of the container (currently recommended by Jackett and enabled by default)"
+        },
+        {
+          "name": "RUN_OPTS",
+          "label": "RUN_OPTS",
+          "default": "",
+          "description": "Optionally specify additional arguments to be passed."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/jackett:latest",
+      "ports": [
+        "9117:9117/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/jackett/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/jackett/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Jellyfin",
+      "name": "Jellyfin",
+      "description": "[Jellyfin](https://github.com/jellyfin/jellyfin) is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps. Jellyfin is descended from Emby's 3.5.2 release and ported to the .NET Core framework to enable full cross-platform support. There are no strings attached, no premium licenses or features, and no hidden agendas: just a team who want to build something better and work together to achieve it.",
+      "logo": "https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/banner-logo-solid.svg?sanitize=true",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/jellyfin/config<br>mkdir -p /volume1/docker/jellyfin/data/tvshows<br>mkdir -p /volume1/docker/jellyfin/data/movies</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "JELLYFIN_PublishedServerUrl",
+          "label": "JELLYFIN_PublishedServerUrl",
+          "default": "192.168.0.5",
+          "description": "Set the autodiscovery response domain or IP address."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/jellyfin:latest",
+      "ports": [
+        "8096:8096/tcp",
+        "8920:8920/tcp",
+        "7359:7359/udp",
+        "1900:1900/udp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/jellyfin/config"
+        },
+        {
+          "container": "/data/tvshows",
+          "bind": "/volume1/docker/jellyfin/data/tvshows"
+        },
+        {
+          "container": "/data/movies",
+          "bind": "/volume1/docker/jellyfin/data/movies"
         }
       ]
     },
@@ -3644,6 +4763,52 @@
         {
           "container": "/run/udev/data",
           "bind": "/run/udev/data"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Kavita",
+      "name": "Kavita",
+      "description": "[Kavita](https://github.com/Kareadita/Kavita) is a fast, feature rich, cross platform reading server. Built with a focus for being a full solution for all your reading needs. Setup your own server and share your reading collection with your friends and family!",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/kavita-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/kavita/config<br>mkdir -p /volume1/docker/kavita/data</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/kavita:latest",
+      "ports": [
+        "5000:5000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/kavita/config"
+        },
+        {
+          "container": "/data",
+          "bind": "/volume1/docker/kavita/data"
         }
       ]
     },
@@ -3955,6 +5120,62 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Lazylibrarian",
+      "name": "Lazylibrarian",
+      "description": "[Lazylibrarian](https://lazylibrarian.gitlab.io/) is a program to follow authors and grab metadata for all your digital reading needs. It uses a combination of Goodreads Librarything and optionally GoogleBooks as sources for author info and book info. This container is based on the DobyTang fork.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lazylibrarian-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/lazylibrarian/config<br>mkdir -p /volume1/docker/lazylibrarian/downloads<br>mkdir -p /volume1/docker/lazylibrarian/books</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "DOCKER_MODS",
+          "label": "DOCKER_MODS",
+          "default": "linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg",
+          "description": "Allows additional functionality to be added, e.g. the Calibredb import program (optional, more info below)"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/lazylibrarian:latest",
+      "ports": [
+        "5299:5299/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/lazylibrarian/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/lazylibrarian/downloads"
+        },
+        {
+          "container": "/books",
+          "bind": "/volume1/docker/lazylibrarian/books"
+        }
+      ]
+    },
+    {
       "categories": [
         "Proxy Server"
       ],
@@ -4041,6 +5262,152 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/libreoffice/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Librespeed",
+      "name": "Librespeed",
+      "description": "[Librespeed](https://github.com/librespeed/speedtest) is a very lightweight Speedtest implemented in Javascript, using XMLHttpRequest and Web Workers. No Flash, No Java, No Websocket, No Bullshit.",
+      "logo": "https://raw.githubusercontent.com/librespeed/speedtest/master/.logo/logo3.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/librespeed/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "PASSWORD",
+          "label": "PASSWORD",
+          "default": "PASSWORD",
+          "description": "Set the password for the results database."
+        },
+        {
+          "name": "CUSTOM_RESULTS",
+          "label": "CUSTOM_RESULTS",
+          "default": "false",
+          "description": "(optional) set to `true` to enable custom results page in `/config/www/results/index.php`."
+        },
+        {
+          "name": "DB_TYPE",
+          "label": "DB_TYPE",
+          "default": "sqlite",
+          "description": "Defaults to `sqlite`, can also be set to `mysql` or `postgresql`."
+        },
+        {
+          "name": "DB_NAME",
+          "label": "DB_NAME",
+          "default": "DB_NAME",
+          "description": "Database name. Required for mysql and pgsql."
+        },
+        {
+          "name": "DB_HOSTNAME",
+          "label": "DB_HOSTNAME",
+          "default": "DB_HOSTNAME",
+          "description": "Database address. Required for mysql and pgsql."
+        },
+        {
+          "name": "DB_USERNAME",
+          "label": "DB_USERNAME",
+          "default": "DB_USERNAME",
+          "description": "Database username. Required for mysql and pgsql."
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "DB_PASSWORD",
+          "default": "DB_PASSWORD",
+          "description": "Database password. Required for mysql and pgsql."
+        },
+        {
+          "name": "DB_PORT",
+          "label": "DB_PORT",
+          "default": "DB_PORT",
+          "description": "Database port. Required for mysql."
+        },
+        {
+          "name": "IPINFO_APIKEY",
+          "label": "IPINFO_APIKEY",
+          "default": "ACCESS_TOKEN",
+          "description": "Access token from ipinfo.io. Required for detailed IP information."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/librespeed:latest",
+      "ports": [
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/librespeed/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Lidarr",
+      "name": "Lidarr",
+      "description": "[Lidarr](https://github.com/lidarr/Lidarr) is a music collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new tracks from your favorite artists and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.",
+      "logo": "https://github.com/lidarr/Lidarr/raw/develop/Logo/400.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/lidarr/config<br>mkdir -p /volume1/docker/lidarr/music<br>mkdir -p /volume1/docker/lidarr/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/lidarr:latest",
+      "ports": [
+        "8686:8686/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/lidarr/config"
+        },
+        {
+          "container": "/music",
+          "bind": "/volume1/docker/lidarr/music"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/lidarr/downloads"
         }
       ]
     },
@@ -4132,6 +5499,106 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Lychee",
+      "name": "Lychee",
+      "description": "[Lychee](https://lycheeorg.github.io/) is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.'",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lychee-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/lychee/config<br>mkdir -p /volume1/docker/lychee/pictures</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "DB_CONNECTION",
+          "label": "DB_CONNECTION",
+          "default": "",
+          "description": "DB type, from `sqlite`, `mysql`, `pqsql`."
+        },
+        {
+          "name": "DB_HOST",
+          "label": "DB_HOST",
+          "default": "",
+          "description": "DB server hostname. For `mysql` and `pgsql` only."
+        },
+        {
+          "name": "DB_PORT",
+          "label": "DB_PORT",
+          "default": "",
+          "description": "DB server port. For `mysql` and `pgsql` only."
+        },
+        {
+          "name": "DB_USERNAME",
+          "label": "DB_USERNAME",
+          "default": "",
+          "description": "DB user. For `mysql` and `pgsql` only."
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "DB_PASSWORD",
+          "default": "",
+          "description": "DB password. For `mysql` and `pgsql` only."
+        },
+        {
+          "name": "DB_DATABASE",
+          "label": "DB_DATABASE",
+          "default": "",
+          "description": "Path to DB file for `sqlite`. DB name for `mysql` and `pgsql`."
+        },
+        {
+          "name": "APP_NAME",
+          "label": "APP_NAME",
+          "default": "Lychee",
+          "description": "The gallery name."
+        },
+        {
+          "name": "APP_URL",
+          "label": "APP_URL",
+          "default": "",
+          "description": "The URL you will use to access Lychee including protocol, and port where appropriate."
+        },
+        {
+          "name": "TRUSTED_PROXIES",
+          "label": "TRUSTED_PROXIES",
+          "default": "",
+          "description": "Set to the IP or netmask covering your reverse proxy, if running behind one. Set to `*` to trust all IPs (**do not** use `*` if exposed to the internet`)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/lychee:latest",
+      "ports": [
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/lychee/config"
+        },
+        {
+          "container": "/pictures",
+          "bind": "/volume1/docker/lychee/pictures"
+        }
+      ]
+    },
+    {
       "categories": [
         "Dashboard Server"
       ],
@@ -4169,6 +5636,327 @@
         },
         {
           "container": "/opt/magic_mirror/css"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Mariadb",
+      "name": "Mariadb",
+      "description": "[Mariadb](https://mariadb.org/) is one of the most popular database servers. Made by the original developers of MySQL.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mariadb-git.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/mariadb/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "label": "MYSQL_ROOT_PASSWORD",
+          "default": "ROOT_ACCESS_PASSWORD",
+          "description": "Set this to root password for installation (minimum 4 characters & non-alphanumeric passwords must be properly escaped)."
+        },
+        {
+          "name": "MYSQL_DATABASE",
+          "label": "MYSQL_DATABASE",
+          "default": "USER_DB_NAME",
+          "description": "Specify the name of a database to be created on image startup."
+        },
+        {
+          "name": "MYSQL_USER",
+          "label": "MYSQL_USER",
+          "default": "MYSQL_USER",
+          "description": "This user will have superuser access to the database specified by MYSQL_DATABASE (do not use root here)."
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "label": "MYSQL_PASSWORD",
+          "default": "DATABASE_PASSWORD",
+          "description": "Set this to the password you want to use for you MYSQL_USER (minimum 4 characters & non-alphanumeric passwords must be properly escaped)."
+        },
+        {
+          "name": "REMOTE_SQL",
+          "label": "REMOTE_SQL",
+          "default": "http://URL1/your.sql,https://URL2/your.sql",
+          "description": "Set this to ingest sql files from an http/https endpoint (comma seperated array)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/mariadb:latest",
+      "ports": [
+        "3306:3306/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/mariadb/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Social"
+      ],
+      "type": 1,
+      "title": "Mastodon",
+      "name": "Mastodon",
+      "description": "[Mastodon](https://github.com/mastodon/mastodon/) is a free, open-source social network server based on ActivityPub where users can follow friends and discover new ones..",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mastodon-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/mastodon/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "LOCAL_DOMAIN",
+          "label": "LOCAL_DOMAIN",
+          "default": "example.com",
+          "description": "This is the unique identifier of your server in the network. It cannot be safely changed later."
+        },
+        {
+          "name": "REDIS_HOST",
+          "label": "REDIS_HOST",
+          "default": "redis",
+          "description": "Redis server hostname"
+        },
+        {
+          "name": "REDIS_PORT",
+          "label": "REDIS_PORT",
+          "default": "6379",
+          "description": "Redis port"
+        },
+        {
+          "name": "DB_HOST",
+          "label": "DB_HOST",
+          "default": "db",
+          "description": "Postgres database hostname"
+        },
+        {
+          "name": "DB_USER",
+          "label": "DB_USER",
+          "default": "mastodon",
+          "description": "Postgres username"
+        },
+        {
+          "name": "DB_NAME",
+          "label": "DB_NAME",
+          "default": "mastodon",
+          "description": "Postgres db name"
+        },
+        {
+          "name": "DB_PASS",
+          "label": "DB_PASS",
+          "default": "mastodon",
+          "description": "Postgres password"
+        },
+        {
+          "name": "DB_PORT",
+          "label": "DB_PORT",
+          "default": "5432",
+          "description": "Portgres port"
+        },
+        {
+          "name": "ES_ENABLED",
+          "label": "ES_ENABLED",
+          "default": "false",
+          "description": "Enable or disable Elasticsearch (requires a separate ES instance)"
+        },
+        {
+          "name": "SECRET_KEY_BASE",
+          "label": "SECRET_KEY_BASE",
+          "default": "",
+          "description": "Browser session secret. Changing it will break all active browser sessions."
+        },
+        {
+          "name": "OTP_SECRET",
+          "label": "OTP_SECRET",
+          "default": "",
+          "description": "MFA secret. Changing it after initial setup will break two-factor authentication."
+        },
+        {
+          "name": "VAPID_PRIVATE_KEY",
+          "label": "VAPID_PRIVATE_KEY",
+          "default": "",
+          "description": "Push notification private key. Changing it after initial setup will break push notifications."
+        },
+        {
+          "name": "VAPID_PUBLIC_KEY",
+          "label": "VAPID_PUBLIC_KEY",
+          "default": "",
+          "description": "Push notification public key. Changing it after initial setup will break push notifications."
+        },
+        {
+          "name": "SMTP_SERVER",
+          "label": "SMTP_SERVER",
+          "default": "mail.example.com",
+          "description": "SMTP server for email notifications"
+        },
+        {
+          "name": "SMTP_PORT",
+          "label": "SMTP_PORT",
+          "default": "25",
+          "description": "SMTP server port"
+        },
+        {
+          "name": "SMTP_LOGIN",
+          "label": "SMTP_LOGIN",
+          "default": "",
+          "description": "SMTP username"
+        },
+        {
+          "name": "SMTP_PASSWORD",
+          "label": "SMTP_PASSWORD",
+          "default": "",
+          "description": "SMTP password"
+        },
+        {
+          "name": "SMTP_FROM_ADDRESS",
+          "label": "SMTP_FROM_ADDRESS",
+          "default": "notifications@example.com",
+          "description": "From address for emails send from Mastodon"
+        },
+        {
+          "name": "S3_ENABLED",
+          "label": "S3_ENABLED",
+          "default": "false",
+          "description": "Enable or disable S3 storage of uploaded files"
+        },
+        {
+          "name": "WEB_DOMAIN",
+          "label": "WEB_DOMAIN",
+          "default": "mastodon.example.com",
+          "description": "This can be set if you want your server identifier to be different to the subdomain hosting Mastodon. See [https://docs.joinmastodon.org/admin/config/#basic](https://docs.joinmastodon.org/admin/config/#basic)"
+        },
+        {
+          "name": "ES_HOST",
+          "label": "ES_HOST",
+          "default": "es",
+          "description": "Elasticsearch server hostname"
+        },
+        {
+          "name": "ES_PORT",
+          "label": "ES_PORT",
+          "default": "9200",
+          "description": "Elasticsearch port"
+        },
+        {
+          "name": "ES_USER",
+          "label": "ES_USER",
+          "default": "elastic",
+          "description": "Elasticsearch username"
+        },
+        {
+          "name": "ES_PASS",
+          "label": "ES_PASS",
+          "default": "elastic",
+          "description": "Elasticsearch password"
+        },
+        {
+          "name": "S3_BUCKET",
+          "label": "S3_BUCKET",
+          "default": "",
+          "description": "S3 bucket hostname"
+        },
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "label": "AWS_ACCESS_KEY_ID",
+          "default": "",
+          "description": "S3 bucket access key ID"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "label": "AWS_SECRET_ACCESS_KEY",
+          "default": "",
+          "description": "S3 bucket secret access key"
+        },
+        {
+          "name": "S3_ALIAS_HOST",
+          "label": "S3_ALIAS_HOST",
+          "default": "",
+          "description": "Alternate hostname for object fetching if you are front the S3 connections."
+        },
+        {
+          "name": "SIDEKIQ_ONLY",
+          "label": "SIDEKIQ_ONLY",
+          "default": "false",
+          "description": "Only run the sidekiq service in this container instance. For large scale instances that need better queue handling."
+        },
+        {
+          "name": "SIDEKIQ_QUEUE",
+          "label": "SIDEKIQ_QUEUE",
+          "default": "",
+          "description": "The name of the sidekiq queue to run in this container. See [notes](https://docs.joinmastodon.org/admin/scaling/#sidekiq-queues)."
+        },
+        {
+          "name": "SIDEKIQ_DEFAULT",
+          "label": "SIDEKIQ_DEFAULT",
+          "default": "false",
+          "description": "Set to `true` on the main container if you're running additional sidekiq instances. It will run the `default` queue."
+        },
+        {
+          "name": "SIDEKIQ_THREADS",
+          "label": "SIDEKIQ_THREADS",
+          "default": "5",
+          "description": "The number of threads for sidekiq to use. See [notes](https://docs.joinmastodon.org/admin/scaling/#sidekiq-threads)."
+        },
+        {
+          "name": "DB_POOL",
+          "label": "DB_POOL",
+          "default": "5",
+          "description": "The size of the DB connection pool, must be *at least* the same as `SIDEKIQ_THREADS`. See [notes](https://docs.joinmastodon.org/admin/scaling/#sidekiq-threads)."
+        },
+        {
+          "name": "NO_CHOWN",
+          "label": "NO_CHOWN",
+          "default": "",
+          "description": "Set to `true` to skip chown of /config on init. *READ THE APPLICATION NOTES BEFORE SETTING THIS*."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/mastodon:latest",
+      "ports": [
+        "80:80/tcp",
+        "443:443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/mastodon/config"
         }
       ]
     },
@@ -4252,6 +6040,56 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Medusa",
+      "name": "Medusa",
+      "description": "[Medusa](https://pymedusa.com/) is an automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/medusa-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/medusa/config<br>mkdir -p /volume1/docker/medusa/downloads<br>mkdir -p /volume1/docker/medusa/tv</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/medusa:latest",
+      "ports": [
+        "8081:8081/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/medusa/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/medusa/downloads"
+        },
+        {
+          "container": "/tv",
+          "bind": "/volume1/docker/medusa/tv"
+        }
+      ]
+    },
+    {
       "categories": [
         "Search"
       ],
@@ -4271,6 +6109,247 @@
       "ports": null,
       "restart_policy": null,
       "volumes": null
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Minetest",
+      "name": "Minetest",
+      "description": "[Minetest](http://www.minetest.net/) (server) is a near-infinite-world block sandbox game and a game engine, inspired by InfiniMiner, Minecraft, and the like.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/minetest-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/minetest/config/.minetest</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "CLI_ARGS",
+          "label": "CLI_ARGS",
+          "default": "--gameid minetest --port 30000",
+          "description": "Optionally specify any [CLI variables](https://wiki.minetest.net/Command_line) you want to launch the app with"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/minetest:latest",
+      "ports": [
+        "30000:30000/udp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config/.minetest",
+          "bind": "/volume1/docker/minetest/config/.minetest"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Minisatip",
+      "name": "Minisatip",
+      "description": "[Minisatip](https://github.com/catalinii/minisatip) is a multi-threaded satip server version 1.2 that runs under Linux and it was tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/minisatip-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/minisatip/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "RUN_OPTS",
+          "label": "RUN_OPTS",
+          "default": "",
+          "description": "Specify specific run params for minisatip"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/minisatip:latest",
+      "ports": [
+        "8875:8875/tcp",
+        "554:554/tcp",
+        "1900:1900/udp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/minisatip/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Monica",
+      "name": "Monica",
+      "description": "[Monica](https://github.com/monicahq/monica) is an open source personal relationship management system, that lets you document your life.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/monica-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/monica/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "DB_HOST",
+          "label": "DB_HOST",
+          "default": "",
+          "description": "Mariadb DB server hostname."
+        },
+        {
+          "name": "DB_PORT",
+          "label": "DB_PORT",
+          "default": "",
+          "description": "Mariadb DB server port."
+        },
+        {
+          "name": "DB_USERNAME",
+          "label": "DB_USERNAME",
+          "default": "",
+          "description": "Mariadb DB user."
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "DB_PASSWORD",
+          "default": "",
+          "description": "Mariadb DB password."
+        },
+        {
+          "name": "DB_DATABASE",
+          "label": "DB_DATABASE",
+          "default": "",
+          "description": "Mariadb DB name."
+        },
+        {
+          "name": "APP_URL",
+          "label": "APP_URL",
+          "default": "http://localhost:80",
+          "description": "The URL you will use to access Monica including protocol, and port where appropriate."
+        },
+        {
+          "name": "TRUSTED_PROXIES",
+          "label": "TRUSTED_PROXIES",
+          "default": "",
+          "description": "Set to the IP or netmask covering your reverse proxy, if running behind one. Set to `*` to trust all IPs (**do not** use `*` if exposed to the internet`)."
+        },
+        {
+          "name": "APP_ENV",
+          "label": "APP_ENV",
+          "default": "local",
+          "description": "Set to `production` when exposing the container to anyone else; this also makes https mandatory."
+        },
+        {
+          "name": "APP_DISABLE_SIGNUP",
+          "label": "APP_DISABLE_SIGNUP",
+          "default": "true",
+          "description": "Set to `false` to enable new account sign-ups."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/monica:latest",
+      "ports": [
+        "80:80/tcp",
+        "443:443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/monica/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Mstream",
+      "name": "Mstream",
+      "description": "[Mstream](https://mstream.io/) is a personal music streaming server. You can use mStream to stream your music from your home computer to any device, anywhere. There are mobile apps available for both Android and iPhone.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mstream-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/mstream/config<br>mkdir -p /volume1/docker/mstream/music</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/mstream:latest",
+      "ports": [
+        "3000:3000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/mstream/config"
+        },
+        {
+          "container": "/music",
+          "bind": "/volume1/docker/mstream/music"
+        }
+      ]
     },
     {
       "categories": [],
@@ -4619,6 +6698,323 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Netbootxyz",
+      "name": "Netbootxyz",
+      "description": "[Netbootxyz](https://netboot.xyz) is a way to PXE boot various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool. iPXE is used to provide a user friendly menu from within the BIOS that lets you easily choose the operating system you want along with any specific types of versions or bootable flags.",
+      "logo": "https://netboot.xyz/images/netboot.xyz.gif",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/netbootxyz/config<br>mkdir -p /volume1/docker/netbootxyz/assets</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "MENU_VERSION",
+          "label": "MENU_VERSION",
+          "default": "1.9.9",
+          "description": "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"
+        },
+        {
+          "name": "PORT_RANGE",
+          "label": "PORT_RANGE",
+          "default": "30000:30010",
+          "description": "Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details)"
+        },
+        {
+          "name": "SUBFOLDER",
+          "label": "SUBFOLDER",
+          "default": "/",
+          "description": "Specify a sobfolder if running this behind a reverse proxy (IE /proxy/)"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/netbootxyz:latest",
+      "ports": [
+        "3000:3000/tcp",
+        "69:69/udp",
+        "8080:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/netbootxyz/config"
+        },
+        {
+          "container": "/assets",
+          "bind": "/volume1/docker/netbootxyz/assets"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Netbox",
+      "name": "Netbox",
+      "description": "[Netbox](https://github.com/netbox-community/netbox) is an IP address management (IPAM) and data center infrastructure management (DCIM) tool. Initially conceived by the network engineering team at DigitalOcean, NetBox was developed specifically to address the needs of network and infrastructure engineers. It is intended to function as a domain-specific source of truth for network operations.",
+      "logo": "https://raw.githubusercontent.com/netbox-community/netbox/develop/docs/netbox_logo.svg",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/netbox/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "SUPERUSER_EMAIL",
+          "label": "SUPERUSER_EMAIL",
+          "default": "",
+          "description": "Email address for `admin` account"
+        },
+        {
+          "name": "SUPERUSER_PASSWORD",
+          "label": "SUPERUSER_PASSWORD",
+          "default": "",
+          "description": "Password for `admin` account"
+        },
+        {
+          "name": "ALLOWED_HOST",
+          "label": "ALLOWED_HOST",
+          "default": "",
+          "description": "The hostname you will use to access the app (i.e., netbox.example.com)"
+        },
+        {
+          "name": "DB_NAME",
+          "label": "DB_NAME",
+          "default": "",
+          "description": "Database name (default: netbox)"
+        },
+        {
+          "name": "DB_USER",
+          "label": "DB_USER",
+          "default": "",
+          "description": "Database user"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "DB_PASSWORD",
+          "default": "",
+          "description": "Database password"
+        },
+        {
+          "name": "DB_HOST",
+          "label": "DB_HOST",
+          "default": "",
+          "description": "Database host (default: postgres)"
+        },
+        {
+          "name": "DB_PORT",
+          "label": "DB_PORT",
+          "default": "",
+          "description": "Database port (defaul: 5432)"
+        },
+        {
+          "name": "REDIS_HOST",
+          "label": "REDIS_HOST",
+          "default": "",
+          "description": "Redis host (default: redis)"
+        },
+        {
+          "name": "REDIS_PORT",
+          "label": "REDIS_PORT",
+          "default": "",
+          "description": "Redis port number (default: 6379)"
+        },
+        {
+          "name": "REDIS_PASSWORD",
+          "label": "REDIS_PASSWORD",
+          "default": "",
+          "description": "Redis password (default: none)"
+        },
+        {
+          "name": "REDIS_DB_TASK",
+          "label": "REDIS_DB_TASK",
+          "default": "",
+          "description": "Redis database ID for tasks (default: 0)"
+        },
+        {
+          "name": "REDIS_DB_CACHE",
+          "label": "REDIS_DB_CACHE",
+          "default": "",
+          "description": "Redis database ID for caching (default: 1)"
+        },
+        {
+          "name": "BASE_PATH",
+          "label": "BASE_PATH",
+          "default": "",
+          "description": "The path you will use to access the app (i.e., /netbox, optional, default: none)"
+        },
+        {
+          "name": "REMOTE_AUTH_ENABLED",
+          "label": "REMOTE_AUTH_ENABLED",
+          "default": "",
+          "description": "Enable remote authentication (optional, default: False)"
+        },
+        {
+          "name": "REMOTE_AUTH_BACKEND",
+          "label": "REMOTE_AUTH_BACKEND",
+          "default": "",
+          "description": "Python path to the custom Django authentication backend to use for external user authentication (optional, default: netbox.authentication.RemoteUserBackend)"
+        },
+        {
+          "name": "REMOTE_AUTH_HEADER",
+          "label": "REMOTE_AUTH_HEADER",
+          "default": "",
+          "description": "Name of the HTTP header which informs NetBox of the currently authenticated user. (optional, default: HTTP_REMOTE_USER)"
+        },
+        {
+          "name": "REMOTE_AUTH_AUTO_CREATE_USER",
+          "label": "REMOTE_AUTH_AUTO_CREATE_USER",
+          "default": "",
+          "description": "If true, NetBox will automatically create local accounts for users authenticated via a remote service (optional, default: False)"
+        },
+        {
+          "name": "REMOTE_AUTH_DEFAULT_GROUPS",
+          "label": "REMOTE_AUTH_DEFAULT_GROUPS",
+          "default": "",
+          "description": "The list of groups to assign a new user account when created using remote authentication (optional, default: [])"
+        },
+        {
+          "name": "REMOTE_AUTH_DEFAULT_PERMISSIONS",
+          "label": "REMOTE_AUTH_DEFAULT_PERMISSIONS",
+          "default": "",
+          "description": "A mapping of permissions to assign a new user account when created using remote authentication (optional, default: {})"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/netbox:latest",
+      "ports": [
+        "8000:8000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/netbox/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Nextcloud",
+      "name": "Nextcloud",
+      "description": "[Nextcloud](https://nextcloud.com/) gives you access to all your files wherever you are. Where are your photos and documents? With Nextcloud you pick a server of your choice, at home, in a data center or at a provider. And that is where your files will be. Nextcloud runs on that server, protecting your data and giving you access from your desktop or mobile devices. Through Nextcloud you also access, sync and share your existing data on that FTP drive at the office, a Dropbox or a NAS you have at home.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nextcloud-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/nextcloud/config<br>mkdir -p /volume1/docker/nextcloud/data</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/nextcloud:latest",
+      "ports": [
+        "443:443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/nextcloud/config"
+        },
+        {
+          "container": "/data",
+          "bind": "/volume1/docker/nextcloud/data"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Nginx",
+      "name": "Nginx",
+      "description": "[Nginx](https://nginx.org/) is a simple webserver with php support. The config files reside in `/config` for easy user customization.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/nginx/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/nginx:latest",
+      "ports": [
+        "80:80/tcp",
+        "443:443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/nginx/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Ngircd",
       "name": "Ngircd",
       "description": "[Ngircd](https://ngircd.barton.de/) is a free, portable and lightweight Internet Relay Chat server for small or private networks, developed under the GNU General Public License (GPL). It is easy to configure, can cope with dynamic IP addresses, and supports IPv6, SSL-protected connections as well as PAM for authentication. It is written from scratch and not based on the original IRCd.",
@@ -4682,6 +7078,52 @@
       "volumes": null
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Nzbhydra2",
+      "name": "Nzbhydra2",
+      "description": "[Nzbhydra2](https://github.com/theotherp/nzbhydra2) is a meta search application for NZB indexers, the 'spiritual successor' to NZBmegasearcH, and an evolution of the original application [NZBHydra](https://github.com/theotherp/nzbhydra). It provides easy access to a number of raw and newznab based indexers. The application NZBHydra 2 is replacing NZBHydra 1 and supports migrating from V1. Be wary that there may be some compatibility issues for those migrating from V1 to V2, so ensure you back up your old configuration before moving over to the new version. **NOTE:** The last version that supports migration is `linuxserver/nzbhydra2:v2.10.2-ls49`",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hydra-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/nzbhydra2/config<br>mkdir -p /volume1/docker/nzbhydra2/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/nzbhydra2:latest",
+      "ports": [
+        "5076:5076/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/nzbhydra2/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/nzbhydra2/downloads"
+        }
+      ]
+    },
+    {
       "categories": [
         "Monitor",
         "Other"
@@ -4717,6 +7159,54 @@
         {
           "bind": "/etc/localtime",
           "container": "/etc/localtime"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Ombi",
+      "name": "Ombi",
+      "description": "[Ombi](https://ombi.io) allows you to host your own Plex Request and user management system. If you are sharing your Plex server with other users, allow them to request new content using an easy to manage interface! Manage all your requests for Movies and TV with ease, leave notes for the user and get notification when a user requests something. Allow your users to post issues against their requests so you know there is a problem with the audio etc. Even automatically send them weekly newsletters of new content that has been added to your Plex server!",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ombi.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/ombi/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "BASE_URL",
+          "label": "BASE_URL",
+          "default": "/ombi",
+          "description": "Subfolder can optionally be defined as an env variable for reverse proxies. Keep in mind that once this value is defined, the gui setting for base url no longer works. To use the gui setting, remove this env variable."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/ombi:latest",
+      "ports": [
+        "3579:3579/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/ombi/config"
         }
       ]
     },
@@ -5019,6 +7509,48 @@
       "ports": null,
       "restart_policy": null,
       "volumes": null
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Oscam",
+      "name": "Oscam",
+      "description": "[Oscam](http://www.streamboard.tv/oscam/) is an Open Source Conditional Access Module software used for descrambling DVB transmissions using smart cards. It's both a server and a client.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/oscam-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/oscam/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/oscam:latest",
+      "ports": [
+        "8888:8888/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/oscam/config"
+        }
+      ]
     },
     {
       "categories": [
@@ -5607,6 +8139,52 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Piwigo",
+      "name": "Piwigo",
+      "description": "[Piwigo](http://piwigo.org/) is a photo gallery software for the web that comes with powerful features to publish and manage your collection of pictures.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/piwigo-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/piwigo/config<br>mkdir -p /volume1/docker/piwigo/gallery</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/piwigo:latest",
+      "ports": [
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/piwigo/config"
+        },
+        {
+          "container": "/gallery",
+          "bind": "/volume1/docker/piwigo/gallery"
+        }
+      ]
+    },
+    {
       "categories": [
         "Photos"
       ],
@@ -5663,6 +8241,66 @@
         {
           "container": "/photos",
           "bind": "/volume1/docker/pixapop/photos"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Plex",
+      "name": "Plex",
+      "description": "[Plex](https://plex.tv) organizes video, music and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone Plex Media Server. Straightforward design and bulk actions mean getting things done faster.",
+      "logo": "http://the-gadgeteer.com/wp-content/uploads/2015/10/plex-logo-e1446990678679.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/plex/config<br>mkdir -p /volume1/docker/plex/tv<br>mkdir -p /volume1/docker/plex/movies</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "VERSION",
+          "label": "VERSION",
+          "default": "docker",
+          "description": "Set whether to update plex or not - see Application Setup section."
+        },
+        {
+          "name": "PLEX_CLAIM",
+          "label": "PLEX_CLAIM",
+          "default": "",
+          "description": "Optionally you can obtain a claim token from https://plex.tv/claim and input here. Keep in mind that the claim tokens expire within 4 minutes."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/plex:latest",
+      "ports": null,
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/plex/config"
+        },
+        {
+          "container": "/tv",
+          "bind": "/volume1/docker/plex/tv"
+        },
+        {
+          "container": "/movies",
+          "bind": "/volume1/docker/plex/movies"
         }
       ]
     },
@@ -5735,6 +8373,100 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/plex-meta-manager/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Projectsend",
+      "name": "Projectsend",
+      "description": "[Projectsend](http://www.projectsend.org) is a self-hosted application that lets you upload files and assign them to specific clients that you create yourself. Secure, private and easy. No more depending on external services or e-mail to send those files.",
+      "logo": "http://www.projectsend.org/wp-content/themes/projectsend/img/screenshots.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/projectsend/config<br>mkdir -p /volume1/docker/projectsend/data</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "MAX_UPLOAD",
+          "label": "MAX_UPLOAD",
+          "default": "5000",
+          "description": "To set maximum upload size (in MB), default if unset is 5000."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/projectsend:latest",
+      "ports": [
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/projectsend/config"
+        },
+        {
+          "container": "/data",
+          "bind": "/volume1/docker/projectsend/data"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Prowlarr",
+      "name": "Prowlarr",
+      "description": "[Prowlarr](https://github.com/Prowlarr/Prowlarr) is a indexer manager/proxy built on the popular arr .net/reactjs base stack to integrate with your various PVR apps. Prowlarr supports both Torrent Trackers and Usenet Indexers. It integrates seamlessly with Sonarr, Radarr, Lidarr, and Readarr offering complete management of your indexers with no per app Indexer setup required (we do it all).",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/prowlarr/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/prowlarr:latest",
+      "ports": [
+        "9696:9696/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/prowlarr/config"
         }
       ]
     },
@@ -5957,6 +8689,66 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Qbittorrent",
+      "name": "Qbittorrent",
+      "description": "The [Qbittorrent](https://www.qbittorrent.org/) project aims to provide an open-source software alternative to µTorrent. qBittorrent is based on the Qt toolkit and libtorrent-rasterbar library.",
+      "logo": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/qbittorrent/config<br>mkdir -p /volume1/docker/qbittorrent/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "WEBUI_PORT",
+          "label": "WEBUI_PORT",
+          "default": "8080",
+          "description": "for changing the port of the web UI, see below for explanation"
+        },
+        {
+          "name": "TORRENTING_PORT",
+          "label": "TORRENTING_PORT",
+          "default": "6881",
+          "description": "for changing the port of tcp/udp connection, see below for explanation"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/qbittorrent:latest",
+      "ports": [
+        "8080:8080/tcp",
+        "6881:6881/tcp",
+        "6881:6881/udp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/qbittorrent/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/qbittorrent/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Qdirstat",
       "name": "Qdirstat",
       "description": "[QDirStat](https://github.com/shundhammer/qdirstat) Qt-based directory statistics: KDirStat without any KDE -- from the author of the original KDirStat.",
@@ -5998,6 +8790,55 @@
         {
           "container": "/data",
           "bind": "/volume1/docker/qdirstat/data"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Quassel-core",
+      "name": "Quassel-core",
+      "description": "[Quassel-core](http://quassel-irc.org/) is a modern, cross-platform, distributed IRC client, meaning that one (or multiple) client(s) can attach to and detach from a central core. This container handles the IRC connection (quasselcore) and requires a desktop client (quasselclient) to be used and configured. It is designed to be always on and will keep your identity present in IRC even when your clients cannot be online. Backlog (history) is downloaded by your client upon reconnection allowing infinite scrollback through time.",
+      "logo": "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Apps-quassel-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/quassel-core/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "RUN_OPTS",
+          "label": "RUN_OPTS",
+          "default": "--config-from-environment",
+          "description": "Custom CLI options for Quassel"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/quassel-core:latest",
+      "ports": [
+        "4242:4242/tcp",
+        "113:10113/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/quassel-core/config"
         }
       ]
     },
@@ -6065,6 +8906,56 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/quassel-web/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Radarr",
+      "name": "Radarr",
+      "description": "[Radarr](https://github.com/Radarr/Radarr) - A fork of Sonarr to work with movies à la Couchpotato.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/radarr/config<br>mkdir -p /volume1/docker/radarr/movies<br>mkdir -p /volume1/docker/radarr/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/radarr:latest",
+      "ports": [
+        "7878:7878/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/radarr/config"
+        },
+        {
+          "container": "/movies",
+          "bind": "/volume1/docker/radarr/movies"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/radarr/downloads"
         }
       ]
     },
@@ -6339,6 +9230,57 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Resilio-sync",
+      "name": "Resilio-sync",
+      "description": "[Resilio-sync](https://www.resilio.com/individuals/) (formerly BitTorrent Sync) uses the BitTorrent protocol to sync files and folders between all of your devices. There are both free and paid versions, this container supports both. There is an official sync image but we created this one as it supports user mapping to simplify permissions for volumes.",
+      "logo": "https://www.resilio.com/img/individual/freeproduct.jpg",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/resilio-sync/config<br>mkdir -p /volume1/docker/resilio-sync/downloads<br>mkdir -p /volume1/docker/resilio-sync/sync</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/resilio-sync:latest",
+      "ports": [
+        "8888:8888/tcp",
+        "55555:55555/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/resilio-sync/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/resilio-sync/downloads"
+        },
+        {
+          "container": "/sync",
+          "bind": "/volume1/docker/resilio-sync/sync"
+        }
+      ]
+    },
+    {
       "categories": [
         "Remote Control"
       ],
@@ -6431,6 +9373,56 @@
       "ports": null,
       "restart_policy": null,
       "volumes": null
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Sabnzbd",
+      "name": "Sabnzbd",
+      "description": "[Sabnzbd](http://sabnzbd.org/) makes Usenet as simple and streamlined as possible by automating everything we can. All you have to do is add an .nzb. SABnzbd takes over from there, where it will be automatically downloaded, verified, repaired, extracted and filed away with zero human interaction.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sabnzbd-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/sabnzbd/config<br>mkdir -p /volume1/docker/sabnzbd/downloads<br>mkdir -p /volume1/docker/sabnzbd/incomplete-downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/sabnzbd:latest",
+      "ports": [
+        "8080:8080/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/sabnzbd/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/sabnzbd/downloads"
+        },
+        {
+          "container": "/incomplete-downloads",
+          "bind": "/volume1/docker/sabnzbd/incomplete-downloads"
+        }
+      ]
     },
     {
       "categories": [
@@ -6642,6 +9634,152 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Sickchill",
+      "name": "Sickchill",
+      "description": "[Sickchill](https://github.com/SickChill/SickChill) is an Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sickchill-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/sickchill/config<br>mkdir -p /volume1/docker/sickchill/downloads<br>mkdir -p /volume1/docker/sickchill/tv</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/sickchill:latest",
+      "ports": [
+        "8081:8081/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/sickchill/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/sickchill/downloads"
+        },
+        {
+          "container": "/tv",
+          "bind": "/volume1/docker/sickchill/tv"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Sickgear",
+      "name": "Sickgear",
+      "description": "[SickGear](https://github.com/sickgear/sickgear) provides management of TV shows and/or Anime, it detects new episodes, links downloader apps, and more.. For more information on SickGear visit their website and check it out: https://github.com/SickGear/SickGear",
+      "logo": "https://raw.githubusercontent.com/wiki/SickGear/SickGear.Wiki/images/SickGearLogo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/sickgear/config<br>mkdir -p /volume1/docker/sickgear/tv<br>mkdir -p /volume1/docker/sickgear/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/sickgear:latest",
+      "ports": [
+        "8081:8081/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/sickgear/config"
+        },
+        {
+          "container": "/tv",
+          "bind": "/volume1/docker/sickgear/tv"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/sickgear/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Smokeping",
+      "name": "Smokeping",
+      "description": "[Smokeping](https://oss.oetiker.ch/smokeping/) keeps track of your network latency. For a full example of what this application is capable of visit [UCDavis](http://smokeping.ucdavis.edu/cgi-bin/smokeping.fcgi).",
+      "logo": "https://camo.githubusercontent.com/e0694ef783e3fd1d74e6776b28822ced01c7cc17/687474703a2f2f6f73732e6f6574696b65722e63682f736d6f6b6570696e672f696e632f736d6f6b6570696e672d6c6f676f2e706e67",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/smokeping/config<br>mkdir -p /volume1/docker/smokeping/data</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/smokeping:latest",
+      "ports": [
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/smokeping/config"
+        },
+        {
+          "container": "/data",
+          "bind": "/volume1/docker/smokeping/data"
+        }
+      ]
+    },
+    {
       "categories": [
         "Family App Server"
       ],
@@ -6778,6 +9916,58 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/snipe-it/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Media"
+      ],
+      "type": 1,
+      "title": "Sonarr",
+      "name": "Sonarr",
+      "description": "[Sonarr](https://sonarr.tv/) (formerly NZBdrone) is a PVR for usenet and bittorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/sonarr/config<br>mkdir -p /volume1/docker/sonarr/tv<br>mkdir -p /volume1/docker/sonarr/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/sonarr:latest",
+      "ports": [
+        "8989:8989/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/sonarr/config"
+        },
+        {
+          "container": "/tv",
+          "bind": "/volume1/docker/sonarr/tv"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/sonarr/downloads"
         }
       ]
     },
@@ -7311,6 +10501,48 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Tautulli",
+      "name": "Tautulli",
+      "description": "[Tautulli](http://tautulli.com) is a python based web application for monitoring, analytics and notifications for Plex Media Server.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tautulli-icon.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/tautulli/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/tautulli:latest",
+      "ports": [
+        "8181:8181/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/tautulli/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Tester",
       "name": "Tester",
       "description": "This internal tool is used as a desktop sandbox in our CI process to grab a screenshot of a hopefully functional endpoint",
@@ -7332,6 +10564,250 @@
       ],
       "restart_policy": "unless-stopped",
       "volumes": null
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Thelounge",
+      "name": "Thelounge",
+      "description": "[Thelounge](https://thelounge.github.io/) (a fork of shoutIRC) is a web IRC client that you host on your own server.",
+      "logo": "https://raw.githubusercontent.com/thelounge/thelounge/master/client/img/logo-vertical-transparent-bg.svg?sanitize=true",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/thelounge/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/thelounge:latest",
+      "ports": [
+        "9000:9000/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/thelounge/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Transmission",
+      "name": "Transmission",
+      "description": "[Transmission](https://www.transmissionbt.com/) is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/transmission/config<br>mkdir -p /volume1/docker/transmission/downloads<br>mkdir -p /volume1/docker/transmission/watch</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "TRANSMISSION_WEB_HOME",
+          "label": "TRANSMISSION_WEB_HOME",
+          "default": "",
+          "description": "Specify the path to an alternative UI folder."
+        },
+        {
+          "name": "USER",
+          "label": "USER",
+          "default": "",
+          "description": "Specify an optional username for the interface"
+        },
+        {
+          "name": "PASS",
+          "label": "PASS",
+          "default": "",
+          "description": "Specify an optional password for the interface"
+        },
+        {
+          "name": "WHITELIST",
+          "label": "WHITELIST",
+          "default": "",
+          "description": "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."
+        },
+        {
+          "name": "PEERPORT",
+          "label": "PEERPORT",
+          "default": "",
+          "description": "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."
+        },
+        {
+          "name": "HOST_WHITELIST",
+          "label": "HOST_WHITELIST",
+          "default": "",
+          "description": "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/transmission:latest",
+      "ports": [
+        "9091:9091/tcp",
+        "51413:51413/tcp",
+        "51413:51413/udp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/transmission/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/transmission/downloads"
+        },
+        {
+          "container": "/watch",
+          "bind": "/volume1/docker/transmission/watch"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Tvheadend",
+      "name": "Tvheadend",
+      "description": "[Tvheadend](https://www.tvheadend.org/) works as a proxy server: is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources. Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming. Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tvheadend-big.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/tvheadend/config<br>mkdir -p /volume1/docker/tvheadend/recordings</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "RUN_OPTS",
+          "label": "RUN_OPTS",
+          "default": "",
+          "description": "Optionally specify additional arguments to be passed. See Additional runtime parameters."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/tvheadend:latest",
+      "ports": [
+        "9981:9981/tcp",
+        "9982:9982/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/tvheadend/config"
+        },
+        {
+          "container": "/recordings",
+          "bind": "/volume1/docker/tvheadend/recordings"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Ubooquity",
+      "name": "Ubooquity",
+      "description": "[Ubooquity](https://vaemendis.net/ubooquity/) is a free, lightweight and easy-to-use home server for your comics and ebooks. Use it to access your files from anywhere, with a tablet, an e-reader, a phone or a computer.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ubooquity-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/ubooquity/config<br>mkdir -p /volume1/docker/ubooquity/books<br>mkdir -p /volume1/docker/ubooquity/comics<br>mkdir -p /volume1/docker/ubooquity/files</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "MAXMEM",
+          "label": "MAXMEM",
+          "default": "",
+          "description": "To set the maximum memory. ( ex: set '1024' for 1GB )"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/ubooquity:latest",
+      "ports": [
+        "2202:2202/tcp",
+        "2203:2203/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/ubooquity/config"
+        },
+        {
+          "container": "/books",
+          "bind": "/volume1/docker/ubooquity/books"
+        },
+        {
+          "container": "/comics",
+          "bind": "/volume1/docker/ubooquity/comics"
+        },
+        {
+          "container": "/files",
+          "bind": "/volume1/docker/ubooquity/files"
+        }
+      ]
     },
     {
       "categories": [
@@ -7388,6 +10864,70 @@
         {
           "bind": "/portainer/Files/AppData/Config/UniFiVideo/",
           "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Networking"
+      ],
+      "type": 1,
+      "title": "Unifi-controller",
+      "name": "Unifi-controller",
+      "description": "The [Unifi-controller](https://www.ubnt.com/enterprise/#unifi) software is a powerful, enterprise wireless software engine ideal for high-density client deployments requiring low latency and high uptime performance.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/unifi-controller/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "MEM_LIMIT",
+          "label": "MEM_LIMIT",
+          "default": "1024",
+          "description": "Optionally change the Java memory limit (in Megabytes). Set to `default` to reset to default"
+        },
+        {
+          "name": "MEM_STARTUP",
+          "label": "MEM_STARTUP",
+          "default": "1024",
+          "description": "Optionally change the Java initial/minimum memory (in Megabytes). Set to `default` to reset to default"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/unifi-controller:latest",
+      "ports": [
+        "8443:8443/tcp",
+        "3478:3478/udp",
+        "10001:10001/udp",
+        "8080:8080/tcp",
+        "1900:1900/udp",
+        "8843:8843/tcp",
+        "8880:8880/tcp",
+        "6789:6789/tcp",
+        "5514:5514/udp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/unifi-controller/config"
         }
       ]
     },
@@ -7684,6 +11224,111 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Webgrabplus",
+      "name": "Webgrabplus",
+      "description": "[Webgrabplus](http://www.webgrabplus.com) is a multi-site incremental xmltv epg grabber. It collects tv-program guide data from selected tvguide sites for your favourite channels.",
+      "logo": "http://www.webgrabplus.com/sites/default/themes/WgTheme/images/slideshows/EPG_fading.jpg",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/webgrabplus/config<br>mkdir -p /volume1/docker/webgrabplus/data</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/webgrabplus:latest",
+      "ports": null,
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/webgrabplus/config"
+        },
+        {
+          "container": "/data",
+          "bind": "/volume1/docker/webgrabplus/data"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Utilities"
+      ],
+      "type": 1,
+      "title": "Webtop",
+      "name": "Webtop",
+      "description": "[Webtop](https://github.com/linuxserver/docker-webtop) - Alpine, Ubuntu, Fedora, and Arch based containers containing full desktop environments in officially supported flavors accessible via any modern web browser.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/webtop-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/webtop/config<br></p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "SUBFOLDER",
+          "label": "SUBFOLDER",
+          "default": "/",
+          "description": "Specify a subfolder to use with reverse proxies, IE `/subfolder/`"
+        },
+        {
+          "name": "TITLE",
+          "label": "TITLE",
+          "default": "Webtop",
+          "description": "String which will be used as page/tab title in the web browser."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/webtop:latest",
+      "ports": [
+        "3000:3000/tcp",
+        "3001:3001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/webtop/config"
+        },
+        {
+          "container": "/var/run/docker.sock",
+          "bind": "/var/run/docker.sock"
+        }
+      ]
+    },
+    {
       "categories": [
         "Tools",
         "Wiki"
@@ -7930,6 +11575,74 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Your_spotify",
+      "name": "Your_spotify",
+      "description": "[Your_spotify](https://github.com/Yooooomi/your_spotify) is a self-hosted application that tracks what you listen and offers you a dashboard to explore statistics about it! It's composed of a web server which polls the Spotify API every now and then and a web application on which you can explore your statistics.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/your_spotify-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "APP_URL",
+          "label": "APP_URL",
+          "default": "http://localhost",
+          "description": "The protocol and hostname where the app will be accessed."
+        },
+        {
+          "name": "SPOTIFY_PUBLIC",
+          "label": "SPOTIFY_PUBLIC",
+          "default": "",
+          "description": "Your Spotify application client ID."
+        },
+        {
+          "name": "SPOTIFY_SECRET",
+          "label": "SPOTIFY_SECRET",
+          "default": "",
+          "description": "Your Spotify application secret."
+        },
+        {
+          "name": "CORS",
+          "label": "CORS",
+          "default": "http://localhost:80,https://localhost:443",
+          "description": "Allowed CORS sources, set to `all` to allow any source."
+        },
+        {
+          "name": "MONGO_ENDPOINT",
+          "label": "MONGO_ENDPOINT",
+          "default": "mongodb://mongo:27017/your_spotify",
+          "description": "Set mongodb endpoint address/port."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/your_spotify:latest",
+      "ports": [
+        "80:80/tcp",
+        "443:443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": null
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Yq",
       "name": "Yq",
       "description": "This container needs special attention. Please check https://hub.docker.com/r/linuxserver/yq for details.",
@@ -7966,6 +11679,48 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/yq/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Znc",
+      "name": "Znc",
+      "description": "[Znc](http://wiki.znc.in/ZNC) is an IRC network bouncer or BNC. It can detach the client from the actual IRC server, and also from selected channels. Multiple clients from different locations can connect to a single ZNC account simultaneously and therefore appear under the same nickname on IRC.",
+      "logo": "http://wiki.znc.in/resources/assets/wiki.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/znc/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/znc:latest",
+      "ports": [
+        "6501:6501/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/znc/config"
         }
       ]
     },
