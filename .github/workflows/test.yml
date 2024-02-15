@@ -38,7 +38,8 @@ jobs:
         run: |
           git add .gitignore
           git commit -m "Add .gitignore"
-          git push
+          git remote add origin_ssh git@github.com:Gerome100/portainer-templates.git
+          git push origin_ssh main
 
       - name: Merge and deduplicate JSON files with jq
         run: |
