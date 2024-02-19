@@ -10817,8 +10817,8 @@
       "title": "UniFi Video",
       "name": "UniFi Video",
       "description": "UniFi Video is a powerful and flexible, integrated IP video management surveillance system designed to work with Ubiquiti’s UniFi Video Camera product line. UniFi Video has an intuitive, configurable, and feature‑packed user interface with advanced features such as motion detection, auto‑discovery, user‑level security, storage management, reporting, and mobile device support.",
-      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/UniFiVideo-logo.png",
-      "note": null,
+      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/unifivideo-icon.png",
+      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/pducharme/UniFi-Video-Controller\" target=\"_blank\">https://github.com/pducharme/UniFi-Video-Controller</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/pducharme/UniFi-Video-Controller\" target=\"_blank\">https://github.com/pducharme/UniFi-Video-Controller</a><br><br><br>",
       "env": [
         {
           "default": "99",
@@ -10826,7 +10826,7 @@
           "name": "PUID"
         },
         {
-          "default": "100",
+          "default": "1000",
           "label": "PGID",
           "name": "PGID"
         },
@@ -10836,9 +10836,9 @@
           "name": "UMASK"
         },
         {
+          "default": "UniFi Video",
           "label": "CONTEXT_PATH",
-          "name": "CONTEXT_PATH",
-          "set": "UniFi Video"
+          "name": "CONTEXT_PATH"
         }
       ],
       "platform": "linux",
@@ -11074,6 +11074,47 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/unrar/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Backup"
+      ],
+      "type": 1,
+      "title": "UrBackup",
+      "name": "UrBackup",
+      "description": "UrBackup is an easy to setup Open Source client/server backup system, that through a combination of image and file backups accomplishes both data safety and a fast restoration time.",
+      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/urbackup.png",
+      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.urbackup.org/\" target=\"_blank\">https://www.urbackup.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://www.github.com/uroni/urbackup-server-docker\" target=\"_blank\">https://www.github.com/uroni/urbackup-server-docker</a><br><br><br>",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "1000",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "uroni/urbackup-server:latest",
+      "ports": [
+        "55415:55415/tcp",
+        "55414:55414/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "bind": "/portainer/Files/AppData/Config/urbackup",
+          "container": "/var/urbackup"
+        },
+        {
+          "bind": "/portainer/backups",
+          "container": "/backup"
         }
       ]
     },
@@ -11855,7 +11896,7 @@
       "title": "Adguard",
       "name": "adguard",
       "description": "AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it’ll cover ALL your home devices, and you don’t need any client-side software for that. With the rise of Internet-Of-Things and connected devices, it becomes more and more important to be able to control your whole network.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/adguard.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/adguard.png",
       "note": null,
       "env": [
         {
@@ -11965,8 +12006,8 @@
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/alpine-xfce4-novnc/home/apline/downloads",
-          "container": "/home/apline/downloads"
+          "bind": "/portainer/Files/AppData/Config/alpine-xfce4-novnc/home/alpine/downloads",
+          "container": "/home/alpine/downloads"
         }
       ]
     },
@@ -12362,14 +12403,14 @@
       "title": "Bitwarden RS",
       "name": "bitwardenrs",
       "description": "This is a Bitwarden server API implementation written in Rust compatible with upstream Bitwarden clients*, perfect for self-hosted deployment where running the official resource-heavy service might not be ideal..",
-      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/bitwarden.png",
+      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/bitwarden.png",
       "note": "This project is not associated with the Bitwarden project nor 8bit Solutions LLC.",
       "env": null,
       "platform": "linux",
       "repository": null,
       "image": "bitwardenrs/server:latest",
       "ports": [
-        "80/tcp"
+        ":80/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -12475,6 +12516,43 @@
     },
     {
       "categories": [
+        "Tools",
+        "Web",
+        "Webserver"
+      ],
+      "type": 1,
+      "title": "Caddy",
+      "name": "caddy",
+      "description": "Caddy - The Ultimate Server with Automatic HTTPS.  Need to run tools/install_caddy.sh before installing the template.",
+      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/caddy.png",
+      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://caddyserver.com/\" target=\"_blank\">https://caddyserver.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/_/caddy\" target=\"_blank\">https://hub.docker.com/_/caddy</a><br><br><h3><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_caddy.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_caddy.sh | bash</h3><br><br>Caddy 2 is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go",
+      "env": null,
+      "platform": "linux",
+      "repository": null,
+      "image": "caddy:latest",
+      "ports": [
+        "80:80/tcp",
+        "443:443/tcp",
+        "2019:2019/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "bind": "/portainer/Files/AppData/Config/Caddy/Data",
+          "container": "/data"
+        },
+        {
+          "bind": "/portainer/Files/AppData/Config/Caddy/Config",
+          "container": "/config"
+        },
+        {
+          "bind": "/portainer/Files/AppData/Config/Caddy/Caddyfile",
+          "container": "/etc/caddy/Caddyfile"
+        }
+      ]
+    },
+    {
+      "categories": [
         "Cloud",
         "Books"
       ],
@@ -12516,37 +12594,39 @@
     },
     {
       "categories": [
-        "Downloaders"
+        "Downloaders:"
       ],
       "type": 1,
       "title": "Cardigann",
       "name": "cardigann",
       "description": "Cardigann, a server for adding extra indexers to Sonarr, SickRage and CouchPotato via Torznab and TorrentPotato proxies. Behind the scenes Cardigann logs in and runs searches and then transforms the results into a compatible format.",
-      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/cardigann.png",
+      "logo": "https://mediadepot.github.io/templates/img/cardigann.png",
       "note": null,
       "env": [
         {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
+          "name": "PGID",
+          "label": "PGID",
+          "default": "15000",
+          "preset": true
         },
         {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
+          "name": "PUID",
+          "label": "PUID",
+          "default": "15000",
+          "preset": true
         }
       ],
-      "platform": "linux",
+      "platform": null,
       "repository": null,
       "image": "linuxserver/cardigann:latest",
       "ports": [
-        "5060:5060/tcp"
+        "5060/tcp"
       ],
-      "restart_policy": "unless-stopped",
+      "restart_policy": null,
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/Cardigann",
-          "container": "/config"
+          "container": "/config",
+          "bind": "/opt/mediadepot/apps/cardigann"
         }
       ]
     },
@@ -14943,76 +15023,20 @@
     },
     {
       "categories": [
-        "photos",
-        "backup"
+        "Photos",
+        "AI"
       ],
       "type": 3,
-      "title": "Immich {shmolf}",
+      "title": "Immich",
       "name": "immich",
-      "description": "Self-hosted backup solution for photos and videos on mobile device.",
-      "logo": "https://raw.githubusercontent.com/shmolf/portainer-templates/main/assets/logos/immich-logo.svg",
-      "note": "<a target='_blank' href='https://immich.app'>Application documentation 🗗</a>",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "label": "PGID",
-          "name": "PGID",
-          "default": "1000"
-        },
-        {
-          "label": "Immich version",
-          "name": "IMMICH_VERSION",
-          "default": "release",
-          "description": "To want to lock to a specific tag, provide a value such as 'v1.71.0'"
-        },
-        {
-          "label": "Database username",
-          "name": "DB_USERNAME",
-          "default": "postgres"
-        },
-        {
-          "label": "Database password",
-          "name": "DB_PASSWORD",
-          "default": "please-change-this-to-a-random-secret",
-          "description": "This should be changed to a random secret"
-        },
-        {
-          "label": "Database name",
-          "name": "DB_DATABASE_NAME",
-          "default": "immich"
-        },
-        {
-          "label": "Database hostname",
-          "name": "DB_HOSTNAME",
-          "default": "immich_postgres",
-          "description": "The default value references a service within the stack"
-        },
-        {
-          "label": "File backup location",
-          "name": "UPLOAD_LOCATION",
-          "default": "/portainer/Files/AppData/Immich/upload",
-          "description": "You can leave this path as-is, and the system will auto-create the needed folders. Feel free to change if you desire an alternative location."
-        },
-        {
-          "label": "Redis hostname",
-          "name": "REDIS_HOSTNAME",
-          "default": "immich_redis",
-          "description": "The default value references a service within the stack"
-        },
-        {
-          "default": "2283",
-          "label": "Http Port",
-          "name": "PORT"
-        }
-      ],
+      "description": "Immich is a high performance self-hosted photo and video backup solution.",
+      "logo": "https://github.com/immich-app/immich/raw/main/design/immich-logo.svg",
+      "note": null,
+      "env": null,
       "platform": "linux",
       "repository": {
-        "stackfile": "stacks/immich/docker-compose.yml",
-        "url": "https://github.com/shmolf/portainer-templates"
+        "stackfile": "Template/Stack/immich.yml",
+        "url": "https://github.com/xneo1/portainer_templates"
       },
       "image": null,
       "ports": null,
@@ -15645,79 +15669,6 @@
       "ports": null,
       "restart_policy": null,
       "volumes": null
-    },
-    {
-      "categories": [
-        "Tools",
-        "Web"
-      ],
-      "type": 1,
-      "title": "Let's Encrypt",
-      "name": "letsencrypt",
-      "description": "This container sets up an Nginx webserver and reverse proxy with php support and a built-in letsencrypt client that automates free SSL server certificate generation and renewal processes. It also contains fail2ban for intrusion prevention.\r\n  \r\n  Before running this container, make sure that the url and subdomains are properly forwarded to this container's host.\r\n  \r\n  - Port 443 on the internet side of the router should be forwarded to this container's port 443.\r\n  - If you need a dynamic dns provider, you can use the free provider duckdns.org where the url will be yoursubdomain.duckdns.org and the subdomains    can be www,ftp,cloud\r\n  - The container detects changes to url and subdomains, revokes existing certs and generates new ones during start. \r\n  - It also detects changes to the DHLEVEL parameter and replaces the dhparams file.\r\n  \r\n  - If you'd like to password protect your sites, you can use htpasswd. Run the following command on your host to generate the htpasswd file docker exec -it letsencrypt htpasswd -c /config/nginx/.htpasswd &lt;username&gt;",
-      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/letsencrypt.png",
-      "note": null,
-      "env": [
-        {
-          "label": "EMAIL",
-          "name": "EMAIL",
-          "set": "-Xms256m -Xmx512m"
-        },
-        {
-          "label": "URL",
-          "name": "URL",
-          "set": "-Xms256m -Xmx512m"
-        },
-        {
-          "label": "SUBDOMAINS",
-          "name": "SUBDOMAINS",
-          "set": "www,"
-        },
-        {
-          "label": "ONLY_SUBDOMAINS",
-          "name": "ONLY_SUBDOMAINS",
-          "set": "false"
-        },
-        {
-          "label": "DHLEVEL",
-          "name": "DHLEVEL",
-          "set": "2048"
-        },
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "100",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "label": "VALIDATION",
-          "name": "VALIDATION",
-          "set": "http"
-        },
-        {
-          "label": "DNSPLUGIN",
-          "name": "DNSPLUGIN",
-          "set": "http"
-        }
-      ],
-      "platform": "linux",
-      "repository": null,
-      "image": "linuxserver/letsencrypt:latest",
-      "ports": [
-        "80/tcp",
-        "443/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "bind": "/portainer/Files/AppData/Config/LetsEncrypt",
-          "container": "/config"
-        }
-      ]
     },
     {
       "categories": [
@@ -16409,7 +16360,7 @@
       "repository": null,
       "image": "hkotel/mealie:v0.4.3",
       "ports": [
-        "9925:80/tcp"
+        "9925:9000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -16594,6 +16545,60 @@
       "ports": null,
       "restart_policy": null,
       "volumes": null
+    },
+    {
+      "categories": [
+        "Other",
+        "Tools"
+      ],
+      "type": 1,
+      "title": "MinIO",
+      "name": "minio",
+      "description": "MinIO is a High Performance Object Storage released under GNU Affero GPL v3.0. It is API compatible with Amazon S3 cloud storage service.",
+      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/minio.png",
+      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://min.io/\" target=\"_blank\">https://min.io/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.min.io/minio/baremetal/quickstart/quickstart.html\" target=\"_blank\">https://docs.min.io/minio/baremetal/quickstart/quickstart.html</a><br><br><br>",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "1000",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "ROOTUSER",
+          "label": "MINIO_ROOT_USER",
+          "name": "MINIO_ROOT_USER"
+        },
+        {
+          "default": "CHANGEME123",
+          "label": "MINIO_ROOT_PASSWORD",
+          "name": "MINIO_ROOT_PASSWORD"
+        },
+        {
+          "default": "",
+          "label": "MINIO_SERVER_URL",
+          "name": "MINIO_SERVER_URL",
+          "description": "URL hostname for MinIO Console if any"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "minio/minio:latest",
+      "ports": [
+        "8760:9000/tcp",
+        "8761:9090/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "bind": "/portainer/Files/AppData/Config/MinIO",
+          "container": "/data"
+        }
+      ]
     },
     {
       "categories": [
@@ -16884,43 +16889,45 @@
     },
     {
       "categories": [
-        "Other",
-        "Tools"
+        "Network:Other",
+        "Tools:"
       ],
       "type": 1,
       "title": "n8n",
       "name": "n8n",
-      "description": "n8n is an extendable workflow automation tool.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/n8n.jpg",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://n8n.io/\" target=\"_blank\">https://n8n.io/</a><br><b>Official Docker Documentation: </b><a href=\"https://docs.n8n.io/getting-started/installation/#docker\" target=\"_blank\">https://docs.n8n.io/getting-started/installation/#docker</a><br><br><br>Documentation is Available <a href='https://docs.n8n.io/'>here</a>",
+      "description": "n8n allows you to build flexible workflows focused on deep data integration.",
+      "logo": "https://mediadepot.github.io/templates/img/n8n.png",
+      "note": null,
       "env": [
         {
-          "default": "true",
-          "label": "N8N_BASIC_AUTH_ACTIVE",
-          "name": "N8N_BASIC_AUTH_ACTIVE"
+          "name": "GENERIC_TIMEZONE",
+          "label": "GENERIC_TIMEZONE",
+          "default": "America/Los_Angeles",
+          "preset": true
         },
         {
-          "default": "admin",
-          "label": "N8N_BASIC_AUTH_USER",
-          "name": "N8N_BASIC_AUTH_USER"
-        },
-        {
-          "default": "admin",
-          "label": "N8N_BASIC_AUTH_PASSWORD",
-          "name": "N8N_BASIC_AUTH_PASSWORD"
+          "name": "TZ",
+          "label": "TZ",
+          "default": "America/Los_Angeles",
+          "preset": true
         }
       ],
-      "platform": "linux",
+      "platform": null,
       "repository": null,
-      "image": "n8nio/n8n:latest",
+      "image": "docker.n8n.io/n8nio/n8n:latest",
       "ports": [
-        "5678:5678/tcp"
+        "5678/tcp"
       ],
-      "restart_policy": "unless-stopped",
+      "restart_policy": null,
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/n8n",
-          "container": "/home/node/.n8n"
+          "container": "/home/node/.n8n",
+          "bind": "/opt/mediadepot/apps/n8n"
+        },
+        {
+          "container": "/etc/localtime",
+          "bind": "/etc/localtime",
+          "readonly": true
         }
       ]
     },
@@ -18754,6 +18761,53 @@
     },
     {
       "categories": [
+        "Other",
+        "Tools"
+      ],
+      "type": 1,
+      "title": "PostgreSQL",
+      "name": "postgresql",
+      "description": "PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance.",
+      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/postgresql.png",
+      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.postgresql.org/\" target=\"_blank\">https://www.postgresql.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/_/postgres/\" target=\"_blank\">https://hub.docker.com/_/postgres/</a><br><br><br>",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "1000",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "default": "rootpassword",
+          "label": "POSTGRES_PASSWORD",
+          "name": "POSTGRES_PASSWORD"
+        },
+        {
+          "default": "America/New_York",
+          "label": "TZ",
+          "name": "TZ"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "postgres:latest",
+      "ports": [
+        "5432:5432/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "bind": "/portainer/Files/AppData/Config/PostgreSQL",
+          "container": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    {
+      "categories": [
         "VPN",
         "Tools",
         "Other",
@@ -19979,6 +20033,39 @@
         {
           "bind": "/portainer/Downloads",
           "container": "/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Tools",
+        "Web",
+        "Other"
+      ],
+      "type": 1,
+      "title": "Speedtest Tracker",
+      "name": "speedtest-tracker",
+      "description": "Run a Speedtest every hour and graph the results.  See https://hub.docker.com/r/henrywhitaker3/speedtest-tracker/tags for arch options",
+      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/speedtest-tracker.png",
+      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/henrywhitaker3/Speedtest-Tracker\" target=\"_blank\">https://github.com/henrywhitaker3/Speedtest-Tracker</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/henrywhitaker3/Speedtest-Tracker#using-docker\" target=\"_blank\">https://github.com/henrywhitaker3/Speedtest-Tracker#using-docker</a><br><br><br>",
+      "env": [
+        {
+          "default": "true",
+          "label": "OOKLA_EULA_GDPR",
+          "name": "OOKLA_EULA_GDPR"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "henrywhitaker3/speedtest-tracker:dev-arm",
+      "ports": [
+        "8765:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "bind": "/portainer/Files/AppData/Config/speedtest-tracker",
+          "container": "/config"
         }
       ]
     },
@@ -21216,26 +21303,25 @@
     },
     {
       "categories": [
-        "docker"
+        "Tools",
+        "Maintenance"
       ],
       "type": 1,
-      "title": "Watchtower {shmolf}",
+      "title": "Watchtower",
       "name": "watchtower",
-      "description": "A container-based solution for automating Docker container base image updates",
-      "logo": "https://raw.githubusercontent.com/shmolf/portainer-templates/main/assets/logos/watchtower-logo.png",
-      "note": "<a target='_blank' href='https://containrrr.dev/watchtower/'>Application documentation 🗗</a>",
+      "description": "With watchtower you can update the running version of your containerized app simply by pushing a new image to the Docker Hub or your own image registry. Watchtower will pull down your new image, gracefully shut down your existing container and restart it with the same options that were used when it was deployed initially.",
+      "logo": "https://raw.githubusercontent.com/xneo1/portainer_templates/master/Images/watchtower.png",
+      "note": "It is recommended to manually update your containers but we're including this for those of you that don't care",
       "env": null,
       "platform": "linux",
       "repository": null,
-      "image": "containrrr/watchtower",
-      "ports": [
-        "9001/tcp"
-      ],
-      "restart_policy": "always",
+      "image": "containrrr/watchtower:latest",
+      "ports": null,
+      "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/var/run/docker.sock",
-          "bind": "/var/run/docker.sock"
+          "bind": "/var/run/docker.sock",
+          "container": "/var/run/docker.sock"
         }
       ]
     },
