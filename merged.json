@@ -1608,7 +1608,8 @@
       "repository": null,
       "image": "linuxserver/cops:latest",
       "ports": [
-        "80:80/tcp"
+        "80:80/tcp",
+        "443:443/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -1754,7 +1755,9 @@
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/daapd:latest",
-      "ports": null,
+      "ports": [
+        "80:80/tcp"
+      ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
@@ -9796,6 +9799,24 @@
           "label": "TZ",
           "default": "Europe/Amsterdam",
           "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "MASTER_URL",
+          "label": "MASTER_URL",
+          "default": "http://<master-host-ip>:80/smokeping/",
+          "description": "Specify the master url to connect to. Used when in slave mode."
+        },
+        {
+          "name": "SHARED_SECRET",
+          "label": "SHARED_SECRET",
+          "default": "password",
+          "description": "Specify the master shared secret for this host. Used when in slave mode."
+        },
+        {
+          "name": "CACHE_DIR",
+          "label": "CACHE_DIR",
+          "default": "/tmp",
+          "description": "Specify the cache directory for this host. Used when in slave mode."
         }
       ],
       "platform": "linux",
@@ -10385,7 +10406,7 @@
           "name": "DNSPLUGIN",
           "label": "DNSPLUGIN",
           "default": "cloudflare",
-          "description": "Required if `VALIDATION` is set to `dns`. Options are `acmedns`, `aliyun`, `azure`, `bunny`, `cloudflare`, `cpanel`, `desec`, `digitalocean`, `directadmin`, `dnsimple`, `dnsmadeeasy`, `dnspod`, `do`, `domeneshop`, `dreamhost`, `duckdns`, `freedns`, `gandi`, `gehirn`, `glesys`, `godaddy`, `google`, `google-domains`, `he`, `hetzner`, `infomaniak`, `inwx`, `ionos`, `linode`, `loopia`, `luadns`, `namecheap`, `netcup`, `njalla`, `nsone`, `ovh`, `porkbun`, `rfc2136`, `route53`, `sakuracloud`, `standalone`, `transip`, and `vultr`. Also need to enter the credentials into the corresponding ini (or json for some plugins) file under `/config/dns-conf`."
+          "description": "Required if `VALIDATION` is set to `dns`. Options are `acmedns`, `aliyun`, `azure`, `bunny`, `cloudflare`, `cpanel`, `desec`, `digitalocean`, `directadmin`, `dnsimple`, `dnsmadeeasy`, `dnspod`, `do`, `domeneshop`, `dreamhost`, `duckdns`, `dynudns`, `freedns`, `gandi`, `gehirn`, `glesys`, `godaddy`, `google`, `google-domains`, `he`, `hetzner`, `infomaniak`, `inwx`, `ionos`, `linode`, `loopia`, `luadns`, `namecheap`, `netcup`, `njalla`, `nsone`, `ovh`, `porkbun`, `rfc2136`, `route53`, `sakuracloud`, `standalone`, `transip`, and `vultr`. Also need to enter the credentials into the corresponding ini (or json for some plugins) file under `/config/dns-conf`."
         },
         {
           "name": "PROPAGATION",
@@ -10447,18 +10468,6 @@
           "label": "AUTH_LIST",
           "default": "plexuser1,plexuser2,email1,machineid1",
           "description": "If set, only the users defined here and the users of the plex servers defined here will be able to access the server. Use e-mails, plex usernames and/or plex server machine ids, comma separated, no spaces."
-        },
-        {
-          "name": "AUTOJOIN_ENABLED",
-          "label": "AUTOJOIN_ENABLED",
-          "default": "false",
-          "description": "DEPRECATED - (Still works but will be removed in the future in favor of the built-in var `autojoin__room`) - Set to `true` to let users autojoin the server and a room (specified by the `AUTOJOIN_ROOM` var)."
-        },
-        {
-          "name": "AUTOJOIN_ROOM",
-          "label": "AUTOJOIN_ROOM",
-          "default": "roomname",
-          "description": "DEPRECATED - (Still works but will be removed in the future in favor of the built-in var `autojoin__room`) - Set the room name for auto joining (requires `AUTOJOIN_ENABLED` set to `true`)."
         }
       ],
       "platform": "linux",
