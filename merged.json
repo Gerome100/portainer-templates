@@ -2051,50 +2051,6 @@
     },
     {
       "categories": [
-        "Development"
-      ],
-      "type": 1,
-      "title": "Dillinger",
-      "name": "Dillinger",
-      "description": "[Dillinger](https://github.com/joemccann/dillinger) is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.",
-      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/dillinger.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/dillinger/config</p>",
-      "env": [
-        {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "1024",
-          "description": "for UserID"
-        },
-        {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "100",
-          "description": "for GroupID"
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
-        }
-      ],
-      "platform": "linux",
-      "repository": null,
-      "image": "linuxserver/dillinger:latest",
-      "ports": [
-        "8080:8080/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/config",
-          "bind": "/volume1/docker/dillinger/config"
-        }
-      ]
-    },
-    {
-      "categories": [
         "Productivity"
       ],
       "type": 1,
@@ -2228,64 +2184,6 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/dokuwiki/config"
-        }
-      ]
-    },
-    {
-      "categories": [
-        "Automation"
-      ],
-      "type": 1,
-      "title": "Domoticz",
-      "name": "Domoticz",
-      "description": "[Domoticz](https://www.domoticz.com) is a Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device.",
-      "logo": "https://github.com/domoticz/domoticz/raw/master/www/images/logo.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/domoticz/config</p>",
-      "env": [
-        {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "1024",
-          "description": "for UserID"
-        },
-        {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "100",
-          "description": "for GroupID"
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
-        },
-        {
-          "name": "WEBROOT",
-          "label": "WEBROOT",
-          "default": "domoticz",
-          "description": "Sets webroot to domoticz for usage with subfolder reverse proxy. Not needed unless reverse proxying."
-        },
-        {
-          "name": "DBASE",
-          "label": "DBASE",
-          "default": "<path to database>",
-          "description": "Sets path to database. Do not set unless you know what this does."
-        }
-      ],
-      "platform": "linux",
-      "repository": null,
-      "image": "linuxserver/domoticz:latest",
-      "ports": [
-        "8080:8080/tcp",
-        "6144:6144/tcp",
-        "1443:1443/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/config",
-          "bind": "/volume1/docker/domoticz/config"
         }
       ]
     },
@@ -10974,70 +10872,6 @@
       ]
     },
     {
-      "categories": [
-        "Networking"
-      ],
-      "type": 1,
-      "title": "Unifi-controller",
-      "name": "Unifi-controller",
-      "description": "The [Unifi-controller](https://www.ubnt.com/enterprise/#unifi) software is a powerful, enterprise wireless software engine ideal for high-density client deployments requiring low latency and high uptime performance.",
-      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-banner.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/unifi-controller/config</p>",
-      "env": [
-        {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "1024",
-          "description": "for UserID"
-        },
-        {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "100",
-          "description": "for GroupID"
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
-        },
-        {
-          "name": "MEM_LIMIT",
-          "label": "MEM_LIMIT",
-          "default": "1024",
-          "description": "Optionally change the Java memory limit (in Megabytes). Set to `default` to reset to default"
-        },
-        {
-          "name": "MEM_STARTUP",
-          "label": "MEM_STARTUP",
-          "default": "1024",
-          "description": "Optionally change the Java initial/minimum memory (in Megabytes). Set to `default` to reset to default"
-        }
-      ],
-      "platform": "linux",
-      "repository": null,
-      "image": "linuxserver/unifi-controller:latest",
-      "ports": [
-        "8443:8443/tcp",
-        "3478:3478/udp",
-        "10001:10001/udp",
-        "8080:8080/tcp",
-        "1900:1900/udp",
-        "8843:8843/tcp",
-        "8880:8880/tcp",
-        "6789:6789/tcp",
-        "5514:5514/udp"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "container": "/config",
-          "bind": "/volume1/docker/unifi-controller/config"
-        }
-      ]
-    },
-    {
       "categories": [],
       "type": 1,
       "title": "Unifi-network-application",
@@ -12387,6 +12221,55 @@
       "repository": {
         "stackfile": "Template/Stack/aria2pro.yml",
         "url": "https://github.com/xneo1/portainer_templates"
+      },
+      "image": null,
+      "ports": null,
+      "restart_policy": null,
+      "volumes": null
+    },
+    {
+      "categories": [
+        "Tools"
+      ],
+      "type": 3,
+      "title": "Asciinema {shmolf}",
+      "name": "asciinema",
+      "description": "Self-hosted terminal recording and playback",
+      "logo": "https://raw.githubusercontent.com/shmolf/portainer-templates/main/assets/logos/asciinema.svg",
+      "note": "<a target='_blank' href='https://docs.asciinema.org/getting-started/#self-hosting-the-server'>Application documentation 🗗</a><br>For the application secret key, you can use the terminal command <code>tr -dc A-Za-z0-9 &lt;/dev/urandom | head -c 64; echo</code>",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "label": "PGID",
+          "name": "PGID",
+          "default": "1000"
+        },
+        {
+          "label": "Hostname",
+          "name": "HOST_NAME",
+          "default": "localhost",
+          "description": "Localhost for use within the application runtime"
+        },
+        {
+          "label": "Host Port",
+          "name": "HOST_PORT",
+          "default": "3033",
+          "description": "Published port for use within the application runtime"
+        },
+        {
+          "label": "Secret Application Key",
+          "name": "SECRET_KEY",
+          "default": "please-change-this-to-a-random-secret"
+        }
+      ],
+      "platform": "linux",
+      "repository": {
+        "stackfile": "stacks/asciinema/docker-compose.yml",
+        "url": "https://github.com/shmolf/portainer-templates"
       },
       "image": null,
       "ports": null,
