@@ -292,6 +292,55 @@
       ]
     },
     {
+      "categories": [],
+      "type": 1,
+      "title": "Ardour",
+      "name": "Ardour",
+      "description": "[Ardour](https://ardour.org/) is an open source, collaborative effort of a worldwide team including musicians, programmers, and professional recording engineers.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ardour-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/ardour/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "SUBFOLDER",
+          "label": "SUBFOLDER",
+          "default": "/",
+          "description": "Specify a subfolder to use with reverse proxies, IE `/subfolder/`"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/ardour:latest",
+      "ports": [
+        "3000:3000/tcp",
+        "3001:3001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/ardour/config"
+        }
+      ]
+    },
+    {
       "categories": [
         "Downloader"
       ],
@@ -3526,6 +3575,49 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Freetube",
+      "name": "Freetube",
+      "description": "[FreeTube](https://freetubeapp.io/) is a feature-rich and user-friendly YouTube client with a focus on privacy.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/freetube-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/freetube/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/freetube:latest",
+      "ports": [
+        "3000:3000/tcp",
+        "3001:3001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/freetube/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Freshrss",
       "name": "Freshrss",
       "description": "[Freshrss](https://freshrss.org/) is a free, self-hostable aggregator for rss feeds.",
@@ -4764,6 +4856,49 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Keepassxc",
+      "name": "Keepassxc",
+      "description": "[KeePassXC](https://keepassxc.org/) is a free and open-source password manager. It started as a community fork of KeePassX (itself a cross-platform port of KeePass).",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/keepassxc-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/keepassxc/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/keepassxc:latest",
+      "ports": [
+        "3000:3000/tcp",
+        "3001:3001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/keepassxc/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Kicad",
       "name": "Kicad",
       "description": "[KiCad](https://www.kicad.org/) - A Cross Platform and Open Source Electronics Design Automation Suite.",
@@ -5258,6 +5393,55 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/librespeed/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Librewolf",
+      "name": "Librewolf",
+      "description": "[LibreWolf](https://librewolf.net/) is a custom and independent version of Firefox, with the primary goals of privacy, security and user freedom. LibreWolf also aims to remove all the telemetry, data collection and annoyances, as well as disabling anti-freedom features like DRM.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/librewolf-logo.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/librewolf/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "LIBREWOLF_CLI",
+          "label": "LIBREWOLF_CLI",
+          "default": "https://www.linuxserver.io/",
+          "description": "Specify one or multiple LibreWolf CLI flags, this string will be passed to the application in full."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/librewolf:latest",
+      "ports": [
+        "3000:3000/tcp",
+        "3001:3001/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/librewolf/config"
         }
       ]
     },
@@ -6588,6 +6772,27 @@
       "platform": "linux",
       "repository": {
         "stackfile": "Template/Stack/navidrome.yml",
+        "url": "https://github.com/xneo1/portainer_templates"
+      },
+      "image": null,
+      "ports": null,
+      "restart_policy": null,
+      "volumes": null
+    },
+    {
+      "categories": [
+        "Networking"
+      ],
+      "type": 3,
+      "title": "NetAlertX",
+      "name": "NetAlertX",
+      "description": "WIFI / LAN intruder detector. Scans for devices connected to your network and alerts you if new and unknown devices are found.",
+      "logo": "https://avatars.githubusercontent.com/u/96159884?s=48&v=4",
+      "note": null,
+      "env": null,
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Template/Stack/netalertx.yml",
         "url": "https://github.com/xneo1/portainer_templates"
       },
       "image": null,
@@ -9953,6 +10158,48 @@
         {
           "container": "/config",
           "bind": "/volume1/docker/snipe-it/config"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
+      "title": "Socket-proxy",
+      "name": "Socket-proxy",
+      "description": "This container needs special attention. Please check https://hub.docker.com/r/linuxserver/socket-proxy for details.",
+      "logo": "",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/socket-proxy/config</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/socket-proxy:latest",
+      "ports": [
+        "80:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/socket-proxy/config"
         }
       ]
     },
