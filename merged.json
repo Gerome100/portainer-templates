@@ -917,7 +917,7 @@
       "title": "Bookstack",
       "name": "Bookstack",
       "description": "[Bookstack](https://github.com/BookStackApp/BookStack) is a free and open source Wiki designed for creating beautiful documentation. Featuring a simple, but powerful WYSIWYG editor it allows for teams to create detailed and useful documentation with ease. Powered by SQL and including a Markdown editor for those who prefer it, BookStack is geared towards making documentation more of a pleasure than a chore. For more information on BookStack visit their website and check it out: https://www.bookstackapp.com",
-      "logo": "https://s3-us-west-2.amazonaws.com/linuxserver-docs/images/bookstack-logo500x500.png",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bookstack-logo.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/bookstack/config</p>",
       "env": [
         {
@@ -7346,6 +7346,64 @@
     {
       "categories": [],
       "type": 1,
+      "title": "Nzbget",
+      "name": "Nzbget",
+      "description": "[Nzbget](http://nzbget.com/) is a usenet downloader, written in C++ and designed with performance in mind to achieve maximum download speed by using very little system resources.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nzbget-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/nzbget/config<br>mkdir -p /volume1/docker/nzbget/downloads</p>",
+      "env": [
+        {
+          "name": "PUID",
+          "label": "PUID",
+          "default": "1024",
+          "description": "for UserID"
+        },
+        {
+          "name": "PGID",
+          "label": "PGID",
+          "default": "100",
+          "description": "for GroupID"
+        },
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+        },
+        {
+          "name": "NZBGET_USER",
+          "label": "NZBGET_USER",
+          "default": "nzbget",
+          "description": "Specify the user for web authentication."
+        },
+        {
+          "name": "NZBGET_PASS",
+          "label": "NZBGET_PASS",
+          "default": "tegbzn6789",
+          "description": "Specify the password for web authentication."
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/nzbget:latest",
+      "ports": [
+        "6789:6789/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/nzbget/config"
+        },
+        {
+          "container": "/downloads",
+          "bind": "/volume1/docker/nzbget/downloads"
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "type": 1,
       "title": "Nzbhydra2",
       "name": "Nzbhydra2",
       "description": "[Nzbhydra2](https://github.com/theotherp/nzbhydra2) is a meta search application for NZB indexers, the 'spiritual successor' to NZBmegasearcH, and an evolution of the original application [NZBHydra](https://github.com/theotherp/nzbhydra). It provides easy access to a number of raw and newznab based indexers. The application NZBHydra 2 is replacing NZBHydra 1 and supports migrating from V1. Be wary that there may be some compatibility issues for those migrating from V1 to V2, so ensure you back up your old configuration before moving over to the new version. **NOTE:** The last version that supports migration is `linuxserver/nzbhydra2:v2.10.2-ls49`",
@@ -7965,7 +8023,7 @@
       "name": "Pairdrop",
       "description": "[PairDrop](https://github.com/schlagmichdoch/PairDrop) is a sublime alternative to AirDrop that works on all platforms. Send images, documents or text via peer to peer connection to devices in the same local network/Wi-Fi or to paired devices.",
       "logo": "https://raw.githubusercontent.com/schlagmichdoch/PairDrop/master/public/images/android-chrome-512x512.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p>",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/pairdrop/config</p>",
       "env": [
         {
           "name": "PUID",
@@ -8017,7 +8075,12 @@
         "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
-      "volumes": null
+      "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/pairdrop/config"
+        }
+      ]
     },
     {
       "categories": [
@@ -9402,7 +9465,7 @@
       "name": "Rdesktop",
       "description": "[Rdesktop](http://xrdp.org/) - Containers containing full desktop environments in many popular flavors for Alpine, Ubuntu, Arch, and Fedora accessible via RDP.",
       "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/rdesktop.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p><br>mkdir -p /volume1/docker/rdesktop/config</p>",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/rdesktop/config<br><br>mkdir -p /volume1/docker/rdesktop/config</p>",
       "env": [
         {
           "name": "PUID",
@@ -9431,6 +9494,10 @@
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/rdesktop/config"
+        },
         {
           "container": "/var/run/docker.sock",
           "bind": "/var/run/docker.sock"
@@ -18693,6 +18760,28 @@
           "container": "/config"
         }
       ]
+    },
+    {
+      "categories": [
+        "Productivity",
+        "Lowcode"
+      ],
+      "type": 3,
+      "title": "OpnForm",
+      "name": "opnform",
+      "description": "OpnForm is an open-source form builder. It's an alternative to products like Typeform, JotForm, Tally etc.",
+      "logo": "https://opnform.com/img/logo.svg",
+      "note": null,
+      "env": null,
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Template/Stack/opnform.yml",
+        "url": "https://github.com/xneo1/portainer_templates"
+      },
+      "image": null,
+      "ports": null,
+      "restart_policy": null,
+      "volumes": null
     },
     {
       "categories": [
