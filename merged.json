@@ -7100,7 +7100,7 @@
           "name": "DB_PORT",
           "label": "DB_PORT",
           "default": "",
-          "description": "Database port (defaul: 5432)"
+          "description": "Database port (default: 5432)"
         },
         {
           "name": "REDIS_HOST",
@@ -10558,16 +10558,28 @@
           "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
         },
         {
+          "name": "APP_KEY",
+          "label": "APP_KEY",
+          "default": "",
+          "description": "App key used for encrypting stored data. You can generate a key at [https://speedtest-tracker.dev](https://speedtest-tracker.dev)"
+        },
+        {
           "name": "DB_CONNECTION",
           "label": "DB_CONNECTION",
           "default": "sqlite",
           "description": "Set the database type to use. `sqlite`, `pgsql`, or `mysql`"
         },
         {
-          "name": "APP_KEY",
-          "label": "APP_KEY",
+          "name": "SPEEDTEST_SCHEDULE",
+          "label": "SPEEDTEST_SCHEDULE",
           "default": "",
-          "description": "App key used for encrypting stored data. Generate with `docker exec speedtest-tracker php /app/www/artisan key:generate --show`"
+          "description": "Set the test schedule in cron format. e.g. `0 */6 * * *`"
+        },
+        {
+          "name": "SPEEDTEST_SERVERS",
+          "label": "SPEEDTEST_SERVERS",
+          "default": "",
+          "description": "A comma-separated list of server IDs to test against. Run `docker exec speedtest-tracker php /app/www/artisan app:ookla-list-servers` to get a list of nearby servers."
         },
         {
           "name": "DB_HOST",
@@ -10598,6 +10610,18 @@
           "label": "DB_PASSWORD",
           "default": "",
           "description": "Database password (postgres/mysql)."
+        },
+        {
+          "name": "DISPLAY_TIMEZONE",
+          "label": "DISPLAY_TIMEZONE",
+          "default": "Etc/UTC",
+          "description": "Timezone for the UI."
+        },
+        {
+          "name": "PRUNE_RESULTS_OLDER_THAN",
+          "label": "PRUNE_RESULTS_OLDER_THAN",
+          "default": "0",
+          "description": "Days to keep test results."
         }
       ],
       "platform": "linux",
@@ -13675,42 +13699,68 @@
     },
     {
       "categories": [
-        "Other",
-        "Tools"
+        "Development"
       ],
       "type": 1,
-      "title": "Code Server",
+      "title": "Code-server {shmolf}",
       "name": "code-server",
-      "description": "Code-server is VS Code running on a remote server, accessible through the browser.",
-      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/code-server.png",
-      "note": null,
+      "description": "Code-server (https://coder.com) is VS Code running on a remote server, accessible through the browser. - Code on your Chromebook, tablet, and laptop with a consistent dev environment. - If you have a Windows or Mac workstation, more easily develop for Linux. - Take advantage of large cloud servers to speed up tests, compilations, downloads, and more. - Preserve battery life when you're on the go. - All intensive computation runs on your server. - You're no longer running excess instances of Chrome.",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/code-server-banner.png",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>This will bind to the following directory on the host filesystem:</p><p><code>/portainer/Files/AppData/Config/code-server</code></p><ul><li>Proxy Domain: See <a href='https://github.com/cdr/code-server/blob/master/docs/FAQ.md#sub-domains' target='_blank'>Documentation 🗗</a></li><li>Timezones: See <a href='https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List' target='_blank'>list 🗗</a></li></ul>",
       "env": [
         {
-          "default": "1000",
+          "name": "PUID",
           "label": "PUID",
-          "name": "PUID"
+          "default": "1000",
+          "description": "for UserID"
         },
         {
+          "name": "PGID",
+          "label": "PGID",
           "default": "1000",
-          "label": "PUID",
-          "name": "GUID"
+          "description": "for GroupID"
         },
         {
+          "name": "TZ",
           "label": "TZ",
-          "name": "TZ"
+          "default": "Europe/Amsterdam",
+          "description": "specify a timezone to use"
         },
         {
+          "name": "PASSWORD",
           "label": "PASSWORD",
-          "name": "PASSWORD"
+          "default": "password",
+          "description": "Optional web gui password, if `PASSWORD` or `HASHED_PASSWORD` is not provided, there will be no auth."
         },
         {
+          "name": "HASHED_PASSWORD",
+          "label": "HASHED_PASSWORD",
+          "default": "",
+          "description": "Optional web gui password, overrides `PASSWORD`, instructions on how to create it is below."
+        },
+        {
+          "name": "SUDO_PASSWORD",
           "label": "SUDO_PASSWORD",
-          "name": "SUDO_PASSWORD"
+          "default": "password",
+          "description": "If this optional variable is set, user will have sudo access in the code-server terminal with the specified password."
         },
         {
-          "default": "example.my.domain",
+          "name": "SUDO_PASSWORD_HASH",
+          "label": "SUDO_PASSWORD_HASH",
+          "default": "",
+          "description": "Optionally set sudo password via hash (takes priority over `SUDO_PASSWORD` var). Format is `$type$salt$hashed`."
+        },
+        {
+          "name": "PROXY_DOMAIN",
           "label": "PROXY_DOMAIN",
-          "name": "PROXY_DOMAIN"
+          "default": "code-server.my.domain",
+          "description": "If this optional variable is set, this domain will be proxied for subdomain proxying."
+        },
+        {
+          "name": "DEFAULT_WORKSPACE",
+          "label": "DEFAULT_WORKSPACE",
+          "default": "/config/workspace",
+          "description": "If this optional variable is set, code-server will open this directory by default"
         }
       ],
       "platform": "linux",
@@ -13722,8 +13772,8 @@
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/Code-Server",
-          "container": "/config"
+          "container": "/config",
+          "bind": "/portainer/Files/AppData/Config/code-server"
         }
       ]
     },
