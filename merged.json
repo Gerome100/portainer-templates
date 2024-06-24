@@ -2,42 +2,52 @@
   "version": "2",
   "templates": [
     {
-      "categories": [],
-      "type": 1,
-      "title": "htpcmanager",
+      "categories": [
+        "Wiki"
+      ],
+      "type": 3,
+      "title": "Bookstack",
       "name": null,
-      "description": "Htpcmanager, a front end for many htpc related applications. Hellowlol version.",
-      "logo": "https://raw.githubusercontent.com/thesugarat/portainer_templates-1/master/Images/htpcmanager-icon.png",
-      "note": null,
+      "description": "Bookstack is a free and open source Wiki designed for creating beautiful documentation. Feautring a simple, but powerful WYSIWYG editor it allows for teams to create detailed and useful documentation with ease.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/bookstack2.png",
+      "note": "Default login is admin@admin.com with a password of password. The database created is called bookstackapp and the database user is called bookstack",
       "env": [
         {
-          "label": "PGID",
-          "name": "PGID",
-          "set": "1000"
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
         },
         {
-          "label": "PUID",
-          "name": "PUID",
-          "set": "1000"
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
         },
         {
           "label": "TZ",
-          "name": "TZ",
-          "set": "America/Chicago"
+          "name": "TZ"
+        },
+        {
+          "label": "DATABASE_PASSWORD",
+          "name": "DATABASE_PASSWORD"
+        },
+        {
+          "label": "MYSQL_ROOT_PASSWORD",
+          "name": "MYSQL_ROOT_PASSWORD"
+        },
+        {
+          "label": "PORT",
+          "name": "PORT"
         }
       ],
       "platform": "linux",
-      "repository": null,
-      "image": "linuxserver/htpcmanager:latest",
-      "ports": [
-        "8085/tcp"
-      ],
+      "repository": {
+        "stackfile": "Template/Stack/bookstack.yml",
+        "url": "https://github.com/Qballjos/portainer_templates"
+      },
+      "image": null,
+      "ports": null,
       "restart_policy": null,
-      "volumes": [
-        {
-          "container": "/config"
-        }
-      ]
+      "volumes": null
     },
     {
       "categories": [
@@ -130,7 +140,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Musicserver"
+      ],
       "type": 1,
       "title": "Airsonic-advanced",
       "name": "Airsonic-advanced",
@@ -142,30 +154,30 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "CONTEXT_PATH",
           "label": "CONTEXT_PATH",
-          "default": "",
+          "default": "<URL_BASE>",
           "description": "For setting url-base in reverse proxy setups."
         },
         {
           "name": "JAVA_OPTS",
           "label": "JAVA_OPTS",
-          "default": "",
+          "default": "<options>",
           "description": "For passing additional java options."
         }
       ],
@@ -244,7 +256,7 @@
     },
     {
       "categories": [
-        "Notifications"
+        "Taskserver"
       ],
       "type": 1,
       "title": "Apprise-api",
@@ -269,7 +281,7 @@
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -426,7 +438,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Tools"
+      ],
       "type": 1,
       "title": "Audacity",
       "name": "Audacity",
@@ -438,27 +452,26 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/audacity:latest",
       "ports": [
-        "3000:3000/tcp",
-        "3001:3001/tcp"
+        "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -645,53 +658,50 @@
     },
     {
       "categories": [
-        "Media"
+        "Video",
+        "Music"
       ],
       "type": 1,
       "title": "Bazarr",
       "name": "Bazarr",
-      "description": "[Bazarr](https://www.bazarr.media/) is a companion application to Sonarr and Radarr. It can manage and download subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.",
-      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/bazarr/config<br>mkdir -p /volume1/docker/bazarr/movies<br>mkdir -p /volume1/docker/bazarr/tv</p>",
+      "description": "Bazarr is a companion application to Sonarr and Radarr. It can manage and download subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/bazarr.png",
+      "note": null,
       "env": [
         {
-          "name": "PUID",
+          "default": "1000",
           "label": "PUID",
-          "default": "1024",
-          "description": "for UserID"
+          "name": "PUID"
         },
         {
-          "name": "PGID",
-          "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "label": "PGID",
+          "name": "PGID"
         },
         {
-          "name": "TZ",
           "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "name": "TZ"
         }
       ],
       "platform": "linux",
       "repository": null,
-      "image": "linuxserver/bazarr:latest",
+      "image": "hotio/bazarr:release",
       "ports": [
         "6767:6767/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/volume1/docker/bazarr/config"
+          "bind": "/portainer/Files/AppData/Config/Bazarr",
+          "container": "/config"
         },
         {
-          "container": "/movies",
-          "bind": "/volume1/docker/bazarr/movies"
+          "bind": "/portainer/TV",
+          "container": "/tv"
         },
         {
-          "container": "/tv",
-          "bind": "/volume1/docker/bazarr/tv"
+          "bind": "/portainer/Movies",
+          "container": "/movies"
         }
       ]
     },
@@ -849,12 +859,12 @@
     },
     {
       "categories": [
-        "Audio"
+        "Libraryserver"
       ],
       "type": 1,
       "title": "Booksonic-air",
       "name": "Booksonic-air",
-      "description": "[Booksonic-air](http://booksonic.org) is a platform for accessing the audiobooks you own wherever you are. At the moment the platform consists of: * Booksonic Air - A server for streaming your audiobooks, successor to the original Booksonic server and based on Airsonic. * Booksonic App - An DSub based Android app for connection to Booksonic-Air servers.",
+      "description": "[Booksonic-air](http://booksonic.org) is a platform for accessing the audibooks you own wherever you are. At the moment the platform consists of Booksonic Air - A server for streaming your audiobooks, successor to the original Booksonic server and based on Airsonic. Booksonic App - An DSub based Android app for connection to Booksonic-Air servers. .",
       "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/booksonic-air.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/booksonic-air/config<br>mkdir -p /volume1/docker/booksonic-air/audiobooks<br>mkdir -p /volume1/docker/booksonic-air/podcasts<br>mkdir -p /volume1/docker/booksonic-air/othermedia</p>",
       "env": [
@@ -862,19 +872,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "CONTEXT_PATH",
@@ -1082,32 +1092,32 @@
     },
     {
       "categories": [
-        "Media"
+        "Libraryserver"
       ],
       "type": 1,
       "title": "Calibre",
       "name": "Calibre",
-      "description": "[Calibre](https://calibre-ebook.com/) is a powerful and easy to use e-book manager. Users say it's outstanding and a must-have. It'll allow you to do nearly everything and it takes things a step beyond normal e-book software. It's also completely free and open source and great for both casual users and computer experts.",
-      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/calibre-logo.png",
+      "description": "Calibre is a powerful and easy to use e-book manager. Users say it’s outstanding and a must-have. It’ll allow you to do nearly everything and it takes things a step beyond normal e-book software. It’s also completely free and open source and great for both casual users and computer experts.",
+      "logo": "https://github.com/kovidgoyal/calibre/raw/master/resources/images/lt.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/calibre/config</p>",
       "env": [
         {
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "PASSWORD",
@@ -1127,7 +1137,6 @@
       "image": "linuxserver/calibre:latest",
       "ports": [
         "8080:8080/tcp",
-        "8181:8181/tcp",
         "8081:8081/tcp"
       ],
       "restart_policy": "unless-stopped",
@@ -1366,7 +1375,7 @@
       "title": "Chowdown",
       "name": "Chowdown",
       "description": "ave recipes in seconds with plain text formatting and create beatiful recipe pages with automated ease.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/chowdown.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/chowdown.png",
       "note": null,
       "env": null,
       "platform": "linux",
@@ -2194,7 +2203,7 @@
     },
     {
       "categories": [
-        "Productivity"
+        "Notesserver"
       ],
       "type": 1,
       "title": "Dokuwiki",
@@ -2207,19 +2216,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -2556,32 +2565,30 @@
     },
     {
       "categories": [
-        "Homemedia"
+        "Video",
+        "Music",
+        "Photos"
       ],
       "type": 1,
       "title": "Emby",
       "name": "Emby",
-      "description": "[Emby](https://emby.media/) organizes video, music, live TV, and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone emby Media Server.",
-      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/emby-logo.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/emby/config<br>mkdir -p /volume1/docker/emby/data/tvshows<br>mkdir -p /volume1/docker/emby/data/movies<br></p>",
+      "description": "Emby organizes video, music, live TV, and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone emby Media Server.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/emby.png",
+      "note": null,
       "env": [
         {
-          "name": "PUID",
+          "default": "1000",
           "label": "PUID",
-          "default": "1024",
-          "description": "for UserID"
+          "name": "PUID"
         },
         {
-          "name": "PGID",
-          "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "label": "PGID",
+          "name": "PGID"
         },
         {
-          "name": "TZ",
           "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "name": "TZ"
         }
       ],
       "platform": "linux",
@@ -2594,20 +2601,16 @@
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/volume1/docker/emby/config"
+          "bind": "/portainer/Files/AppData/Config/Emby",
+          "container": "/config"
         },
         {
-          "container": "/data/tvshows",
-          "bind": "/volume1/docker/emby/data/tvshows"
+          "bind": "/portainer/TV",
+          "container": "/data/tvshows"
         },
         {
-          "container": "/data/movies",
-          "bind": "/volume1/docker/emby/data/movies"
-        },
-        {
-          "container": "/opt/vc/lib",
-          "bind": "/opt/vc/lib"
+          "bind": "/portainer/Movies",
+          "container": "/data/movies"
         }
       ]
     },
@@ -2680,7 +2683,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Gamingserver"
+      ],
       "type": 1,
       "title": "Emulatorjs",
       "name": "Emulatorjs",
@@ -2692,19 +2697,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "SUBFOLDER",
@@ -3113,11 +3118,13 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Mediaserver"
+      ],
       "type": 1,
       "title": "Ffmpeg",
       "name": "Ffmpeg",
-      "description": "# This container needs special attention. Please check https://hub.docker.com/r/linuxserver/ffmpeg for details.",
+      "description": "This container needs special attention. Please check https://hub.docker.com/r/linuxserver/ffmpeg for details.",
       "logo": "",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/ffmpeg/config</p>",
       "env": [
@@ -3125,19 +3132,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -3155,7 +3162,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Ftpserver"
+      ],
       "type": 1,
       "title": "Filezilla",
       "name": "Filezilla",
@@ -3167,27 +3176,26 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/filezilla:latest",
       "ports": [
-        "3000:3000/tcp",
-        "3001:3001/tcp"
+        "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -3198,7 +3206,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Familyappserver"
+      ],
       "type": 1,
       "title": "Firefox",
       "name": "Firefox",
@@ -3210,33 +3220,26 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
-        },
-        {
-          "name": "FIREFOX_CLI",
-          "label": "FIREFOX_CLI",
-          "default": "https://www.linuxserver.io/",
-          "description": "Specify one or multiple Firefox CLI flags, this string will be passed to the application in full."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/firefox:latest",
       "ports": [
-        "3000:3000/tcp",
-        "3001:3001/tcp"
+        "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -3467,7 +3470,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Tools"
+      ],
       "type": 1,
       "title": "Foldingathome",
       "name": "Foldingathome",
@@ -3479,25 +3484,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
-        },
-        {
-          "name": "CLI_ARGS",
-          "label": "CLI_ARGS",
-          "default": "",
-          "description": "Optionally pass additional cli arguments to `FAHClient` on container start."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -3906,11 +3905,13 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Smarthome"
+      ],
       "type": 1,
       "title": "Habridge",
       "name": "Habridge",
-      "description": "[Habridge](https://bwssystems.com/#!/habridge) emulates Philips Hue API to other home automation gateways such as an Amazon Echo/Dot Gen 1 (gen 2 has issues discovering ha-bridge) or other systems that support Philips Hue. The Bridge handles basic commands such as 'On', 'Off' and 'brightness' commands of the hue protocol. This bridge can control most devices that have a distinct API. In the cases of systems that require authorization and/or have APIs that cannot be handled in the current method, a module may need to be built. The Harmony Hub is such a module and so is the Nest module. The Bridge has helpers to build devices for the gateway for the Logitech Harmony Hub, Vera, Vera Lite or Vera Edge, Nest, Somfy Tahoma, Home Assistant, Domoticz, MQTT, HAL, Fibaro, HomeWizard, LIFX, OpenHAB, FHEM, Broadlink and the ability to proxy all of your real Hue bridges behind this bridge. This bridge was built to help put the Internet of Things together. For more information about how to use this software have a look at their Wiki [https://github.com/bwssytems/ha-bridge/wiki](https://github.com/bwssytems/ha-bridge/wiki)",
+      "description": "Habridge emulates Philips Hue API to other home automation gateways such as an Amazon Echo/Dot Gen 1 (gen 2 has issues discovering ha-bridge) or other systems that support Philips Hue.  [https://github.com/bwssytems/ha-bridge/wiki](https://github.com/bwssytems/ha-bridge/wiki)",
       "logo": "https://raw.githubusercontent.com/bwssytems/ha-bridge/master/src/main/resources/public/img/favicon.ico",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/habridge/config</p>",
       "env": [
@@ -3918,25 +3919,25 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
+        },
+        {
+          "name": "SEC_KEY",
+          "label": "SEC_KEY",
+          "default": "<Your Key To Encrypt Security Data>",
+          "description": "Key used to secure communication."
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
-        },
-        {
-          "name": "SEC_KEY",
-          "label": "SEC_KEY",
-          "default": "",
-          "description": "Key used to secure communication."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -5327,31 +5328,39 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Proxyserver"
+      ],
       "type": 1,
       "title": "Ldap-auth",
       "name": "Ldap-auth",
       "description": "[Ldap-auth](https://github.com/nginxinc/nginx-ldap-auth) software is for authenticating users who request protected resources from servers proxied by nginx. It includes a daemon (ldap-auth) that communicates with an authentication server, and a webserver daemon that generates an authentication cookie based on the user’s credentials. The daemons are written in Python for use with a Lightweight Directory Access Protocol (LDAP) authentication server (OpenLDAP or Microsoft Windows Active Directory 2003 and 2012).",
-      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ldap-auth-logo.png",
+      "logo": "https://jumpcloud.com/wp-content/uploads/2016/12/LDAP_Logo-1420591101.jpg",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p>",
       "env": [
+        {
+          "name": "TZ",
+          "label": "TZ",
+          "default": "Europe/Amsterdam",
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
+        },
         {
           "name": "FERNETKEY",
           "label": "FERNETKEY",
           "default": "",
-          "description": "Optionally define a custom valid fernet key (only needed if container is frequently recreated, or if using multi-node setups, invalidating previous authentications)"
+          "description": "Optionally define a custom fernet key, has to be base64-encoded 32-byte (only needed if container is frequently recreated, or if using multi-node setups, invalidating previous authentications)"
         },
         {
           "name": "CERTFILE",
           "label": "CERTFILE",
           "default": "",
-          "description": "Optionally point this to a certificate file to enable HTTP over SSL (HTTPS) for the ldap auth daemon"
+          "description": "Point this to a certificate file to enable HTTP over SSL (HTTPS) for the ldap auth daemon"
         },
         {
           "name": "KEYFILE",
           "label": "KEYFILE",
           "default": "",
-          "description": "Optionally point this to the private key file, matching the certificate file referred to in CERTFILE"
+          "description": "Point this to the private key file, matching the certificate file referred to in CERTFILE"
         }
       ],
       "platform": "linux",
@@ -5366,7 +5375,7 @@
     },
     {
       "categories": [
-        "Productivity"
+        "Familyappserver"
       ],
       "type": 1,
       "title": "Libreoffice",
@@ -5379,27 +5388,26 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/libreoffice:latest",
       "ports": [
-        "3000:3000/tcp",
-        "3001:3001/tcp"
+        "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -5605,7 +5613,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Codeserver"
+      ],
       "type": 1,
       "title": "Limnoria",
       "name": "Limnoria",
@@ -5617,19 +5627,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -7034,150 +7044,152 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Managementutilityserver"
+      ],
       "type": 1,
       "title": "Netbox",
       "name": "Netbox",
       "description": "[Netbox](https://github.com/netbox-community/netbox) is an IP address management (IPAM) and data center infrastructure management (DCIM) tool. Initially conceived by the network engineering team at DigitalOcean, NetBox was developed specifically to address the needs of network and infrastructure engineers. It is intended to function as a domain-specific source of truth for network operations.",
-      "logo": "https://raw.githubusercontent.com/netbox-community/netbox/develop/docs/netbox_logo.svg",
+      "logo": "https://raw.githubusercontent.com/netbox-community/netbox/develop/docs/netbox_logo.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/netbox/config</p>",
       "env": [
         {
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "SUPERUSER_EMAIL",
           "label": "SUPERUSER_EMAIL",
-          "default": "",
+          "default": "<SUPERUSER_EMAIL>",
           "description": "Email address for `admin` account"
         },
         {
           "name": "SUPERUSER_PASSWORD",
           "label": "SUPERUSER_PASSWORD",
-          "default": "",
+          "default": "<SUPERUSER_PASSWORD>",
           "description": "Password for `admin` account"
         },
         {
           "name": "ALLOWED_HOST",
           "label": "ALLOWED_HOST",
-          "default": "",
+          "default": "<ALLOWED_HOST>",
           "description": "The hostname you will use to access the app (i.e., netbox.example.com)"
         },
         {
           "name": "DB_NAME",
           "label": "DB_NAME",
-          "default": "",
+          "default": "<DB_NAME>",
           "description": "Database name (default: netbox)"
         },
         {
           "name": "DB_USER",
           "label": "DB_USER",
-          "default": "",
+          "default": "<DB_USER>",
           "description": "Database user"
         },
         {
           "name": "DB_PASSWORD",
           "label": "DB_PASSWORD",
-          "default": "",
+          "default": "<DB_PASSWORD>",
           "description": "Database password"
         },
         {
           "name": "DB_HOST",
           "label": "DB_HOST",
-          "default": "",
+          "default": "<DB_HOST>",
           "description": "Database host (default: postgres)"
         },
         {
           "name": "DB_PORT",
           "label": "DB_PORT",
-          "default": "",
-          "description": "Database port (default: 5432)"
+          "default": "<DB_PORT>",
+          "description": "Database port (defaul: 5432)"
         },
         {
           "name": "REDIS_HOST",
           "label": "REDIS_HOST",
-          "default": "",
+          "default": "<REDIS_HOST>",
           "description": "Redis host (default: redis)"
         },
         {
           "name": "REDIS_PORT",
           "label": "REDIS_PORT",
-          "default": "",
+          "default": "<REDIS_PORT>",
           "description": "Redis port number (default: 6379)"
         },
         {
           "name": "REDIS_PASSWORD",
           "label": "REDIS_PASSWORD",
-          "default": "",
+          "default": "<REDIS_PASSWORD>",
           "description": "Redis password (default: none)"
         },
         {
           "name": "REDIS_DB_TASK",
           "label": "REDIS_DB_TASK",
-          "default": "",
+          "default": "<REDIS_DB_TASK>",
           "description": "Redis database ID for tasks (default: 0)"
         },
         {
           "name": "REDIS_DB_CACHE",
           "label": "REDIS_DB_CACHE",
-          "default": "",
+          "default": "<REDIS_DB_CACHE>",
           "description": "Redis database ID for caching (default: 1)"
         },
         {
           "name": "BASE_PATH",
           "label": "BASE_PATH",
-          "default": "",
+          "default": "<BASE_PATH>",
           "description": "The path you will use to access the app (i.e., /netbox, optional, default: none)"
         },
         {
           "name": "REMOTE_AUTH_ENABLED",
           "label": "REMOTE_AUTH_ENABLED",
-          "default": "",
+          "default": "<REMOTE_AUTH_ENABLED>",
           "description": "Enable remote authentication (optional, default: False)"
         },
         {
           "name": "REMOTE_AUTH_BACKEND",
           "label": "REMOTE_AUTH_BACKEND",
-          "default": "",
+          "default": "<REMOTE_AUTH_BACKEND>",
           "description": "Python path to the custom Django authentication backend to use for external user authentication (optional, default: netbox.authentication.RemoteUserBackend)"
         },
         {
           "name": "REMOTE_AUTH_HEADER",
           "label": "REMOTE_AUTH_HEADER",
-          "default": "",
+          "default": "<REMOTE_AUTH_HEADER>",
           "description": "Name of the HTTP header which informs NetBox of the currently authenticated user. (optional, default: HTTP_REMOTE_USER)"
         },
         {
           "name": "REMOTE_AUTH_AUTO_CREATE_USER",
           "label": "REMOTE_AUTH_AUTO_CREATE_USER",
-          "default": "",
+          "default": "<REMOTE_AUTH_AUTO_CREATE_USER>",
           "description": "If true, NetBox will automatically create local accounts for users authenticated via a remote service (optional, default: False)"
         },
         {
           "name": "REMOTE_AUTH_DEFAULT_GROUPS",
           "label": "REMOTE_AUTH_DEFAULT_GROUPS",
-          "default": "",
+          "default": "<REMOTE_AUTH_DEFAULT_GROUPS>",
           "description": "The list of groups to assign a new user account when created using remote authentication (optional, default: [])"
         },
         {
           "name": "REMOTE_AUTH_DEFAULT_PERMISSIONS",
           "label": "REMOTE_AUTH_DEFAULT_PERMISSIONS",
-          "default": "",
+          "default": "<REMOTE_AUTH_DEFAULT_PERMISSIONS>",
           "description": "A mapping of permissions to assign a new user account when created using remote authentication (optional, default: {})"
         }
       ],
@@ -7584,7 +7596,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Managementutilityserver"
+      ],
       "type": 1,
       "title": "Openssh-server",
       "name": "Openssh-server",
@@ -7596,19 +7610,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "PUBLIC_KEY",
@@ -7663,12 +7677,6 @@
           "label": "USER_NAME",
           "default": "linuxserver.io",
           "description": "Optionally specify a user name (Default:`linuxserver.io`)"
-        },
-        {
-          "name": "LOG_STDOUT",
-          "label": "LOG_STDOUT",
-          "default": "",
-          "description": "Set to `true` to log to stdout instead of file."
         }
       ],
       "platform": "linux",
@@ -7968,7 +7976,11 @@
     },
     {
       "categories": [
-        "Familyappserver"
+        "Cloud",
+        "Productivity",
+        "Tools",
+        "Other",
+        "Web"
       ],
       "type": 3,
       "title": "Owncloud",
@@ -8317,7 +8329,8 @@
     },
     {
       "categories": [
-        "Mediaserver"
+        "Other",
+        "Tools"
       ],
       "type": 3,
       "title": "Petio",
@@ -8357,7 +8370,7 @@
     },
     {
       "categories": [
-        "Systemtools"
+        "Databaseserver"
       ],
       "type": 1,
       "title": "Phpmyadmin",
@@ -8370,19 +8383,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "PMA_ARBITRARY",
@@ -8412,7 +8425,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Chatserver"
+      ],
       "type": 1,
       "title": "Pidgin",
       "name": "Pidgin",
@@ -8424,27 +8439,26 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/pidgin:latest",
       "ports": [
-        "3000:3000/tcp",
-        "3001:3001/tcp"
+        "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -8865,7 +8879,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Taskserver"
+      ],
       "type": 1,
       "title": "Pwndrop",
       "name": "Pwndrop",
@@ -8889,7 +8905,7 @@
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "SECRET_PATH",
@@ -9465,31 +9481,33 @@
       "volumes": null
     },
     {
-      "categories": [],
+      "categories": [
+        "Managementutilityserver"
+      ],
       "type": 1,
       "title": "Rdesktop",
       "name": "Rdesktop",
-      "description": "[Rdesktop](http://xrdp.org/) - Containers containing full desktop environments in many popular flavors for Alpine, Ubuntu, Arch, and Fedora accessible via RDP.",
+      "description": "[Rdesktop](http://xrdp.org/) - Ubuntu based containers containing full desktop environments in officially supported flavors accessible via RDP.",
       "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/rdesktop.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/rdesktop/config<br><br>mkdir -p /volume1/docker/rdesktop/config</p>",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p><br>mkdir -p /volume1/docker/rdesktop/config</p>",
       "env": [
         {
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -9500,10 +9518,6 @@
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
-        {
-          "container": "/config",
-          "bind": "/volume1/docker/rdesktop/config"
-        },
         {
           "container": "/var/run/docker.sock",
           "bind": "/var/run/docker.sock"
@@ -9737,7 +9751,9 @@
       "volumes": null
     },
     {
-      "categories": [],
+      "categories": [
+        "Backupandsyncserver"
+      ],
       "type": 1,
       "title": "Rsnapshot",
       "name": "Rsnapshot",
@@ -9749,19 +9765,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -10210,7 +10226,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Familyappserver"
+      ],
       "type": 1,
       "title": "Snapdrop",
       "name": "Snapdrop",
@@ -10222,19 +10240,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -10261,7 +10279,7 @@
       "title": "Snibox",
       "name": "Snibox",
       "description": "Self-hosted snippet manager.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/snibox.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/snibox.png",
       "note": "Label-oriented interface with search. Supports various programming languages, markdown, plain text.",
       "env": null,
       "platform": "linux",
@@ -10279,11 +10297,13 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Managementutilityserver"
+      ],
       "type": 1,
       "title": "Snipe-it",
       "name": "Snipe-it",
-      "description": "[Snipe-it](https://github.com/snipe/snipe-it) makes asset management easy. It was built by people solving real-world IT and asset management problems, and a solid UX has always been a top priority. Straightforward design and bulk actions mean getting things done faster.",
+      "description": "Snipe-it makes asset management easy. It was built by people solving real-world IT and asset management problems, and a solid UX has always been a top priority. Straightforward design and bulk actions mean getting things done faster.",
       "logo": "https://s3-us-west-2.amazonaws.com/linuxserver-docs/images/snipe-it-logo500x500.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/snipe-it/config</p>",
       "env": [
@@ -10291,115 +10311,49 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "for UserID"
         },
         {
           "name": "APP_URL",
           "label": "APP_URL",
-          "default": "http://localhost:8080",
-          "description": "Hostname or IP and port if applicable, be sure to define https/http"
+          "default": "<hostname or ip>",
+          "description": "Hostname or IP and port if applicable IE <ip or hostname>:8080"
         },
         {
           "name": "MYSQL_PORT_3306_TCP_ADDR",
           "label": "MYSQL_PORT_3306_TCP_ADDR",
-          "default": "",
+          "default": "<mysql host>",
           "description": "Mysql hostname or IP to use"
         },
         {
           "name": "MYSQL_PORT_3306_TCP_PORT",
           "label": "MYSQL_PORT_3306_TCP_PORT",
-          "default": "",
+          "default": "<mysql port>",
           "description": "Mysql port to use"
         },
         {
           "name": "MYSQL_DATABASE",
           "label": "MYSQL_DATABASE",
-          "default": "",
+          "default": "<mysql database>",
           "description": "Mysql database to use"
         },
         {
           "name": "MYSQL_USER",
           "label": "MYSQL_USER",
-          "default": "",
+          "default": "<mysql pass>",
           "description": "Mysql user to use"
         },
         {
           "name": "MYSQL_PASSWORD",
           "label": "MYSQL_PASSWORD",
-          "default": "",
+          "default": "changeme",
           "description": "Mysql password to use"
-        },
-        {
-          "name": "APP_ENV",
-          "label": "APP_ENV",
-          "default": "production",
-          "description": "Default is `production` but can use `testing` or `develop`."
-        },
-        {
-          "name": "APP_DEBUG",
-          "label": "APP_DEBUG",
-          "default": "false",
-          "description": "Set to `true` to see debugging output in the web UI."
-        },
-        {
-          "name": "APP_LOCALE",
-          "label": "APP_LOCALE",
-          "default": "",
-          "description": "Default is `en`. Set to a language from [this list](https://snipe-it.readme.io/docs/configuration#section-setting-a-language)."
-        },
-        {
-          "name": "MAIL_PORT_587_TCP_ADDR",
-          "label": "MAIL_PORT_587_TCP_ADDR",
-          "default": "US/Pacific",
-          "description": "SMTP mail server ip or hostname."
-        },
-        {
-          "name": "MAIL_PORT_587_TCP_PORT",
-          "label": "MAIL_PORT_587_TCP_PORT",
-          "default": "US/Pacific",
-          "description": "SMTP mail server port."
-        },
-        {
-          "name": "MAIL_ENV_FROM_ADDR",
-          "label": "MAIL_ENV_FROM_ADDR",
-          "default": "US/Pacific",
-          "description": "The email address mail should be replied to and listed when sent."
-        },
-        {
-          "name": "MAIL_ENV_FROM_NAME",
-          "label": "MAIL_ENV_FROM_NAME",
-          "default": "US/Pacific",
-          "description": "The name listed on email sent from the default account on the system."
-        },
-        {
-          "name": "MAIL_ENV_ENCRYPTION",
-          "label": "MAIL_ENV_ENCRYPTION",
-          "default": "US/Pacific",
-          "description": "Mail encryption to use e.g. `tls`."
-        },
-        {
-          "name": "MAIL_ENV_USERNAME",
-          "label": "MAIL_ENV_USERNAME",
-          "default": "US/Pacific",
-          "description": "SMTP server login username."
-        },
-        {
-          "name": "MAIL_ENV_PASSWORD",
-          "label": "MAIL_ENV_PASSWORD",
-          "default": "US/Pacific",
-          "description": "SMTP server login password."
         }
       ],
       "platform": "linux",
@@ -11077,7 +11031,7 @@
     },
     {
       "categories": [
-        "Systemtools"
+        "Taskserver"
       ],
       "type": 1,
       "title": "Syslog-ng",
@@ -11090,19 +11044,19 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
@@ -11880,7 +11834,7 @@
     },
     {
       "categories": [
-        "Utilities"
+        "Managementutilityserver"
       ],
       "type": 1,
       "title": "Webtop",
@@ -11893,39 +11847,32 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "SUBFOLDER",
           "label": "SUBFOLDER",
           "default": "/",
           "description": "Specify a subfolder to use with reverse proxies, IE `/subfolder/`"
-        },
-        {
-          "name": "TITLE",
-          "label": "TITLE",
-          "default": "Webtop",
-          "description": "String which will be used as page/tab title in the web browser."
         }
       ],
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/webtop:latest",
       "ports": [
-        "3000:3000/tcp",
-        "3001:3001/tcp"
+        "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -11940,113 +11887,64 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Other",
+        "Tools",
+        "Wiki"
+      ],
       "type": 1,
       "title": "Wikijs",
       "name": "Wikijs",
-      "description": "[Wikijs](https://github.com/Requarks/wiki) A modern, lightweight and powerful wiki app built on NodeJS.",
-      "logo": "https://static.requarks.io/logo/wikijs-full.svg",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/wikijs/config<br>mkdir -p /volume1/docker/wikijs/data</p>",
-      "env": [
-        {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "1024",
-          "description": "for UserID"
-        },
-        {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "100",
-          "description": "for GroupID"
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
-        },
-        {
-          "name": "DB_TYPE",
-          "label": "DB_TYPE",
-          "default": "sqlite",
-          "description": "Set to sqlite (default) or postgres depending on the database engine you wish to use"
-        },
-        {
-          "name": "DB_HOST",
-          "label": "DB_HOST",
-          "default": "",
-          "description": "DB hostname (postgres only)"
-        },
-        {
-          "name": "DB_PORT",
-          "label": "DB_PORT",
-          "default": "",
-          "description": "DB port (postgres only)"
-        },
-        {
-          "name": "DB_NAME",
-          "label": "DB_NAME",
-          "default": "",
-          "description": "DB name (postgres only)"
-        },
-        {
-          "name": "DB_USER",
-          "label": "DB_USER",
-          "default": "",
-          "description": "DB username (postgres only)"
-        },
-        {
-          "name": "DB_PASS",
-          "label": "DB_PASS",
-          "default": "",
-          "description": "DB password (postgres only)"
-        }
-      ],
+      "description": "Wikijs A modern, lightweight and powerful wiki app built on NodeJS.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/wikijs.png",
+      "note": null,
+      "env": null,
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/wikijs:latest",
       "ports": [
-        "3000:3000/tcp"
+        "3100:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/volume1/docker/wikijs/config"
+          "bind": "/portainer/Files/AppData/Config/Wikijs",
+          "container": "/config"
         },
         {
-          "container": "/data",
-          "bind": "/volume1/docker/wikijs/data"
+          "bind": "/portainer/Files/AppData/Config/Wikijs/data",
+          "container": "/data"
         }
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Vpnserver"
+      ],
       "type": 1,
       "title": "Wireguard",
       "name": "Wireguard",
       "description": "[WireGuard®](https://www.wireguard.com/) is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it is now cross-platform (Windows, macOS, BSD, iOS, Android) and widely deployable. It is currently under heavy development, but already it might be regarded as the most secure, easiest to use, and simplest VPN solution in the industry.",
-      "logo": "https://www.wireguard.com/img/wireguard.svg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Logo_of_WireGuard.png/320px-Logo_of_WireGuard.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/wireguard/config<br></p>",
       "env": [
         {
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         },
         {
           "name": "SERVERURL",
@@ -12083,18 +11981,6 @@
           "label": "ALLOWEDIPS",
           "default": "0.0.0.0/0",
           "description": "The IPs/Ranges that the peers will be able to reach using the VPN connection. If not specified the default value is: '0.0.0.0/0, ::0/0' This will cause ALL traffic to route through the VPN, if you want split tunneling, set this to only the IPs you would like to use the tunnel AND the ip of the server's WG ip, such as 10.13.13.1."
-        },
-        {
-          "name": "PERSISTENTKEEPALIVE_PEERS",
-          "label": "PERSISTENTKEEPALIVE_PEERS",
-          "default": "",
-          "description": "Set to `all` or a list of comma separated peers (ie. `1,4,laptop`) for the wireguard server to send keepalive packets to listed peers every 25 seconds. Useful if server is accessed via domain name and has dynamic IP. Used only in server mode."
-        },
-        {
-          "name": "LOG_CONFS",
-          "label": "LOG_CONFS",
-          "default": "true",
-          "description": "Generated QR codes will be displayed in the docker log. Set to `false` to skip log output."
         }
       ],
       "platform": "linux",
@@ -12116,7 +12002,9 @@
       ]
     },
     {
-      "categories": [],
+      "categories": [
+        "Managementutilityserver"
+      ],
       "type": 1,
       "title": "Wireshark",
       "name": "Wireshark",
@@ -12128,27 +12016,26 @@
           "name": "PUID",
           "label": "PUID",
           "default": "1024",
-          "description": "for UserID"
+          "description": "for GroupID"
         },
         {
           "name": "PGID",
           "label": "PGID",
           "default": "100",
-          "description": "for GroupID"
+          "description": "for UserID"
         },
         {
           "name": "TZ",
           "label": "TZ",
           "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)."
+          "description": "Specify a timezone to use for example Europe/Amsterdam"
         }
       ],
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/wireshark:latest",
       "ports": [
-        "3000:3000/tcp",
-        "3001:3001/tcp"
+        "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -12591,7 +12478,7 @@
       "title": "Adguard",
       "name": "adguard",
       "description": "AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it’ll cover ALL your home devices, and you don’t need any client-side software for that. With the rise of Internet-Of-Things and connected devices, it becomes more and more important to be able to control your whole network.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/adguard.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/adguard.png",
       "note": null,
       "env": [
         {
@@ -12831,52 +12718,6 @@
     {
       "categories": [
         "Other",
-        "Tools",
-        "Games"
-      ],
-      "type": 1,
-      "title": "ArchiSteamFarm",
-      "name": "archisteamfarm",
-      "description": "C# application with primary purpose of farming Steam cards from multiple accounts simultaneously.",
-      "logo": "https://raw.githubusercontent.com/JustArchiNET/ArchiSteamFarm/main/resources/ASF_184x184.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/JustArchiNET/ArchiSteamFarm/\" target=\"_blank\">https://github.com/JustArchiNET/ArchiSteamFarm/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/JustArchiNET/ArchiSteamFarm/wiki/Docker/\" target=\"_blank\">https://github.com/JustArchiNET/ArchiSteamFarm/wiki/Docker/</a><br><br><br>",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "1000",
-          "label": "PGID",
-          "name": "PGID"
-        }
-      ],
-      "platform": "linux",
-      "repository": null,
-      "image": "justarchi/archisteamfarm:latest",
-      "ports": [
-        "1242:1242/tcp"
-      ],
-      "restart_policy": "unless-stopped",
-      "volumes": [
-        {
-          "bind": "/portainer/Files/AppData/Config/ArchiSteamFarm/config",
-          "container": "/app/config"
-        },
-        {
-          "bind": "/portainer/Files/AppData/Config/ArchiSteamFarm/plugins",
-          "container": "/app/plugins"
-        },
-        {
-          "bind": "/portainer/Files/AppData/Config/ArchiSteamFarm/logs",
-          "container": "/app/logs"
-        }
-      ]
-    },
-    {
-      "categories": [
-        "Other",
         "Tools"
       ],
       "type": 1,
@@ -13006,11 +12847,10 @@
       "title": "Authelia",
       "name": "authelia",
       "description": "An open-source authentication and authorization server providing 2-factor authentication and single sign-on (SSO) for your applications via a web portal.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/authelia.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.authelia.com/\" target=\"_blank\">https://www.authelia.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://www.authelia.com/docs/configuration/\" target=\"_blank\">https://www.authelia.com/docs/configuration/</a><br><br><br>Requires a configuration.yml file in order to work. Documentation is Available <a href='https://www.authelia.com/configuration/prologue/introduction/'>here</a>.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/authelia.png",
+      "note": "Requires a configuration.yml file in order to work. Documentation is available <a href='https://docs.authelia.com/deployment/deployment-ha'>here</a>.",
       "env": [
         {
-          "default": "America/New_York",
           "label": "TZ",
           "name": "TZ"
         }
@@ -13224,62 +13064,6 @@
           "container": "/config"
         }
       ]
-    },
-    {
-      "categories": [
-        "Wiki"
-      ],
-      "type": 3,
-      "title": "Bookstack",
-      "name": "bookstack",
-      "description": "Bookstack is a free and open source Wiki designed for creating beautiful documentation. Featuring a simple, but powerful WYSIWYG editor it allows for teams to create detailed and useful documentation with ease.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/bookstack2.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.bookstackapp.com/\" target=\"_blank\">https://www.bookstackapp.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://www.bookstackapp.com/docs/admin/installation/#docker\" target=\"_blank\">https://www.bookstackapp.com/docs/admin/installation/#docker</a><br><br><br>Default login is admin@admin.com with a password of password. The database created is called bookstackapp and the database user is called bookstack",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "1000",
-          "label": "PGID",
-          "name": "PGID"
-        },
-        {
-          "default": "America/New_York",
-          "label": "TZ",
-          "name": "TZ"
-        },
-        {
-          "label": "DATABASE_PASSWORD",
-          "name": "DATABASE_PASSWORD"
-        },
-        {
-          "label": "MYSQL_ROOT_PASSWORD",
-          "name": "MYSQL_ROOT_PASSWORD"
-        },
-        {
-          "default": "http://192.168.X.Y:6875",
-          "description": "Address to access Bookstack. If using a domain, add it here. If not set correctly the app will not be accessible",
-          "label": "APP_URL",
-          "name": "APP_URL"
-        },
-        {
-          "default": "6875",
-          "label": "PORT",
-          "name": "PORT"
-        }
-      ],
-      "platform": "linux",
-      "repository": {
-        "stackfile": "stack/bookstack.yml",
-        "url": "https://github.com/pi-hosted/pi-hosted"
-      },
-      "image": null,
-      "ports": null,
-      "restart_policy": null,
-      "volumes": null
     },
     {
       "categories": [
@@ -13705,68 +13489,42 @@
     },
     {
       "categories": [
-        "Development"
+        "Other",
+        "Tools"
       ],
       "type": 1,
-      "title": "Code-server {shmolf}",
+      "title": "Code Server",
       "name": "code-server",
-      "description": "Code-server (https://coder.com) is VS Code running on a remote server, accessible through the browser. - Code on your Chromebook, tablet, and laptop with a consistent dev environment. - If you have a Windows or Mac workstation, more easily develop for Linux. - Take advantage of large cloud servers to speed up tests, compilations, downloads, and more. - Preserve battery life when you're on the go. - All intensive computation runs on your server. - You're no longer running excess instances of Chrome.",
-      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/code-server-banner.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>This will bind to the following directory on the host filesystem:</p><p><code>/portainer/Files/AppData/Config/code-server</code></p><ul><li>Proxy Domain: See <a href='https://github.com/cdr/code-server/blob/master/docs/FAQ.md#sub-domains' target='_blank'>Documentation 🗗</a></li><li>Timezones: See <a href='https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List' target='_blank'>list 🗗</a></li></ul>",
+      "description": "Code-server is VS Code running on a remote server, accessible through the browser.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/code-server.png",
+      "note": null,
       "env": [
         {
-          "name": "PUID",
+          "default": "1000",
           "label": "PUID",
-          "default": "1000",
-          "description": "for UserID"
+          "name": "PUID"
         },
         {
-          "name": "PGID",
-          "label": "PGID",
           "default": "1000",
-          "description": "for GroupID"
+          "label": "PUID",
+          "name": "GUID"
         },
         {
-          "name": "TZ",
           "label": "TZ",
-          "default": "Europe/Amsterdam",
-          "description": "specify a timezone to use"
+          "name": "TZ"
         },
         {
-          "name": "PASSWORD",
           "label": "PASSWORD",
-          "default": "password",
-          "description": "Optional web gui password, if `PASSWORD` or `HASHED_PASSWORD` is not provided, there will be no auth."
+          "name": "PASSWORD"
         },
         {
-          "name": "HASHED_PASSWORD",
-          "label": "HASHED_PASSWORD",
-          "default": "",
-          "description": "Optional web gui password, overrides `PASSWORD`, instructions on how to create it is below."
-        },
-        {
-          "name": "SUDO_PASSWORD",
           "label": "SUDO_PASSWORD",
-          "default": "password",
-          "description": "If this optional variable is set, user will have sudo access in the code-server terminal with the specified password."
+          "name": "SUDO_PASSWORD"
         },
         {
-          "name": "SUDO_PASSWORD_HASH",
-          "label": "SUDO_PASSWORD_HASH",
-          "default": "",
-          "description": "Optionally set sudo password via hash (takes priority over `SUDO_PASSWORD` var). Format is `$type$salt$hashed`."
-        },
-        {
-          "name": "PROXY_DOMAIN",
+          "default": "example.my.domain",
           "label": "PROXY_DOMAIN",
-          "default": "code-server.my.domain",
-          "description": "If this optional variable is set, this domain will be proxied for subdomain proxying."
-        },
-        {
-          "name": "DEFAULT_WORKSPACE",
-          "label": "DEFAULT_WORKSPACE",
-          "default": "/config/workspace",
-          "description": "If this optional variable is set, code-server will open this directory by default"
+          "name": "PROXY_DOMAIN"
         }
       ],
       "platform": "linux",
@@ -13778,8 +13536,8 @@
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/portainer/Files/AppData/Config/code-server"
+          "bind": "/portainer/Files/AppData/Config/Code-Server",
+          "container": "/config"
         }
       ]
     },
@@ -14016,14 +13774,14 @@
       "title": "DashMachine",
       "name": "dashmachine",
       "description": "Another application bookmark dashboard, with fun features.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/dashmachine_logo.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/rmountjoy92/DashMachine\" target=\"_blank\">https://github.com/rmountjoy92/DashMachine</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/rmountjoy92/DashMachine\" target=\"_blank\">https://github.com/rmountjoy92/DashMachine</a><br><br><br>",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/dashmachine_logo.png",
+      "note": null,
       "env": null,
       "platform": "linux",
       "repository": null,
-      "image": "failed2run/dashmachine:latest",
+      "image": "rmountjoy/dashmachine:latest",
       "ports": [
-        "5100:5000/tcp"
+        "5000:5000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -14035,7 +13793,7 @@
     },
     {
       "categories": [
-        "FTP",
+        "Ftp",
         "Other",
         "Tools"
       ],
@@ -14084,14 +13842,14 @@
       "title": "DeeMix",
       "name": "deemix",
       "description": "Deemix is a deezer downloader built from the ashes of Deezloader Remix.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/deemix.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://deemix.app/\" target=\"_blank\">https://deemix.app/</a><br><b>Official Docker Documentation: </b><a href=\"https://gitlab.com/Bockiii/deemix-docker\" target=\"_blank\">https://gitlab.com/Bockiii/deemix-docker</a><br><br><br>Deemix may take a few minutes to install. Be sure to check the logs for details. Refer to <a href='https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken'>this page</a> for userToken details.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/deemix.png",
+      "note": "Deemix may take a few minutes to install. Be sure to check the logs for details. Refer to <a href='https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken'>this page</a> for userToken details.",
       "env": null,
       "platform": "linux",
       "repository": null,
-      "image": "registry.gitlab.com/bockiii/deemix-docker:latest",
+      "image": "registry.gitlab.com/bockiii/deemix-docker",
       "ports": [
-        "9666:6595/tcp"
+        "6595:6595/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -14278,7 +14036,7 @@
     },
     {
       "categories": [
-        "HomeAutomation",
+        "Homeautomation",
         "Management"
       ],
       "type": 1,
@@ -14468,7 +14226,7 @@
     },
     {
       "categories": [
-        "DNS",
+        "Dns",
         "Tools"
       ],
       "type": 1,
@@ -14764,42 +14522,27 @@
         "Tools"
       ],
       "type": 1,
-      "title": "FileBrowser S6",
+      "title": "FileBrowser",
       "name": "filebrowser",
-      "description": "[arm][s6-version] Web File Browser which can be used as a middleware or standalone app.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/filebrowser.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://filebrowser.org/\" target=\"_blank\">https://filebrowser.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://filebrowser.org/installation#docker\" target=\"_blank\">https://filebrowser.org/installation#docker</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=30MYRgCObu8&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=4 target=\"_blank\">Novaspirit Tech - Installing JDownloader and File Browser On The Pi Docker Server</a><br><br>The default user and password is admin/admin.",
-      "env": [
-        {
-          "default": "1000",
-          "label": "PUID",
-          "name": "PUID"
-        },
-        {
-          "default": "1000",
-          "label": "PGID",
-          "name": "PGID"
-        }
-      ],
+      "description": "Web File Browser which can be used as a middleware or standalone app.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/filebrowser.png",
+      "note": "The default user and password is admin/admin.",
+      "env": null,
       "platform": "linux",
       "repository": null,
-      "image": "filebrowser/filebrowser:s6",
+      "image": "80x86/filebrowser:latest",
       "ports": [
-        "8082:80/tcp"
+        "8082:8082/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "bind": "/portainer/Downloads",
-          "container": "/srv"
+          "bind": "/portainer/Files/AppData/Config/FileBrowser",
+          "container": "/config"
         },
         {
-          "bind": "/portainer/Files/AppData/Config/filebrowser/filebrowser.db",
-          "container": "/database/filebrowser.db"
-        },
-        {
-          "bind": "/portainer/Files/AppData/Config/filebrowser/settings.json",
-          "container": "/config/settings.json"
+          "bind": "/portainer/Files/AppData/Config",
+          "container": "/myfiles"
         }
       ]
     },
@@ -15501,12 +15244,12 @@
       "title": "Guacamole",
       "name": "guacamole",
       "description": "A clientless remote desktop gateway.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/guacamole.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://guacamole.apache.org/\" target=\"_blank\">https://guacamole.apache.org/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/oznu/guacamole\" target=\"_blank\">https://hub.docker.com/r/oznu/guacamole</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=cKAhnf8X1lo&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=3 target=\"_blank\">Novaspirit Tech - Manually Installing Guacamole on Portainer</a><br><br>The default login will be guacadmin/guacadmin. It is common practice to add a new admin user and remove the default user for Guacamole.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/guacamole.png",
+      "note": "The default login will be guacadmin/guacadmin. It is common practice to add a new admin user and remove the default user for Guacamole.",
       "env": null,
       "platform": "linux",
       "repository": null,
-      "image": "oznu/guacamole:armhf",
+      "image": "oznu/guacamole:latest",
       "ports": [
         "8080:8080/tcp"
       ],
@@ -15967,19 +15710,19 @@
       "type": 1,
       "title": "Homer",
       "name": "homer",
-      "description": "A dead simple static HOMepage for your servER to keep your services on hand, from a simple yaml configuration file.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/homer.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/bastienwirtz/homer\" target=\"_blank\">https://github.com/bastienwirtz/homer</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md\" target=\"_blank\">https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md</a><br><br><h3><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_homer.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_homer.sh | bash</h3><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=_d3J88ootYo&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=2 target=\"_blank\">Novaspirit Tech - Installing and Configuring Homer Dashboard</a><br><br>This container requires a yml file within the config volume. See the documentation here https://github.com/bastienwirtz/homer",
+      "description": "A dead simple static HOMepage for your servER to keep your s ervices on hand, from a simple yaml configuration file.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/homer.png",
+      "note": "This container requires a yml file within the config volume. See the documentation here https://github.com/bastienwirtz/homer",
       "env": [
         {
           "default": "1000",
-          "label": "GID",
-          "name": "GID"
+          "label": "PUID",
+          "name": "PUID"
         },
         {
-          "default": "1000",
-          "label": "UID",
-          "name": "UID"
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
         }
       ],
       "platform": "linux",
@@ -15993,6 +15736,10 @@
         {
           "bind": "/portainer/Files/AppData/Config/Homer/assets",
           "container": "/www/assets"
+        },
+        {
+          "bind": "/portainer/Files/AppData/Config/Homer",
+          "container": "/www/config.yml"
         }
       ]
     },
@@ -16043,14 +15790,14 @@
       "title": "Huginn",
       "name": "huginn",
       "description": "Create agents that monitor and act on your behalf.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/huginn.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/huginn/huginn\" target=\"_blank\">https://github.com/huginn/huginn</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/huginn/huginn/tree/master/docker\" target=\"_blank\">https://github.com/huginn/huginn/tree/master/docker</a><br><br><br>",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/huginn.png",
+      "note": null,
       "env": null,
       "platform": "linux",
       "repository": null,
-      "image": "mjysci/huginn:arm32v7",
+      "image": "huginn/huginn:latest",
       "ports": [
-        "3005:3000/tcp"
+        "3000:3000/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -16240,11 +15987,11 @@
         "Other",
         "Web"
       ],
-      "type": 2,
+      "type": 3,
       "title": "Invoice Ninja",
       "name": "invoice_ninja",
       "description": "Invoices, Expenses and Tasks built with Laravel and Flutter.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/invoice_ninja.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/invoice_ninja.png",
       "note": "The database user is invoice_ninja and the database is ninja_db. Please generate an app key following the documentation <a href='https://github.com/invoiceninja/dockerfiles'>here</a>. ",
       "env": [
         {
@@ -16275,8 +16022,8 @@
       ],
       "platform": "linux",
       "repository": {
-        "stackfile": "stacks/invoice-ninja/docker-stack.yml",
-        "url": "https://github.com/mikestraney/portainer-templates"
+        "stackfile": "Template/Stack/invoice-ninja.yml",
+        "url": "https://github.com/Qballjos/portainer_templates"
       },
       "image": null,
       "ports": null,
@@ -16788,11 +16535,84 @@
         "Web"
       ],
       "type": 1,
+      "title": "Let's Encrypt",
+      "name": "letsencrypt",
+      "description": "This container sets up an Nginx webserver and reverse proxy with php support and a built-in letsencrypt client that automates free SSL server certificate generation and renewal processes. It also contains fail2ban for intrusion prevention.\r\n  \r\n  Before running this container, make sure that the url and subdomains are properly forwarded to this container's host.\r\n  \r\n  - Port 443 on the internet side of the router should be forwarded to this container's port 443.\r\n  - If you need a dynamic dns provider, you can use the free provider duckdns.org where the url will be yoursubdomain.duckdns.org and the subdomains    can be www,ftp,cloud\r\n  - The container detects changes to url and subdomains, revokes existing certs and generates new ones during start. \r\n  - It also detects changes to the DHLEVEL parameter and replaces the dhparams file.\r\n  \r\n  - If you'd like to password protect your sites, you can use htpasswd. Run the following command on your host to generate the htpasswd file docker exec -it letsencrypt htpasswd -c /config/nginx/.htpasswd &lt;username&gt;",
+      "logo": "https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/letsencrypt.png",
+      "note": null,
+      "env": [
+        {
+          "label": "EMAIL",
+          "name": "EMAIL",
+          "set": "-Xms256m -Xmx512m"
+        },
+        {
+          "label": "URL",
+          "name": "URL",
+          "set": "-Xms256m -Xmx512m"
+        },
+        {
+          "label": "SUBDOMAINS",
+          "name": "SUBDOMAINS",
+          "set": "www,"
+        },
+        {
+          "label": "ONLY_SUBDOMAINS",
+          "name": "ONLY_SUBDOMAINS",
+          "set": "false"
+        },
+        {
+          "label": "DHLEVEL",
+          "name": "DHLEVEL",
+          "set": "2048"
+        },
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "VALIDATION",
+          "name": "VALIDATION",
+          "set": "http"
+        },
+        {
+          "label": "DNSPLUGIN",
+          "name": "DNSPLUGIN",
+          "set": "http"
+        }
+      ],
+      "platform": "linux",
+      "repository": null,
+      "image": "linuxserver/letsencrypt:latest",
+      "ports": [
+        "80/tcp",
+        "443/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "volumes": [
+        {
+          "bind": "/portainer/Files/AppData/Config/LetsEncrypt",
+          "container": "/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Tools",
+        "Web"
+      ],
+      "type": 1,
       "title": "Let's Encrypt / SWAG",
       "name": "letsencrypt / SWAG",
-      "description": "This container sets up an Nginx webserver and reverse proxy with php support and a built-in letsencrypt client that automates free SSL server certificate generation and renewal processes. It also contains fail2ban for intrusion prevention.\r\n  \r\n  Before running this container, make sure that the url and subdomains are properly forwarded to this container's host.\r\n  \r\n  - Port 443 on the internet side of the router should be forwarded to this container's port 443.\r\n  - If you need a dynamic dns provider, you can use the free provider duckdns.org where the url will be yoursubdomain.duckdns.org and the subdomains    can be www,ftp,cloud\r\n  - The container detects changes to url and subdomains, revokes existing certs and generates new ones during start. \r\n  - It also detects changes to the DHLEVEL parameter and replaces the dhparams file.\r\n  \r\n  - If you'd like to password protect your sites, you can use htpasswd. Run the following command on your host to generate the htpasswd file docker exec -it letsencrypt htpasswd -c /config/nginx/.htpasswd &lt;username&gt;",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/letsencrypt.png",
-      "note": null,
+      "description": "This container sets up an Nginx webserver and reverse proxy with php support and a built-in letsencrypt client that automates free SSL server certificate generation and renewal processes. It also contains fail2ban for intrusion prevention.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/letsencrypt.png",
+      "note": "Before running this container, make sure that the url and subdomains are properly forwarded to this container's host.<ul><li>- Port 443 on the internet side of the router should be forwarded to this container's port 443.</li><li>- If you need a dynamic dns provider, you can use the free provider duckdns.org where the url will be yoursubdomain.duckdns.org and the subdomains can be www,ftp,cloud</li><li>- The container detects changes to url and subdomains, revokes existing certs and generates new ones during start.</li><li>- It also detects changes to the DHLEVEL parameter and replaces the dhparams file.</li><li>- If you'd like to password protect your sites, you can use htpasswd. Run the following command on your host to generate the htpasswd file <code>docker exec -it letsencrypt htpasswd -c /config/nginx/.htpasswd &lt;username&gt;</code>",
       "env": [
         {
           "label": "EMAIL",
@@ -16882,81 +16702,17 @@
       ]
     },
     {
-      "categories": [],
-      "type": 1,
-      "title": "Librespeed",
-      "name": "librespeed",
-      "description": "[Librespeed](https://github.com/librespeed/speedtest) is a very lightweight Speedtest implemented in Javascript, using XMLHttpRequest and Web Workers. No Flash, No Java, No Websocket, No Bullshit.",
-      "logo": "https://raw.githubusercontent.com/librespeed/speedtest/master/.logo/logo3.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/librespeed/config</p>",
-      "env": [
-        {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "15000",
-          "description": "for UserID"
-        },
-        {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "15000",
-          "description": "for GroupID"
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "America/Los_Angeles",
-          "description": "Specify a timezone to use for example Europe/Amsterdam"
-        },
-        {
-          "name": "PASSWORD",
-          "label": "PASSWORD",
-          "default": "PASSWORD",
-          "description": "Set the password for the results database."
-        },
-        {
-          "name": "CUSTOM_RESULTS",
-          "label": "CUSTOM_RESULTS",
-          "default": "false",
-          "description": "(optional) set to `true` to enable custom results page in `/config/www/results/index.php`."
-        },
-        {
-          "name": "DB_TYPE",
-          "label": "DB_TYPE",
-          "default": "sqlite",
-          "description": "Defaults to `sqlite`, can also be set to `mysql` or `postgresql`."
-        },
-        {
-          "name": "DB_NAME",
-          "label": "DB_NAME",
-          "default": "DB_NAME",
-          "description": "Database name. Required for mysql and pgsql."
-        },
-        {
-          "name": "DB_HOSTNAME",
-          "label": "DB_HOSTNAME",
-          "default": "DB_HOSTNAME",
-          "description": "Database address. Required for mysql and pgsql."
-        },
-        {
-          "name": "DB_USERNAME",
-          "label": "DB_USERNAME",
-          "default": "DB_USERNAME",
-          "description": "Database username. Required for mysql and pgsql."
-        },
-        {
-          "name": "DB_PASSWORD",
-          "label": "DB_PASSWORD",
-          "default": "DB_PASSWORD",
-          "description": "Database password. Required for mysql and pgsql."
-        },
-        {
-          "name": "DB_PORT",
-          "label": "DB_PORT",
-          "default": "DB_PORT",
-          "description": "Database port. Required for mysql."
-        }
+      "categories": [
+        "Other",
+        "Tools"
       ],
+      "type": 1,
+      "title": "LibreSpeed",
+      "name": "librespeed",
+      "description": "A Free and Open Source Speedtest for HTML5 and more.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/speedtest.png",
+      "note": null,
+      "env": null,
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/librespeed:latest",
@@ -16966,8 +16722,8 @@
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/opt/mediadepot/apps/librespeed/config"
+          "bind": "/portainer/Files/AppData/Config/LibreSpeed",
+          "container": "/config"
         }
       ]
     },
@@ -17344,7 +17100,7 @@
       "title": "McMyAdmin 2",
       "name": "mcmyadmin2",
       "description": "McMyAdmin 2 is the leading web control panel and administration console for Minecraft servers.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/mcmyadmin-icon.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/mcmyadmin-icon.png",
       "note": null,
       "env": [
         {
@@ -17759,8 +17515,8 @@
       "title": "Murmur",
       "name": "murmur",
       "description": "Mumble is a voicechat program for gamers written on top of Qt and Opus. Murmur is the server backend for Mumble.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/Mumble-logo.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://www.mumble.info/\" target=\"_blank\">https://www.mumble.info/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/yhaenggi/murmur-docker\" target=\"_blank\">https://github.com/yhaenggi/murmur-docker</a><br><br><br>",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/Mumble-logo.png",
+      "note": null,
       "env": [
         {
           "default": "1000",
@@ -17768,19 +17524,18 @@
           "name": "PUID"
         },
         {
-          "default": "1000",
+          "default": "100",
           "label": "PGID",
           "name": "PGID"
         },
         {
-          "default": "America/New_York",
           "label": "TZ",
           "name": "TZ"
         }
       ],
       "platform": "linux",
       "repository": null,
-      "image": "yhaenggi/murmur:1.3.4",
+      "image": "goofball222/murmur:latest",
       "ports": [
         "64738:64738/tcp",
         "64738:64738/udp"
@@ -18209,7 +17964,7 @@
       "title": "Nginx Proxy Manager",
       "name": "nginx-proxy-manager",
       "description": "Nginx Proxy Manager enables you to easily forward to your websites running at home or otherwise, including free SSL, without having to know too much about Nginx or Letsencrypt.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/proxy_mgr.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/proxy_mgr.png",
       "note": null,
       "env": [
         {
@@ -18222,9 +17977,9 @@
       "repository": null,
       "image": "jc21/nginx-proxy-manager",
       "ports": [
-        "80:8080/tcp",
-        "81:8181/tcp",
-        "443:4443/tcp"
+        "80:80/tcp",
+        "81:81/tcp",
+        "443:443/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -18782,7 +18537,7 @@
       "title": "OpenVPN Access Server",
       "name": "openvpn-as",
       "description": "OpenVPN Access Server is a full featured secure network tunneling VPN software solution that integrates OpenVPN server capabilities, enterprise management capabilities, simplified OpenVPN Connect UI, and OpenVPN Client software packages that accommodate Windows, MAC, Linux, Android, and iOS environments.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/openvpn-as-icon.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/openvpn-as-icon.png",
       "note": null,
       "env": [
         {
@@ -18845,11 +18600,11 @@
         "Tools"
       ],
       "type": 1,
-      "title": "Organizr v2",
+      "title": "Organizr",
       "name": "organizr-v2",
       "description": "Organizr allows you to setup Tabs that will be loaded all in one webpage. You can then work on your server with ease.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/organizr-icon.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://organizr.app/\" target=\"_blank\">https://organizr.app/</a><br><b>Official Docker Documentation: </b><a href=\"https://hub.docker.com/r/organizr/organizr\" target=\"_blank\">https://hub.docker.com/r/organizr/organizr</a><br><br><br>",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/organizr-icon.png",
+      "note": null,
       "env": [
         {
           "default": "1000",
@@ -18857,7 +18612,7 @@
           "name": "PUID"
         },
         {
-          "default": "1000",
+          "default": "100",
           "label": "PGID",
           "name": "PGID"
         }
@@ -18866,7 +18621,7 @@
       "repository": null,
       "image": "organizr/organizr:latest",
       "ports": [
-        "7171:80/tcp"
+        "80/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -19115,57 +18870,6 @@
       "ports": null,
       "restart_policy": "unless-stopped",
       "volumes": null
-    },
-    {
-      "categories": [
-        "Downloaders",
-        "Networkother",
-        "Mediaappvideo",
-        "Tools"
-      ],
-      "type": 1,
-      "title": "Overseerr",
-      "name": "overseerr",
-      "description": "Overseerr is a request management and media discovery tool built to work with your existing Plex ecosystem.",
-      "logo": "https://mediadepot.github.io/templates/img/overseerr.png",
-      "note": null,
-      "env": [
-        {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "15000",
-          "preset": true
-        },
-        {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "15000",
-          "preset": true
-        },
-        {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "America/Los_Angeles"
-        }
-      ],
-      "platform": null,
-      "repository": null,
-      "image": "lscr.io/linuxserver/overseerr:latest",
-      "ports": [
-        "5055/tcp"
-      ],
-      "restart_policy": null,
-      "volumes": [
-        {
-          "container": "/config",
-          "bind": "/opt/mediadepot/apps/overseerr"
-        },
-        {
-          "container": "/etc/localtime",
-          "bind": "/etc/localtime",
-          "readonly": true
-        }
-      ]
     },
     {
       "categories": [
@@ -19529,8 +19233,8 @@
       "title": "Pi-Hole",
       "name": "pihole",
       "description": "A Linux network-level advertisement and Internet tracker blocking application which acts as a DNS sinkhole.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/pihole.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://pi-hole.net/\" target=\"_blank\">https://pi-hole.net/</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker\" target=\"_blank\">https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker</a><br><h3><b>Pi-Hosted dedicated documentation: </b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/docs/pi-hole.md\" target=\"_blank\">pi-hole.md</a></h3><br><br><br>When the installation is complete, navigate to your.ip.goes.here:1010/admin. Follow the article <a href='https://medium.com/@niktrix/getting-rid-of-systemd-resolved-consuming-port-53-605f0234f32f'>here</a> if you run into issues binding to port 53. If you like to use Pi-Hole's built in DHCP-Server change the Network type to host and open advance options and scroll to Labels and add: NET_ADMIN with the value True. When you do so, specify a port is no more needed, navigate to your.ip.goes.here/admin.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/pihole.png",
+      "note": "When the installation is complete, navigate to your.ip.goes.here:1010/admin. Follow the article <a href='https://medium.com/@niktrix/getting-rid-of-systemd-resolved-consuming-port-53-605f0234f32f'>here</a> if you run into issues binding to port 53.",
       "env": null,
       "platform": "linux",
       "repository": null,
@@ -19777,110 +19481,94 @@
     },
     {
       "categories": [
-        "Mediaservervideo",
-        "Mediaservermusic",
-        "Mediaserverphotos"
+        "Video",
+        "Music",
+        "Photos"
       ],
       "type": 1,
-      "title": "Plex Media Server",
+      "title": "Plex",
       "name": "plex",
-      "description": "Plex organizes your video, music, and photo collections and streams them to all of your screens.",
-      "logo": "https://mediadepot.github.io/templates/img/plex-icon.png",
+      "description": "Your favorite movies, TV, music, web shows, podcasts, and more, all streamed to your favorite screens.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/plex-icon.png",
       "note": null,
       "env": [
         {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "15000",
-          "preset": true
-        },
-        {
-          "name": "PUID",
+          "default": "1000",
           "label": "PUID",
-          "default": "15000",
-          "preset": true
+          "name": "PUID"
         },
         {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "America/Los_Angeles"
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
         },
         {
-          "name": "VERSION",
           "label": "VERSION",
-          "default": "latest"
+          "name": "VERSION",
+          "set": "latest"
         }
       ],
-      "platform": null,
+      "platform": "linux",
       "repository": null,
       "image": "linuxserver/plex:latest",
-      "ports": [],
-      "restart_policy": null,
+      "ports": null,
+      "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/opt/mediadepot/apps/plex"
+          "bind": "/portainer/Files/AppData/Config/Plex",
+          "container": "/config"
         },
         {
-          "container": "/data/tvshows",
-          "bind": "/media/storage/tvshows"
+          "bind": "/portainer/TV",
+          "container": "/tv"
         },
         {
-          "container": "/data/movies",
-          "bind": "/media/storage/movies"
-        },
-        {
-          "container": "/data/music",
-          "bind": "/media/storage/music"
-        },
-        {
-          "container": "/transcode"
+          "bind": "/portainer/Movies",
+          "container": "/movies"
         }
       ]
     },
     {
       "categories": [
         "Downloaders",
-        "Networkother",
-        "Mediaappvideo",
+        "Other",
+        "Video",
         "Tools"
       ],
       "type": 1,
       "title": "Plex Requests",
       "name": "plexrequests",
       "description": "Simple automated way for users to request new content for Plex.",
-      "logo": "https://mediadepot.github.io/templates/img/plex-requests-logo.jpeg",
+      "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/plexrequests-icon.png",
       "note": null,
       "env": [
         {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "15000",
-          "preset": true
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
         },
         {
-          "name": "PUID",
-          "label": "PUID",
-          "default": "15000",
-          "preset": true
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
+        },
+        {
+          "label": "URL_BASE",
+          "name": "URL_BASE",
+          "set": ""
         }
       ],
-      "platform": null,
+      "platform": "linux",
       "repository": null,
       "image": "linuxserver/plexrequests:latest",
       "ports": [
-        "3000/tcp"
+        "3000:3000/tcp"
       ],
-      "restart_policy": null,
+      "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/opt/mediadepot/apps/plexrequests"
-        },
-        {
-          "container": "/etc/localtime",
-          "bind": "/etc/localtime",
-          "readonly": true
+          "bind": "/portainer/Files/AppData/Config/PlexRequests",
+          "container": "/config"
         }
       ]
     },
@@ -20115,7 +19803,7 @@
       "title": "ProtonMail Bridge",
       "name": "protonmail-bridge",
       "description": "This is an unofficial Docker container of the ProtonMail Bridge. Some of the scripts are based on Hendrik Meyer's work.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/protonmail-bridge.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/protonmail-bridge.png",
       "note": "Please refer to the documentation <a href='https://hub.docker.com/r/shenxn/protonmail-bridge'/>here</a> to set this up.",
       "env": null,
       "platform": "linux",
@@ -20136,50 +19824,37 @@
     {
       "categories": [
         "Downloaders",
-        "Tools"
+        "Video"
       ],
       "type": 1,
       "title": "Prowlarr",
       "name": "prowlarr",
-      "description": "Prowlarr is a indexer manager/proxy built on the popular arr .net/reactjs base stack to integrate with your various PVR apps. Prowlarr supports both Torrent Trackers and Usenet Indexers. ",
-      "logo": "https://mediadepot.github.io/templates/img/prowlarr-banner.png",
+      "description": "Prowlarr is a indexer manager/proxy built on the popular arr .net/reactjs base stack to integrate with your various PVR apps. Prowlarr supports both Torrent Trackers and Usenet Indexers. It integrates seamlessly with Sonarr, Radarr, Lidarr, and Readarr offering complete management of your indexers with no per app Indexer setup required (we do it all).",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/prowlarr.png",
       "note": null,
       "env": [
         {
-          "name": "PGID",
-          "label": "PGID",
-          "default": "15000",
-          "preset": true
-        },
-        {
-          "name": "PUID",
+          "default": "1000",
           "label": "PUID",
-          "default": "15000",
-          "preset": true
+          "name": "PUID"
         },
         {
-          "name": "TZ",
-          "label": "TZ",
-          "default": "America/Los_Angeles",
-          "preset": true
+          "default": "100",
+          "label": "PGID",
+          "name": "PGID"
         }
       ],
-      "platform": null,
+      "platform": "linux",
       "repository": null,
       "image": "ghcr.io/linuxserver/prowlarr:develop",
       "ports": [
-        "9696/tcp"
+        "9696:9696/tcp"
       ],
-      "restart_policy": null,
+      "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "container": "/config",
-          "bind": "/opt/mediadepot/apps/prowlarr"
-        },
-        {
-          "container": "/etc/localtime",
-          "bind": "/etc/localtime",
-          "readonly": true
+          "bind": "/portainer/Files/AppData/Config/Prowlarr",
+          "container": "/config"
         }
       ]
     },
@@ -20533,8 +20208,8 @@
       "type": 1,
       "title": "Quassel IRC",
       "name": "quassel-core",
-      "description": "Quassel IRC is a modern, cross-platform, distributed IRC client, meaning that one (or multiple) client(s) can attach to and detach from a central core -- much like the popular combination of screen and a text-based IRC client such as WeeChat, but graphical. Blowfish support and optional web-ui included.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/quassel-core-icon.png",
+      "description": "Quassel IRC is a modern, cross-platform, distributed IRC client, meaning that one (or multiple) client(s) can attach to and detach from a central core - much like the popular combination of screen and a text-based IRC client such as WeeChat, but graphical. Blowfish support and optional web-ui included.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/quassel-core-icon.png",
       "note": null,
       "env": [
         {
@@ -20646,7 +20321,7 @@
       "title": "Reactive-Resume",
       "name": "reactive-resume",
       "description": "A one-of-a-kind resume builder that's not out to get your data. Completely secure, customizable, portable, open-source and free forever.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/reactiveresume.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/reactiveresume.png",
       "note": null,
       "env": null,
       "platform": "linux",
@@ -21021,14 +20696,14 @@
       "title": "Shiori",
       "name": "shiori",
       "description": "Shiori is a simple bookmarks manager written in Go language. Intended as a simple clone of Pocket. You can use it as command line application or as web application.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/shiori-icon.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/go-shiori/shiori\" target=\"_blank\">https://github.com/go-shiori/shiori</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/nicholaswilde/docker-shiori\" target=\"_blank\">https://github.com/nicholaswilde/docker-shiori</a><br><br><br>",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/shiori-icon.png",
+      "note": null,
       "env": null,
       "platform": "linux",
       "repository": null,
-      "image": "nicholaswilde/shiori:latest",
+      "image": "radhifadlillah/shiori:latest",
       "ports": [
-        "7564:8080/tcp"
+        "8080/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
@@ -21769,18 +21444,19 @@
     {
       "categories": [
         "Other",
-        "Tools"
+        "Tools",
+        "Wiki"
       ],
       "type": 1,
       "title": "TiddlyWiki",
       "name": "tiddlywiki",
       "description": "A unique, non-linear notebook wiki.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/tiddlywiki.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://tiddlywiki.com/\" target=\"_blank\">https://tiddlywiki.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://gitlab.com/nicolaw/tiddlywiki\" target=\"_blank\">https://gitlab.com/nicolaw/tiddlywiki</a><br><br><h3><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_tiddlywiki.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_tiddlywiki.sh | bash</h3><br><br>",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/tiddlywiki.png",
+      "note": null,
       "env": null,
       "platform": "linux",
       "repository": null,
-      "image": "nicolaw/tiddlywiki:latest",
+      "image": "mazzolino/tiddlywiki:latest",
       "ports": [
         "8080:8080/tcp"
       ],
@@ -21928,11 +21604,11 @@
         "Tools"
       ],
       "type": 1,
-      "title": "Transmission OpenVPN v3",
+      "title": "Transmission-OpenVPN",
       "name": "transmission-openvpn",
-      "description": "This container contains OpenVPN and Transmission with a configuration\nwhere Transmission is running only when OpenVPN has an active tunnel.\nIt bundles configuration files for many popular VPN providers to make the setup easier.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/transmission-icon.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://transmissionbt.com/\" target=\"_blank\">https://transmissionbt.com/</a><br><b>Official Docker Documentation: </b><a href=\"https://haugene.github.io/docker-transmission-openvpn/run-container/\" target=\"_blank\">https://haugene.github.io/docker-transmission-openvpn/run-container/</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=tGLVEq913_4&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=5 target=\"_blank\">Novaspirit Tech - Torrent with Docker and OPENVPN with Transmission and PIA</a><br><br>List of supported providers available <a href='https://haugene.github.io/docker-transmission-openvpn/supported-providers'/>here</a>.",
+      "description": "This container contains OpenVPN and Transmission with a configuration where Transmission is running only when OpenVPN has an active tunnel. It bundles configuration files for many popular VPN providers to make the setup easier.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/transmission-icon.png",
+      "note": "List of supported providers available <a href='https://haugene.github.io/docker-transmission-openvpn/supported-providers'/>here</a>.",
       "env": [
         {
           "default": "1000",
@@ -21940,7 +21616,7 @@
           "name": "PUID"
         },
         {
-          "default": "1000",
+          "default": "100",
           "label": "PGID",
           "name": "PGID"
         },
@@ -21949,12 +21625,6 @@
           "description": "https://haugene.github.io/docker-transmission-openvpn/supported-providers/",
           "label": "OPENVPN_PROVIDER",
           "name": "OPENVPN_PROVIDER"
-        },
-        {
-          "default": "",
-          "description": "Optional. Mostly used to narrow down what location to use by the provider",
-          "label": "OPENVPN_CONFIG",
-          "name": "OPENVPN_CONFIG"
         },
         {
           "default": "",
@@ -21970,25 +21640,16 @@
           "default": "192.168.0.0/24",
           "label": "LOCAL_NETWORK",
           "name": "LOCAL_NETWORK"
-        },
-        {
-          "default": "true",
-          "label": "watch-dir-enabled",
-          "name": "TRANSMISSION_WATCH_DIR_ENABLED"
         }
       ],
       "platform": "linux",
       "repository": null,
-      "image": "haugene/transmission-openvpn:3.7.1",
+      "image": "haugene/transmission-openvpn:latest",
       "ports": [
         "9091:9091/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
-        {
-          "bind": "/portainer/Files/AppData/Config/transmission-openvpn",
-          "container": "/config"
-        },
         {
           "bind": "/portainer/Downloads",
           "container": "/data"
@@ -22141,7 +21802,7 @@
       "title": "Tiny Tiny RSS",
       "name": "tt-rss",
       "description": "Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.",
-      "logo": "https://raw.githubusercontent.com/mikestraney/portainer-templates/master/Images/tt-rss-icon.png",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/tt-rss-icon.png",
       "note": null,
       "env": [
         {
@@ -22451,15 +22112,14 @@
     },
     {
       "categories": [
-        "Other",
-        "Tools"
+        "Taskserver"
       ],
       "type": 1,
       "title": "Uptime Kuma",
       "name": "uptime-kuma",
-      "description": "It is a self-hosted monitoring tool like 'Uptime Robot'.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/uptime-kuma.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/louislam/uptime-kuma\" target=\"_blank\">https://github.com/louislam/uptime-kuma</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/louislam/uptime-kuma/wiki/%F0%9F%94%A7-How-to-Install#-docker\" target=\"_blank\">https://github.com/louislam/uptime-kuma/wiki/%F0%9F%94%A7-How-to-Install#-docker</a><br><br><br>A fancy self-hosted monitoring tool.",
+      "description": "It is a self-hosted monitoring tool like Uptime Robot",
+      "logo": "https://images.opencollective.com/uptime-kuma/29c5113/logo/256.png",
+      "note": null,
       "env": null,
       "platform": "linux",
       "repository": null,
@@ -22467,10 +22127,10 @@
       "ports": [
         "3001:3001/tcp"
       ],
-      "restart_policy": "unless-stopped",
+      "restart_policy": "always",
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/uptime-kuma",
+          "bind": "/portainer/Files/AppData/Config/UptimeKuma",
           "container": "/app/data"
         }
       ]
@@ -22513,21 +22173,20 @@
       "type": 1,
       "title": "Vaultwarden",
       "name": "vaultwarden",
-      "description": "This is a Bitwarden server API implementation written in Rust compatible with upstream Bitwarden clients*, perfect for self-hosted deployment where running the official resource-heavy service might not be ideal..",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/bitwarden.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/dani-garcia/vaultwarden\" target=\"_blank\">https://github.com/dani-garcia/vaultwarden</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/dani-garcia/vaultwarden/wiki\" target=\"_blank\">https://github.com/dani-garcia/vaultwarden/wiki</a><br><br><br>Alternative Implementation of the Bitwarden Server API in Rust, including web vault.",
+      "description": "This is a Bitwarden server API implementation written in Rust compatible with upstream Bitwarden clients*, perfect for self-hosted deployment where running the official resource-heavy service might not be ideal.",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/bitwarden.png",
+      "note": "This project is not associated with the Bitwarden project nor 8bit Solutions LLC.",
       "env": null,
       "platform": "linux",
       "repository": null,
       "image": "vaultwarden/server:latest",
       "ports": [
-        "8010:80/tcp",
-        "3012:3012/tcp"
+        ":80/tcp"
       ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
-          "bind": "/portainer/Files/AppData/Config/Bitwarden",
+          "bind": "/portainer/Files/AppData/Config/Vaultwarden",
           "container": "/data"
         }
       ]
@@ -22646,8 +22305,8 @@
       "title": "Watchtower",
       "name": "watchtower",
       "description": "With watchtower you can update the running version of your containerized app simply by pushing a new image to the Docker Hub or your own image registry. Watchtower will pull down your new image, gracefully shut down your existing container and restart it with the same options that were used when it was deployed initially.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/watchtower.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://containrrr.dev/watchtower/\" target=\"_blank\">https://containrrr.dev/watchtower/</a><br><b>Official Docker Documentation: </b><a href=\"https://containrrr.dev/watchtower/usage-overview/\" target=\"_blank\">https://containrrr.dev/watchtower/usage-overview/</a><br><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=q3wKqk8qVS8&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=7 target=\"_blank\">Novaspirit Tech - Upgrading Portainer and Updating Containers</a><br><br>It is recommended to manually update your containers but we're including this for those of you that don't care",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/watchtower.png",
+      "note": "It is recommended to manually update your containers but we're including this for those of you that don't care",
       "env": null,
       "platform": "linux",
       "repository": null,
@@ -22826,8 +22485,8 @@
       "title": "Whoogle",
       "name": "whoogle",
       "description": "Self-hosted, ad-free, privacy-respecting Google metasearch engine.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/whoogle.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/benbusby/whoogle-search\" target=\"_blank\">https://github.com/benbusby/whoogle-search</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/benbusby/whoogle-search#g-manual-docker\" target=\"_blank\">https://github.com/benbusby/whoogle-search#g-manual-docker</a><br><br><h3><b><a href=\"https://github.com/pi-hosted/pi-hosted/blob/master/tools/install_whoogle.sh\" target=\"_blank\">Pre-installation script</a> must be RAN before you install: </b>wget -qO- https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/tools/install_whoogle.sh | bash</h3><br><br><b>Youtube Video: </b><a href=https://www.youtube.com/watch?v=j3ZGxo3ibUs&list=PL846hFPMqg3jwkxcScD1xw2bKXrJVvarc&index=12 target=\"_blank\">Novaspirit Tech - How to Install Whoogle to replace using Google and repo notes</a><br><br>",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/whoogle.png",
+      "note": null,
       "env": null,
       "platform": "linux",
       "repository": null,
@@ -22910,7 +22569,7 @@
       "name": "yacht",
       "description": "A web interface for managing docker containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentralized app store for servers that anyone can make packages for.",
       "logo": "https://raw.githubusercontent.com/SelfhostedPro/Yacht/master/readme_media/Yacht_logo_1_dark.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://yacht.sh/\" target=\"_blank\">https://yacht.sh/</a><br><b>Official Docker Documentation: </b><a href=\"https://yacht.sh/docs/Installation/Install#via-docker-compose\" target=\"_blank\">https://yacht.sh/docs/Installation/Install#via-docker-compose</a><br><br><br>",
+      "note": null,
       "env": null,
       "platform": "linux",
       "repository": null,
@@ -22939,8 +22598,8 @@
       "title": "YouTubeDL-Material",
       "name": "youtubedl-material",
       "description": "YoutubeDL-Material is a Material Design frontend for youtube-dl. It's coded using Angular 9 for the frontend, and Node.js on the backend.",
-      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/ytdlm.png",
-      "note": "<b>Template created by Pi-Hosted Series</b><br><b>Check our Github page: <a href=\"https://github.com/pi-hosted/pi-hosted\" target=\"_blank\">https://github.com/pi-hosted/pi-hosted</a></b><br><br><b>Official Webpage: </b><a href=\"https://github.com/Tzahi12345/YoutubeDL-Material\" target=\"_blank\">https://github.com/Tzahi12345/YoutubeDL-Material</a><br><b>Official Docker Documentation: </b><a href=\"https://github.com/Tzahi12345/YoutubeDL-Material#docker\" target=\"_blank\">https://github.com/Tzahi12345/YoutubeDL-Material#docker</a><br><br><br>",
+      "logo": "https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Images/ytdlm.png",
+      "note": null,
       "env": null,
       "platform": "linux",
       "repository": null,
