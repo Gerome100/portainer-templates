@@ -1991,7 +1991,9 @@
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/ddclient:latest",
-      "ports": null,
+      "ports": [
+        "80:80/tcp"
+      ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
@@ -2385,7 +2387,9 @@
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/doplarr:latest",
-      "ports": null,
+      "ports": [
+        "80:80/tcp"
+      ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
@@ -2450,7 +2454,7 @@
       "name": "Duckdns",
       "description": "[Duckdns](https://duckdns.org/) is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.",
       "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/duckdns.png",
-      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/duckdns/config</p>",
+      "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/duckdns/config<br>mkdir -p /volume1/docker/duckdns/config</p>",
       "env": [
         {
           "name": "PUID",
@@ -2498,9 +2502,15 @@
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/duckdns:latest",
-      "ports": null,
+      "ports": [
+        "80:80/tcp"
+      ],
       "restart_policy": "unless-stopped",
       "volumes": [
+        {
+          "container": "/config",
+          "bind": "/volume1/docker/duckdns/config"
+        },
         {
           "container": "/config",
           "bind": "/volume1/docker/duckdns/config"
@@ -5176,7 +5186,9 @@
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/kometa:latest",
-      "ports": null,
+      "ports": [
+        "80:80/tcp"
+      ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
@@ -8934,7 +8946,7 @@
       "title": "Pydio-cells",
       "name": "Pydio-cells",
       "description": "[Pydio-cells](https://pydio.com/) is the nextgen file sharing platform for organizations. It is a full rewrite of the Pydio project using the Go language following a micro-service architecture.",
-      "logo": "https://raw.githubusercontent.com/wiki/pydio/cells/images/PydioCellsColor.png",
+      "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/pydio-cells-icon.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/pydio-cells/config</p>",
       "env": [
         {
@@ -8988,7 +9000,7 @@
       "title": "Pyload-ng",
       "name": "Pyload-ng",
       "description": "[pyLoad](https://pyload.net/) is a Free and Open Source download manager written in Python and designed to be extremely lightweight, easily extensible and fully manageable via web.",
-      "logo": "https://pyload.net/img/banner.png",
+      "logo": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/pyload-logo.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/pyload-ng/config<br>mkdir -p /volume1/docker/pyload-ng/downloads</p>",
       "env": [
         {
@@ -10167,7 +10179,7 @@
       "title": "Smokeping",
       "name": "Smokeping",
       "description": "[Smokeping](https://oss.oetiker.ch/smokeping/) keeps track of your network latency. For a full example of what this application is capable of visit [UCDavis](http://smokeping.ucdavis.edu/cgi-bin/smokeping.fcgi).",
-      "logo": "https://camo.githubusercontent.com/e0694ef783e3fd1d74e6776b28822ced01c7cc17/687474703a2f2f6f73732e6f6574696b65722e63682f736d6f6b6570696e672f696e632f736d6f6b6570696e672d6c6f676f2e706e67",
+      "logo": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/smokeping-logo.png",
       "note": "Portainer App Templates by <a href='https://www.technorabilia.com' target='_blank'>Technorabilia</a> based on data provided by <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/smokeping/config<br>mkdir -p /volume1/docker/smokeping/data</p>",
       "env": [
         {
@@ -11819,7 +11831,9 @@
       "platform": "linux",
       "repository": null,
       "image": "linuxserver/webgrabplus:latest",
-      "ports": null,
+      "ports": [
+        "80:80/tcp"
+      ],
       "restart_policy": "unless-stopped",
       "volumes": [
         {
@@ -14905,6 +14919,28 @@
       ],
       "restart_policy": null,
       "volumes": []
+    },
+    {
+      "categories": [
+        "Social",
+        "Events"
+      ],
+      "type": 3,
+      "title": "Gathio",
+      "name": "gathio",
+      "description": "Gathio is a simple, federated, privacy-first event hosting platform.",
+      "logo": "https://gath.io/og-image.jpg",
+      "note": null,
+      "env": null,
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Template/Stack/gathio.yml",
+        "url": "https://github.com/xneo1/portainer_templates"
+      },
+      "image": null,
+      "ports": null,
+      "restart_policy": null,
+      "volumes": null
     },
     {
       "categories": [
